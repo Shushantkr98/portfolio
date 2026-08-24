@@ -797,7 +797,8 @@
 
     </section>
 
-    <!-- ================= PROJECTS SECTION ================= -->
+  ```html
+<!-- ================= PROJECTS SECTION ================= -->
 
 <section class="projects-section" id="projects">
 
@@ -823,13 +824,11 @@
 
             <div class="project-image elan-project-image">
 
-                <!-- Clothing / Fashion Store Image -->
                 <img
                     src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=85"
                     alt="ELAN Clothing E-Commerce Website"
                 >
 
-                <!-- ELAN Brand Logo -->
                 <div class="elan-logo">
                     ELAN<span>.</span>
                 </div>
@@ -860,7 +859,6 @@
 
                 <div class="project-buttons">
 
-                    <!-- LIVE DEMO -->
                     <a
                         href="https://shushantkr98.github.io/ELAN-Ecommerce/"
                         target="_blank"
@@ -872,7 +870,6 @@
                     </a>
 
 
-                    <!-- CODE -->
                     <a
                         href="https://github.com/Shushantkr98/ELAN-Ecommerce"
                         target="_blank"
@@ -927,10 +924,10 @@
 
                 <div class="project-buttons">
 
-                    <!-- LIVE DEMO -->
                     <a
                         href="./website%20project.html"
                         target="_blank"
+                        rel="noopener noreferrer"
                         class="project-btn live-btn"
                     >
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -938,7 +935,6 @@
                     </a>
 
 
-                    <!-- CODE -->
                     <button
                         type="button"
                         class="project-btn code-btn"
@@ -992,10 +988,10 @@
 
                 <div class="project-buttons">
 
-                    <!-- LIVE DEMO -->
                     <a
                         href="./calculation.html"
                         target="_blank"
+                        rel="noopener noreferrer"
                         class="project-btn live-btn"
                     >
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
@@ -1003,7 +999,6 @@
                     </a>
 
 
-                    <!-- CODE -->
                     <button
                         type="button"
                         class="project-btn code-btn"
@@ -1020,78 +1015,43 @@
         </article>
 
 
+    </div>
 
-    
-
-<!-- ================= PROJECT BUTTON SCRIPT ================= -->
-
-<script>
-
-function showAllProjects() {
-
-    const blogProject = document.getElementById("blogProject");
-    const button = document.getElementById("showAllProjects");
-
-    if (blogProject.style.display === "none") {
-
-        blogProject.style.display = "block";
-
-        button.innerHTML = `
-            <span>Show Less</span>
-            <i class="fa-solid fa-arrow-up"></i>
-        `;
-
-        blogProject.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
-        });
-
-    } else {
-
-        blogProject.style.display = "none";
-
-        button.innerHTML = `
-            <span>View All Projects</span>
-            <i class="fa-solid fa-arrow-down"></i>
-        `;
-
-    }
-
-}
-
-</script>
-
-    <!-- ================= CODE MODAL ================= -->
-
-    <div class="project-modal" id="codeModal">
-
-        <div class="project-modal-content">
+</section>
 
 
-            <div class="modal-header">
+<!-- ================= CODE MODAL ================= -->
 
-                <h3 id="codeModalTitle">
-                    Source Code
-                </h3>
+<div class="project-modal" id="codeModal">
 
-                <button type="button" class="modal-close" onclick="closeCode()">
+    <div class="project-modal-content">
 
-                    &times;
+        <div class="modal-header">
 
-                </button>
+            <h3 id="codeModalTitle">
+                Source Code
+            </h3>
 
-            </div>
+            <button
+                type="button"
+                class="modal-close"
+                onclick="closeCode()"
+            >
+                &times;
+            </button>
+
+        </div>
 
 
-            <div class="code-viewer">
+        <div class="code-viewer">
 
-                <pre><code id="codeViewer">Loading code...</code></pre>
-
-            </div>
+            <pre><code id="codeViewer">Loading code...</code></pre>
 
         </div>
 
     </div>
+
+</div>
 
 
     <!-- =========================================================
