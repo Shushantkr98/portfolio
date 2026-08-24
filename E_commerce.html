@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ÉLAN — Modern Fashion</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="E_commerce.css">
+</head>
+
+<body>
+
+    <!-- Announcement -->
+    <div class="announcement">
+        FREE SHIPPING ON ORDERS OVER ₹2,999
+    </div>
+
+
+    <!-- Navbar -->
+    <header class="navbar">
+
+        <a href="#" class="logo">ÉLAN</a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="new.html">NEW IN</a>
+            <a href="women.html">WOMEN</a>
+            <a href="men.html">MEN</a>
+            <a href="#collections">COLLECTIONS</a>
+            <a href="sale.html">SALE</a>
+        </nav>
+
+        <div class="nav-actions">
+
+            <button class="icon-btn" id="searchBtn" aria-label="Search">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="16.5" y1="16.5" x2="22" y2="22"></line>
+                </svg>
+            </button>
+
+            <a href="account.html" class="icon-btn" aria-label="Account">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="4"></circle>
+                    <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"></path>
+                </svg>
+            </a>
+
+            <a href="cart.html" class="bag-btn" id="bagBtn">
+                BAG <span id="cartCount">0</span>
+            </a>
+
+            <button class="menu-btn" id="menuBtn">
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+
+        <button class="close-search" id="closeSearch">×</button>
+
+        <div class="search-box">
+            <span>SEARCH</span>
+            <input type="text" id="searchInput" placeholder="What are you looking for?">
+        </div>
+
+        <div class="popular-searches">
+            <p>POPULAR SEARCHES</p>
+
+            <div>
+                <button>Oversized T-Shirts</button>
+                <button>Hoodies</button>
+                <button>Cargo Pants</button>
+                <button>Dresses</button>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Hero -->
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="eyebrow">AUTUMN / WINTER 2026</p>
+
+                <h1>
+                    DEFINE
+                    <span>YOUR STYLE.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Contemporary essentials designed for
+                    those who make their own rules.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="women.html" class="btn btn-dark">
+                        SHOP WOMEN
+                    </a>
+
+                    <a href="men.html" class="btn btn-light">
+                        SHOP MEN
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=1400&q=85"
+                    alt="Fashion model wearing modern clothing">
+
+                <div class="hero-floating-card">
+                    <span>NEW DROP</span>
+                    <strong>COLLECTION 026</strong>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Marquee -->
+        <section class="marquee">
+            <div class="marquee-track">
+                <span>MODERN ESSENTIALS</span>
+                <i>✦</i>
+                <span>TIMELESS DESIGN</span>
+                <i>✦</i>
+                <span>MADE TO MOVE</span>
+                <i>✦</i>
+                <span>MODERN ESSENTIALS</span>
+                <i>✦</i>
+            </div>
+        </section>
+
+
+        <!-- Collections -->
+        <section class="collections section" id="collections">
+
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">CURATED FOR YOU</p>
+                    <h2>Shop the collection</h2>
+                </div>
+
+                <a href="#" class="text-link">VIEW ALL →</a>
+            </div>
+
+
+            <div class="collection-grid">
+
+                <a href="women.html" class="collection-card large">
+
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=85"
+                        alt="Women's collection">
+
+                    <div class="collection-info">
+                        <p>01 / WOMEN</p>
+                        <h3>New silhouettes</h3>
+                        <span>SHOP NOW →</span>
+                    </div>
+
+                </a>
+
+
+                <a href="men.html" class="collection-card">
+
+                    <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1000&q=85"
+                        alt="Men's collection">
+
+                    <div class="collection-info">
+                        <p>02 / MEN</p>
+                        <h3>Everyday classics</h3>
+                        <span>SHOP NOW →</span>
+                    </div>
+
+                </a>
+
+
+                <a href="#" class="collection-card">
+
+                    <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?auto=format&fit=crop&w=1000&q=85"
+                        alt="Accessories collection">
+
+                    <div class="collection-info">
+                        <p>03 / ACCESSORIES</p>
+                        <h3>Complete the look</h3>
+                        <span>SHOP NOW →</span>
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- New Arrivals -->
+        <section class="section products-section" id="new">
+
+            <div class="section-heading">
+
+                <div>
+                    <p class="eyebrow">JUST LANDED</p>
+                    <h2>New arrivals</h2>
+                </div>
+
+                <a href="#" class="text-link">SHOP ALL →</a>
+
+            </div>
+
+
+            <div class="product-grid">
+
+
+                <!-- Product 1 -->
+                <article class="product-card">
+
+                    <div class="product-image">
+
+                        <span class="badge">NEW</span>
+
+                        <button class="wishlist" aria-label="Add to wishlist">
+                            ♡
+                        </button>
+
+                        <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85"
+                            alt="Oversized shirt">
+
+                        <button class="quick-add" data-product="Oversized Linen Shirt">
+                            QUICK ADD +
+                        </button>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <div>
+                            <h3>Oversized Linen Shirt</h3>
+                            <p>Relaxed fit / Ivory</p>
+                        </div>
+
+                        <strong>₹2,499</strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Product 2 -->
+                <article class="product-card">
+
+                    <div class="product-image">
+
+                        <button class="wishlist" aria-label="Add to wishlist">
+                            ♡
+                        </button>
+
+                        <img src="https://i5.walmartimages.com/seo/George-Men-s-and-Big-Men-s-Utility-Jacket-Sizes-S-3XL_fb8d615f-d741-4c5b-8d09-a3794362c055.650d9ca52cc679b23450d1ba4bcbcb2e.jpeg?odnBg=FFFFFF&odnHeight=612&odnWidth=612"
+                            alt="Minimal jacket">
+
+                        <button class="quick-add" data-product="Minimal Utility Jacket">
+                            QUICK ADD +
+                        </button>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <div>
+                            <h3>Minimal Utility Jacket</h3>
+                            <p>Relaxed fit / Black</p>
+                        </div>
+
+                        <strong>₹3,999</strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Product 3 -->
+                <article class="product-card">
+
+                    <div class="product-image">
+
+                        <span class="badge">NEW</span>
+
+                        <button class="wishlist" aria-label="Add to wishlist">
+                            ♡
+                        </button>
+
+                        <img src="https://newkindco.com/cdn/shop/files/custom_resized_21cb7016-2bd3-43c1-a879-062cda1d3e78.jpg?v=1691874031&width=1638"
+                            alt="Oversized t-shirt">
+
+                        <button class="quick-add" data-product="Essential Oversized Tee">
+                            QUICK ADD +
+                        </button>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <div>
+                            <h3>Essential Oversized Tee</h3>
+                            <p>Heavy cotton / White</p>
+                        </div>
+
+                        <strong>₹1,499</strong>
+
+                    </div>
+
+                </article>
+
+
+                <!-- Product 4 -->
+                <article class="product-card">
+
+                    <div class="product-image">
+
+                        <span class="badge sale">SALE</span>
+
+                        <button class="wishlist" aria-label="Add to wishlist">
+                            ♡
+                        </button>
+
+                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=900&q=85"
+                            alt="Fashion dress">
+
+                        <button class="quick-add" data-product="Silk Slip Dress">
+                            QUICK ADD +
+                        </button>
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <div>
+                            <h3>Silk Slip Dress</h3>
+                            <p>Silk blend / Charcoal</p>
+                        </div>
+
+                        <strong>₹4,499</strong>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- Editorial Banner -->
+        <section class="editorial">
+
+            <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1800&q=85"
+                alt="Fashion editorial">
+
+            <div class="editorial-content">
+
+                <p class="eyebrow">THE ELAN EDIT</p>
+
+                <h2>
+                    LESS NOISE.
+                    <br>
+                    MORE STYLE.
+                </h2>
+
+                <a href="#" class="btn btn-light">
+                    EXPLORE THE EDIT
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- Brand Story -->
+        <section class="story section">
+
+            <div class="story-image">
+
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85"
+                    alt="Fashion collection">
+
+            </div>
+
+            <div class="story-content">
+
+                <p class="eyebrow">OUR PHILOSOPHY</p>
+
+                <h2>
+                    Clothes that
+                    <em>feel</em> like you.
+                </h2>
+
+                <p>
+                    We believe great style doesn't need to shout.
+                    ÉLAN creates thoughtful pieces with clean
+                    silhouettes, quality materials and an effortless
+                    attitude.
+                </p>
+
+                <a href="#" class="text-link">
+                    OUR STORY →
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- Newsletter -->
+        <section class="newsletter">
+
+            <div>
+
+                <p class="eyebrow">JOIN THE COMMUNITY</p>
+
+                <h2>
+                    Stay in the know.
+                </h2>
+
+                <p>
+                    New drops, exclusive access and
+                    inspiration — straight to your inbox.
+                </p>
+
+            </div>
+
+            <form id="newsletterForm">
+
+                <input type="email" id="email" placeholder="Your email address" required>
+
+                <button type="submit">
+                    JOIN →
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <div class="footer-top">
+
+            <div class="footer-brand">
+
+                <a href="#" class="logo">ÉLAN</a>
+
+                <p>
+                    Modern clothing for
+                    modern expression.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>SHOP</h4>
+
+                <a href="#women">Women</a>
+                <a href="#men">Men</a>
+                <a href="#new">New Arrivals</a>
+                <a href="#">Sale</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>HELP</h4>
+
+                <a href="#">Contact</a>
+                <a href="#">Shipping</a>
+                <a href="#">Returns</a>
+                <a href="#">FAQ</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>FOLLOW</h4>
+
+                <a href="#">Instagram</a>
+                <a href="#">Pinterest</a>
+                <a href="#">Facebook</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>© 2026 ÉLAN. ALL RIGHTS RESERVED.</span>
+
+            <span>PRIVACY · TERMS</span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        Added to bag ✓
+    </div>
+
+
+    <script src="E_commerce.js"></script>
+
+</body>
+
+</html>

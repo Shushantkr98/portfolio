@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>New In — ÉLAN</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="product.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ANNOUNCEMENT -->
+
+    <div class="announcement">
+
+        FREE SHIPPING ON ORDERS OVER ₹2,999
+
+    </div>
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <a
+            href="E_commerce.html"
+            class="logo"
+        >
+            ÉLAN
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="E_commerce.html">
+                HOME
+            </a>
+
+            <a href="men.html">
+                MEN
+            </a>
+
+            <a href="women.html">
+                WOMEN
+            </a>
+
+            <a
+                href="new.html"
+                class="active"
+            >
+                NEW IN
+            </a>
+
+            <a href="sale.html">
+                SALE
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <button
+                class="search-btn"
+                id="searchBtn"
+            >
+                SEARCH
+            </button>
+
+
+            <button class="bag-btn">
+
+                BAG
+
+                <span id="cartCount">
+                    0
+                </span>
+
+            </button>
+
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- MOBILE NAV -->
+
+    <nav
+        class="mobile-nav"
+        id="mobileNav"
+    >
+
+        <a href="E_commerce.html">
+            HOME
+        </a>
+
+        <a href="men.html">
+            MEN
+        </a>
+
+        <a href="women.html">
+            WOMEN
+        </a>
+
+        <a href="new.html">
+            NEW IN
+        </a>
+
+        <a href="sale.html">
+            SALE
+        </a>
+
+    </nav>
+
+
+    <!-- SEARCH -->
+
+    <div
+        class="search-overlay"
+        id="searchOverlay"
+    >
+
+        <button
+            class="close-search"
+            id="closeSearch"
+        >
+            ×
+        </button>
+
+
+        <p>
+            SEARCH ÉLAN
+        </p>
+
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search new arrivals..."
+        >
+
+    </div>
+
+
+    <!-- HERO -->
+
+    <section class="shop-hero">
+
+        <div class="shop-hero-content">
+
+            <p class="eyebrow">
+                ÉLAN / NEW IN
+            </p>
+
+
+            <h1>
+
+                Just
+                <em>Arrived.</em>
+
+            </h1>
+
+
+            <p>
+
+                Discover the latest additions to ÉLAN.
+                Refined essentials and contemporary
+                silhouettes made for the season ahead.
+
+            </p>
+
+        </div>
+
+
+        <div class="hero-number">
+            03
+        </div>
+
+    </section>
+
+
+    <!-- SHOP AREA -->
+
+    <main class="shop-container">
+
+
+        <div class="shop-top">
+
+            <div>
+
+                <p class="eyebrow">
+                    THE LATEST
+                </p>
+
+
+                <h2>
+                    New Arrivals
+                </h2>
+
+            </div>
+
+
+            <span id="productCount">
+                NEW PRODUCTS
+            </span>
+
+        </div>
+
+
+        <!-- FILTER BAR -->
+
+        <div class="filter-bar">
+
+
+            <div class="category-filters">
+
+                <button
+                    class="active"
+                    data-category="all"
+                >
+                    ALL
+                </button>
+
+
+                <button
+                    data-category="tshirts"
+                >
+                    T-SHIRTS
+                </button>
+
+
+                <button
+                    data-category="shirts"
+                >
+                    SHIRTS
+                </button>
+
+
+                <button
+                    data-category="hoodies"
+                >
+                    HOODIES
+                </button>
+
+
+                <button
+                    data-category="jackets"
+                >
+                    JACKETS
+                </button>
+
+
+                <button
+                    data-category="trousers"
+                >
+                    TROUSERS
+                </button>
+
+            </div>
+
+
+            <select id="sortSelect">
+
+                <option value="featured">
+                    FEATURED
+                </option>
+
+                <option value="low">
+                    PRICE LOW → HIGH
+                </option>
+
+                <option value="high">
+                    PRICE HIGH → LOW
+                </option>
+
+                <option value="newest">
+                    NEWEST
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- PRODUCTS -->
+
+        <section
+            class="product-grid"
+            id="productGrid"
+        ></section>
+
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+
+        <div class="footer-top">
+
+
+            <div>
+
+                <a
+                    href="E_commerce.html"
+                    class="logo"
+                >
+                    ÉLAN
+                </a>
+
+
+                <p>
+                    Modern clothing for modern expression.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    SHOP
+                </h4>
+
+
+                <a href="men.html">
+                    Men
+                </a>
+
+
+                <a href="women.html">
+                    Women
+                </a>
+
+
+                <a href="new.html">
+                    New Arrivals
+                </a>
+
+
+                <a href="sale.html">
+                    Sale
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    HELP
+                </h4>
+
+
+                <a href="#">
+                    Contact
+                </a>
+
+
+                <a href="#">
+                    Shipping
+                </a>
+
+
+                <a href="#">
+                    Returns
+                </a>
+
+
+                <a href="#">
+                    FAQ
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    FOLLOW
+                </h4>
+
+
+                <a href="#">
+                    Instagram
+                </a>
+
+
+                <a href="#">
+                    Pinterest
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 ÉLAN
+            </span>
+
+
+            <span>
+                PRIVACY · TERMS
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- TOAST -->
+
+    <div
+        class="toast"
+        id="toast"
+    >
+        Added to bag ✓
+    </div>
+
+
+    <!-- PAGE CATEGORY -->
+
+    <script>
+
+        const pageCategory = "new";
+
+    </script>
+
+
+    <!-- BAG DRAWER -->
+
+    <div
+        class="bag-overlay"
+        id="bagOverlay"
+    ></div>
+
+
+    <aside
+        class="bag-drawer"
+        id="bagDrawer"
+    >
+
+        <div class="bag-header">
+
+            <div>
+
+                <span>
+                    ÉLAN / BAG
+                </span>
+
+                <h2>
+                    Your Bag
+                </h2>
+
+            </div>
+
+
+            <button id="closeBag">
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            class="bag-products"
+            id="bagProducts"
+        ></div>
+
+
+        <div class="bag-footer">
+
+
+            <div class="bag-total">
+
+                <span>
+                    SUBTOTAL
+                </span>
+
+
+                <strong id="bagTotal">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <a
+                href="cart.html"
+                class="bag-view"
+            >
+                VIEW BAG
+            </a>
+
+
+            <a
+                href="checkout.html"
+                class="bag-checkout"
+            >
+                CHECKOUT →
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- PRODUCT JS -->
+
+    <script src="product.js"></script>
+
+
+</body>
+
+</html>

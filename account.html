@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Account — ÉLAN</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="product.css">
+
+    <style>
+        /* =========================
+           ACCOUNT PAGE
+        ========================= */
+
+        .account-page {
+            min-height: 70vh;
+            padding: 90px 5vw 120px;
+
+            display: flex;
+            justify-content: center;
+        }
+
+        .account-container {
+            width: 100%;
+            max-width: 520px;
+        }
+
+        .account-header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .account-header h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(48px, 7vw, 72px);
+            font-weight: 400;
+            line-height: 1;
+            margin: 15px 0;
+        }
+
+        .account-header p {
+            color: #77736d;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .account-card {
+            border: 1px solid #d8d5ce;
+            padding: 40px;
+        }
+
+        .account-tabs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-bottom: 35px;
+            border-bottom: 1px solid #d8d5ce;
+        }
+
+        .account-tab {
+            border: 0;
+            background: transparent;
+            padding: 15px;
+            cursor: pointer;
+
+            font-size: 10px;
+            letter-spacing: 2px;
+
+            color: #77736d;
+        }
+
+        .account-tab.active {
+            color: #171717;
+            border-bottom: 2px solid #171717;
+        }
+
+        .account-form {
+            display: none;
+        }
+
+        .account-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+
+            font-size: 9px;
+            letter-spacing: 1.5px;
+
+            margin-bottom: 8px;
+        }
+
+        .form-group input {
+            width: 100%;
+            box-sizing: border-box;
+
+            padding: 14px 12px;
+
+            border: 1px solid #c9c6bf;
+            background: transparent;
+
+            font-family: "DM Sans", sans-serif;
+            font-size: 13px;
+
+            outline: none;
+        }
+
+        .form-group input:focus {
+            border-color: #171717;
+        }
+
+        .account-button {
+            width: 100%;
+
+            border: 0;
+            background: #171717;
+            color: white;
+
+            padding: 17px;
+
+            font-size: 10px;
+            letter-spacing: 2px;
+
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .account-button:hover {
+            background: #333;
+        }
+
+        .account-message {
+            min-height: 20px;
+
+            margin-top: 18px;
+
+            text-align: center;
+
+            font-size: 12px;
+            color: #77736d;
+        }
+
+        .account-dashboard {
+            display: none;
+        }
+
+        .account-dashboard.active {
+            display: block;
+        }
+
+        .account-welcome {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .account-welcome h2 {
+            font-family: "Playfair Display", serif;
+            font-weight: 400;
+            font-size: 38px;
+            margin: 10px 0;
+        }
+
+        .account-info {
+            border-top: 1px solid #d8d5ce;
+            border-bottom: 1px solid #d8d5ce;
+            margin-bottom: 25px;
+        }
+
+        .account-info-row {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 16px 0;
+
+            border-bottom: 1px solid #d8d5ce;
+
+            font-size: 12px;
+        }
+
+        .account-info-row:last-child {
+            border-bottom: 0;
+        }
+
+        .account-info-row span:last-child {
+            color: #77736d;
+        }
+
+        .logout-button {
+            width: 100%;
+
+            padding: 15px;
+
+            border: 1px solid #171717;
+            background: transparent;
+
+            font-size: 10px;
+            letter-spacing: 2px;
+
+            cursor: pointer;
+        }
+
+        .account-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+
+            margin-top: 25px;
+        }
+
+        .account-links a {
+            color: #171717;
+            font-size: 10px;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px) {
+
+            .account-page {
+                padding: 60px 20px 80px;
+            }
+
+            .account-card {
+                padding: 25px 20px;
+            }
+
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- ANNOUNCEMENT -->
+
+    <div class="announcement">
+        FREE SHIPPING ON ORDERS OVER ₹2,999
+    </div>
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <a href="E_commerce.html" class="logo">
+            ÉLAN
+        </a>
+
+        <nav class="nav-links">
+
+            <a href="E_commerce.html">
+                HOME
+            </a>
+
+            <a href="new.html">
+                NEW IN
+            </a>
+
+            <a href="women.html">
+                WOMEN
+            </a>
+
+            <a href="men.html">
+                MEN
+            </a>
+
+            <a href="sale.html">
+                SALE
+            </a>
+
+        </nav>
+
+        <div class="nav-actions">
+
+            <a href="account.html" class="bag-btn">
+                ACCOUNT
+            </a>
+
+            <a href="cart.html" class="bag-btn">
+                BAG
+                <span id="cartCount">0</span>
+            </a>
+
+            <button class="menu-btn" id="menuBtn">
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ACCOUNT -->
+
+    <main class="account-page">
+
+        <div class="account-container">
+
+            <div class="account-header">
+
+                <p class="eyebrow">
+                    ÉLAN / ACCOUNT
+                </p>
+
+                <h1>
+                    Your <em>account.</em>
+                </h1>
+
+                <p>
+                    Sign in to manage your orders,
+                    saved details and account.
+                </p>
+
+            </div>
+
+
+            <div class="account-card">
+
+                <!-- TABS -->
+
+                <div class="account-tabs">
+
+                    <button class="account-tab active" id="loginTab">
+                        SIGN IN
+                    </button>
+
+                    <button class="account-tab" id="registerTab">
+                        CREATE ACCOUNT
+                    </button>
+
+                </div>
+
+
+                <!-- LOGIN -->
+
+                <form class="account-form active" id="loginForm">
+
+                    <div class="form-group">
+
+                        <label>
+                            EMAIL ADDRESS
+                        </label>
+
+                        <input type="email" id="loginEmail" placeholder="you@example.com" required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            PASSWORD
+                        </label>
+
+                        <input type="password" id="loginPassword" placeholder="Your password" required>
+
+                    </div>
+
+
+                    <button class="account-button" type="submit">
+                        SIGN IN →
+                    </button>
+
+                    <div class="account-message" id="loginMessage"></div>
+
+                </form>
+
+
+                <!-- REGISTER -->
+
+                <form class="account-form" id="registerForm">
+
+                    <div class="form-group">
+
+                        <label>
+                            FULL NAME
+                        </label>
+
+                        <input type="text" id="registerName" placeholder="Your name" required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            EMAIL ADDRESS
+                        </label>
+
+                        <input type="email" id="registerEmail" placeholder="you@example.com" required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            PASSWORD
+                        </label>
+
+                        <input type="password" id="registerPassword" placeholder="Create a password" minlength="6"
+                            required>
+
+                    </div>
+
+
+                    <button class="account-button" type="submit">
+                        CREATE ACCOUNT →
+                    </button>
+
+                    <div class="account-message" id="registerMessage"></div>
+
+                </form>
+
+
+                <!-- DASHBOARD -->
+
+                <div class="account-dashboard" id="accountDashboard">
+
+                    <div class="account-welcome">
+
+                        <p class="eyebrow">
+                            WELCOME BACK
+                        </p>
+
+                        <h2 id="welcomeName">
+                            Hello.
+                        </h2>
+
+                    </div>
+
+
+                    <div class="account-info">
+
+                        <div class="account-info-row">
+
+                            <span>
+                                NAME
+                            </span>
+
+                            <span id="accountName">
+                                —
+                            </span>
+
+                        </div>
+
+
+                        <div class="account-info-row">
+
+                            <span>
+                                EMAIL
+                            </span>
+
+                            <span id="accountEmail">
+                                —
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <a href="cart.html" class="account-button" style="
+                            display:block;
+                            box-sizing:border-box;
+                            text-align:center;
+                            text-decoration:none;
+                            margin-bottom:12px;
+                        ">
+                        VIEW BAG →
+                    </a>
+
+
+                    <button class="logout-button" id="logoutButton">
+                        SIGN OUT
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="account-links">
+
+                <a href="tracking.html">
+                    TRACK ORDER
+                </a>
+
+                <a href="cart.html">
+                    BAG
+                </a>
+
+                <a href="checkout.html">
+                    CHECKOUT
+                </a>
+
+                <a href="E_commerce.html">
+                    HOME
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-top">
+
+            <div>
+
+                <a href="E_commerce.html" class="logo">
+                    ÉLAN
+                </a>
+
+                <p>
+                    Modern clothing for
+                    modern expression.
+                </p>
+
+            </div>
+
+
+            <div>
+
+                <h4>SHOP</h4>
+
+                <a href="men.html">
+                    Men
+                </a>
+
+                <a href="women.html">
+                    Women
+                </a>
+
+                <a href="new.html">
+                    New Arrivals
+                </a>
+
+                <a href="sale.html">
+                    Sale
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h4>HELP</h4>
+
+                <a href="#">
+                    Contact
+                </a>
+
+                <a href="#">
+                    Shipping
+                </a>
+
+                <a href="#">
+                    Returns
+                </a>
+
+                <a href="#">
+                    FAQ
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h4>ACCOUNT</h4>
+
+                <a href="account.html">
+                    My Account
+                </a>
+
+                <a href="checkout.html">
+                    Checkout
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 ÉLAN
+            </span>
+
+            <span>
+                PRIVACY · TERMS
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        /* =========================
+           TABS
+        ========================= */
+
+        const loginTab =
+            document.getElementById("loginTab");
+
+        const registerTab =
+            document.getElementById("registerTab");
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+        const registerForm =
+            document.getElementById("registerForm");
+
+
+        loginTab.addEventListener("click", () => {
+
+            loginTab.classList.add("active");
+
+            registerTab.classList.remove("active");
+
+            loginForm.classList.add("active");
+
+            registerForm.classList.remove("active");
+
+        });
+
+
+        registerTab.addEventListener("click", () => {
+
+            registerTab.classList.add("active");
+
+            loginTab.classList.remove("active");
+
+            registerForm.classList.add("active");
+
+            loginForm.classList.remove("active");
+
+        });
+
+
+        /* =========================
+           ACCOUNT STORAGE
+        ========================= */
+
+        function getAccount() {
+
+            return JSON.parse(
+                localStorage.getItem("elanAccount")
+            );
+
+        }
+
+
+        function saveAccount(account) {
+
+            localStorage.setItem(
+                "elanAccount",
+                JSON.stringify(account)
+            );
+
+        }
+
+
+        /* =========================
+           SHOW DASHBOARD
+        ========================= */
+
+        function showDashboard(account) {
+
+            document
+                .querySelector(".account-tabs")
+                .style.display = "none";
+
+            loginForm.classList.remove("active");
+
+            registerForm.classList.remove("active");
+
+            document
+                .getElementById("accountDashboard")
+                .classList.add("active");
+
+            document
+                .getElementById("welcomeName")
+                .textContent =
+                "Hello, " + account.name + ".";
+
+            document
+                .getElementById("accountName")
+                .textContent =
+                account.name;
+
+            document
+                .getElementById("accountEmail")
+                .textContent =
+                account.email;
+
+        }
+
+
+        /* =========================
+           REGISTER
+        ========================= */
+
+        registerForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+                const name =
+                    document
+                        .getElementById("registerName")
+                        .value
+                        .trim();
+
+                const email =
+                    document
+                        .getElementById("registerEmail")
+                        .value
+                        .trim();
+
+                const password =
+                    document
+                        .getElementById("registerPassword")
+                        .value;
+
+
+                const account = {
+
+                    name: name,
+
+                    email: email,
+
+                    password: password
+
+                };
+
+
+                saveAccount(account);
+
+                localStorage.setItem(
+                    "elanLoggedIn",
+                    "true"
+                );
+
+                document
+                    .getElementById("registerMessage")
+                    .textContent =
+                    "Account created successfully ✓";
+
+                showDashboard(account);
+
+            }
+        );
+
+
+        /* =========================
+           LOGIN
+        ========================= */
+
+        loginForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+                const email =
+                    document
+                        .getElementById("loginEmail")
+                        .value
+                        .trim();
+
+                const password =
+                    document
+                        .getElementById("loginPassword")
+                        .value;
+
+
+                const account =
+                    getAccount();
+
+
+                if (!account) {
+
+                    document
+                        .getElementById("loginMessage")
+                        .textContent =
+                        "No account found. Please create an account.";
+
+                    return;
+
+                }
+
+
+                if (
+                    account.email !== email ||
+                    account.password !== password
+                ) {
+
+                    document
+                        .getElementById("loginMessage")
+                        .textContent =
+                        "Incorrect email or password.";
+
+                    return;
+
+                }
+
+
+                localStorage.setItem(
+                    "elanLoggedIn",
+                    "true"
+                );
+
+
+                showDashboard(account);
+
+            }
+        );
+
+
+        /* =========================
+           LOGOUT
+        ========================= */
+
+        document
+            .getElementById("logoutButton")
+            .addEventListener(
+                "click",
+                () => {
+
+                    localStorage.removeItem(
+                        "elanLoggedIn"
+                    );
+
+                    location.reload();
+
+                }
+            );
+
+
+        /* =========================
+           INITIAL
+        ========================= */
+
+        const account =
+            getAccount();
+
+        const loggedIn =
+            localStorage.getItem(
+                "elanLoggedIn"
+            );
+
+
+        if (account && loggedIn === "true") {
+
+            showDashboard(account);
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

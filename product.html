@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product — ÉLAN</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="E_commerce.css">
+
+
+    <style>
+
+        /* =========================
+           PRODUCT DETAIL
+        ========================= */
+
+        .product-detail {
+
+            padding: 70px 5vw 120px;
+
+            display: grid;
+
+            grid-template-columns:
+                1.1fr 0.9fr;
+
+            gap: 7vw;
+
+        }
+
+
+        .product-detail-image {
+
+            background: #dedbd4;
+
+            overflow: hidden;
+
+        }
+
+
+        .product-detail-image img {
+
+            width: 100%;
+
+            aspect-ratio: 0.82;
+
+            object-fit: cover;
+
+            display: block;
+
+        }
+
+
+        .product-detail-info {
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            max-width: 500px;
+
+        }
+
+
+        .product-detail-info .eyebrow {
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .product-detail-info h1 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                clamp(45px, 5vw, 75px);
+
+            font-weight: 400;
+
+            line-height: 0.95;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .product-price {
+
+            font-size: 18px;
+
+            font-weight: 600;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .product-description {
+
+            color: #6f6c66;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+            margin-bottom: 35px;
+
+        }
+
+
+        .option-title {
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .size-options {
+
+            display: flex;
+
+            gap: 8px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .size-btn {
+
+            width: 52px;
+
+            height: 45px;
+
+            border: 1px solid #aaa;
+
+            background: transparent;
+
+            cursor: pointer;
+
+            font-size: 11px;
+
+            transition: 0.3s ease;
+
+        }
+
+
+        .size-btn:hover,
+        .size-btn.active {
+
+            background: #171717;
+
+            color: #fff;
+
+            border-color: #171717;
+
+        }
+
+
+        .quantity-box {
+
+            display: flex;
+
+            align-items: center;
+
+            width: fit-content;
+
+            border: 1px solid #aaa;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .quantity-box button {
+
+            width: 42px;
+
+            height: 42px;
+
+            border: 0;
+
+            background: transparent;
+
+            cursor: pointer;
+
+            font-size: 18px;
+
+        }
+
+
+        .quantity-box span {
+
+            width: 40px;
+
+            text-align: center;
+
+            font-size: 12px;
+
+        }
+
+
+        .add-product {
+
+            width: 100%;
+
+            border: 0;
+
+            background: #171717;
+
+            color: #fff;
+
+            padding: 18px;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            cursor: pointer;
+
+            transition: 0.3s ease;
+
+        }
+
+
+        .add-product:hover {
+
+            background: #333;
+
+        }
+
+
+        .product-meta {
+
+            margin-top: 35px;
+
+            border-top: 1px solid #d0cdc6;
+
+        }
+
+
+        .product-meta div {
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid #d0cdc6;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            font-size: 11px;
+
+        }
+
+
+        .product-meta span:last-child {
+
+            color: #77736d;
+
+        }
+
+
+        /* =========================
+           PRODUCT NOT FOUND
+        ========================= */
+
+        .product-not-found {
+
+            padding: 120px 20px;
+
+            text-align: center;
+
+            min-height: 50vh;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .product-not-found h1 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size: 50px;
+
+            font-weight: 400;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .product-not-found p {
+
+            color: #777;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .product-not-found a {
+
+            display: inline-block;
+
+            padding: 14px 24px;
+
+            background: #171717;
+
+            color: #fff;
+
+            text-decoration: none;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .product-detail {
+
+                padding:
+                    35px 20px 80px;
+
+                display: flex;
+
+                flex-direction: column;
+
+                gap: 40px;
+
+            }
+
+
+            .product-detail-image img {
+
+                aspect-ratio: 0.85;
+
+            }
+
+
+            .product-detail-info h1 {
+
+                font-size: 52px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         ANNOUNCEMENT
+    ========================= -->
+
+    <div class="announcement">
+
+        FREE SHIPPING ON ORDERS OVER ₹2,999
+
+    </div>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <header class="navbar">
+
+        <a href="E_commerce.html"
+           class="logo">
+
+            ÉLAN
+
+        </a>
+
+
+        <nav class="nav-links"
+             id="navLinks">
+
+            <a href="new.html">
+                NEW IN
+            </a>
+
+            <a href="women.html">
+                WOMEN
+            </a>
+
+            <a href="men.html">
+                MEN
+            </a>
+
+            <a href="E_commerce.html">
+                COLLECTIONS
+            </a>
+
+            <a href="sale.html">
+                SALE
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+
+            <!-- SEARCH -->
+
+            <button
+                class="icon-btn"
+                id="searchBtn"
+                aria-label="Search">
+
+                <svg viewBox="0 0 24 24">
+
+                    <circle
+                        cx="11"
+                        cy="11"
+                        r="7">
+                    </circle>
+
+                    <line
+                        x1="16.5"
+                        y1="16.5"
+                        x2="22"
+                        y2="22">
+                    </line>
+
+                </svg>
+
+            </button>
+
+
+            <!-- ACCOUNT -->
+
+            <button
+                class="icon-btn"
+                aria-label="Account">
+
+                <svg viewBox="0 0 24 24">
+
+                    <circle
+                        cx="12"
+                        cy="8"
+                        r="4">
+                    </circle>
+
+                    <path
+                        d="M4 21c0-4 3.5-7 8-7s8 3 8 7">
+                    </path>
+
+                </svg>
+
+            </button>
+
+
+            <!-- BAG -->
+
+            <a
+                href="cart.html"
+                class="bag-btn">
+
+                BAG
+
+                <span id="cartCount">
+                    0
+                </span>
+
+            </a>
+
+
+            <!-- MOBILE MENU -->
+
+            <button
+                class="menu-btn"
+                id="menuBtn">
+
+                ☰
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         SEARCH
+    ========================= -->
+
+    <div
+        class="search-overlay"
+        id="searchOverlay">
+
+
+        <button
+            class="close-search"
+            id="closeSearch">
+
+            ×
+
+        </button>
+
+
+        <div class="search-box">
+
+            <span>
+                SEARCH
+            </span>
+
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="What are you looking for?">
+
+        </div>
+
+
+        <div class="popular-searches">
+
+            <p>
+                POPULAR SEARCHES
+            </p>
+
+
+            <div>
+
+                <button>
+                    Oversized T-Shirts
+                </button>
+
+                <button>
+                    Hoodies
+                </button>
+
+                <button>
+                    Cargo Pants
+                </button>
+
+                <button>
+                    Dresses
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         PRODUCT
+    ========================= -->
+
+    <main>
+
+        <section
+            class="product-detail"
+            id="productDetail">
+
+
+            <!-- IMAGE -->
+
+            <div class="product-detail-image">
+
+                <img
+                    id="productImage"
+                    src=""
+                    alt="Product">
+
+            </div>
+
+
+            <!-- INFO -->
+
+            <div class="product-detail-info">
+
+
+                <!-- CATEGORY -->
+
+                <p
+                    class="eyebrow"
+                    id="productCategory">
+
+                    PRODUCT
+
+                </p>
+
+
+                <!-- NAME -->
+
+                <h1 id="productName">
+
+                    Product
+
+                </h1>
+
+
+                <!-- PRICE -->
+
+                <div
+                    class="product-price"
+                    id="productPrice">
+
+                    ₹0
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <p
+                    class="product-description"
+                    id="productDescription">
+
+                    Product description
+
+                </p>
+
+
+                <!-- SIZE -->
+
+                <p class="option-title">
+
+                    SELECT SIZE
+
+                </p>
+
+
+                <div class="size-options">
+
+
+                    <button
+                        class="size-btn"
+                        type="button">
+
+                        S
+
+                    </button>
+
+
+                    <button
+                        class="size-btn active"
+                        type="button">
+
+                        M
+
+                    </button>
+
+
+                    <button
+                        class="size-btn"
+                        type="button">
+
+                        L
+
+                    </button>
+
+
+                    <button
+                        class="size-btn"
+                        type="button">
+
+                        XL
+
+                    </button>
+
+
+                </div>
+
+
+                <!-- QUANTITY -->
+
+                <p class="option-title">
+
+                    QUANTITY
+
+                </p>
+
+
+                <div class="quantity-box">
+
+
+                    <button
+                        id="minus"
+                        type="button">
+
+                        −
+
+                    </button>
+
+
+                    <span id="quantity">
+
+                        1
+
+                    </span>
+
+
+                    <button
+                        id="plus"
+                        type="button">
+
+                        +
+
+                    </button>
+
+
+                </div>
+
+
+                <!-- ADD TO BAG -->
+
+                <button
+                    class="add-product"
+                    id="addProduct"
+                    type="button">
+
+                    ADD TO BAG
+
+                </button>
+
+
+                <!-- META -->
+
+                <div class="product-meta">
+
+
+                    <div>
+
+                        <span>
+                            FIT
+                        </span>
+
+                        <span id="productFit">
+                            RELAXED
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            MATERIAL
+                        </span>
+
+                        <span id="productMaterial">
+                            PREMIUM COTTON
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            SHIPPING
+                        </span>
+
+                        <span>
+                            FREE OVER ₹2,999
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         TOAST
+    ========================= -->
+
+    <div
+        class="toast"
+        id="toast">
+
+        Added to bag ✓
+
+    </div>
+
+
+    <!-- =====================================================
+         IMPORTANT
+         PRODUCT DATA LOAD
+    ===================================================== -->
+
+    <script src="product.js"></script>
+
+
+    <!-- =====================================================
+         PRODUCT DETAIL JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+
+        /* =====================================================
+           GET PRODUCT ID FROM URL
+        ===================================================== */
+
+        const urlParams =
+            new URLSearchParams(
+                window.location.search
+            );
+
+
+        const productId =
+            Number(
+                urlParams.get("id")
+            );
+
+
+        /* =====================================================
+           FIND PRODUCT FROM product.js
+        ===================================================== */
+
+        const product =
+            window.ELAN_PRODUCTS?.find(
+                item =>
+                    item.id === productId
+            );
+
+
+        /* =====================================================
+           ELEMENTS
+        ===================================================== */
+
+        const productDetail =
+            document.getElementById(
+                "productDetail"
+            );
+
+
+        const productImage =
+            document.getElementById(
+                "productImage"
+            );
+
+
+        const productName =
+            document.getElementById(
+                "productName"
+            );
+
+
+        const productCategory =
+            document.getElementById(
+                "productCategory"
+            );
+
+
+        const productPrice =
+            document.getElementById(
+                "productPrice"
+            );
+
+
+        const productDescription =
+            document.getElementById(
+                "productDescription"
+            );
+
+
+        const productFit =
+            document.getElementById(
+                "productFit"
+            );
+
+
+        const productMaterial =
+            document.getElementById(
+                "productMaterial"
+            );
+
+
+        /* =====================================================
+           PRODUCT NOT FOUND
+        ===================================================== */
+
+        if (!product) {
+
+
+            document.title =
+                "Product Not Found — ÉLAN";
+
+
+            productDetail.innerHTML = `
+
+                <div class="product-not-found">
+
+                    <h1>
+                        Product Not Found
+                    </h1>
+
+                    <p>
+                        This product could not be found.
+                    </p>
+
+                    <a href="men.html">
+                        CONTINUE SHOPPING
+                    </a>
+
+                </div>
+
+            `;
+
+
+        }
+
+
+        /* =====================================================
+           DISPLAY PRODUCT
+        ===================================================== */
+
+        else {
+
+
+            document.title =
+                `${product.name} — ÉLAN`;
+
+
+            productImage.src =
+                product.image;
+
+
+            productImage.alt =
+                product.name;
+
+
+            productName.textContent =
+                product.name;
+
+
+            productCategory.textContent =
+                product.category;
+
+
+            productPrice.textContent =
+                `₹${product.price.toLocaleString("en-IN")}`;
+
+
+            productDescription.textContent =
+                product.description;
+
+
+            productFit.textContent =
+                product.fit;
+
+
+            productMaterial.textContent =
+                product.material;
+
+
+        }
+
+
+        /* =====================================================
+           QUANTITY
+        ===================================================== */
+
+        let quantity = 1;
+
+
+        const quantityText =
+            document.getElementById(
+                "quantity"
+            );
+
+
+        const plusButton =
+            document.getElementById(
+                "plus"
+            );
+
+
+        const minusButton =
+            document.getElementById(
+                "minus"
+            );
+
+
+        if (plusButton) {
+
+            plusButton.addEventListener(
+                "click",
+                function () {
+
+                    quantity++;
+
+                    quantityText.textContent =
+                        quantity;
+
+                }
+            );
+
+        }
+
+
+        if (minusButton) {
+
+            minusButton.addEventListener(
+                "click",
+                function () {
+
+                    if (quantity > 1) {
+
+                        quantity--;
+
+                        quantityText.textContent =
+                            quantity;
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           SIZE
+        ===================================================== */
+
+        let selectedSize = "M";
+
+
+        const sizeButtons =
+            document.querySelectorAll(
+                ".size-btn"
+            );
+
+
+        sizeButtons.forEach(
+            button => {
+
+                button.addEventListener(
+                    "click",
+                    function () {
+
+
+                        sizeButtons.forEach(
+                            btn => {
+
+                                btn.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+
+                        this.classList.add(
+                            "active"
+                        );
+
+
+                        selectedSize =
+                            this.textContent.trim();
+
+                    }
+                );
+
+            }
+        );
+
+
+        /* =====================================================
+           CART
+        ===================================================== */
+
+        function getProductCart() {
+
+            try {
+
+                return JSON.parse(
+                    localStorage.getItem(
+                        "elanCart"
+                    )
+                ) || [];
+
+            }
+
+            catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+        function saveProductCart(cart) {
+
+            localStorage.setItem(
+                "elanCart",
+                JSON.stringify(cart)
+            );
+
+        }
+
+
+        function updateProductCartCount() {
+
+            const cart =
+                getProductCart();
+
+
+            const total =
+                cart.reduce(
+                    (
+                        sum,
+                        item
+                    ) => {
+
+                        return sum +
+                            (item.quantity || 1);
+
+                    },
+                    0
+                );
+
+
+            const cartCount =
+                document.getElementById(
+                    "cartCount"
+                );
+
+
+            if (cartCount) {
+
+                cartCount.textContent =
+                    total;
+
+            }
+
+        }
+
+
+        /* =====================================================
+           ADD PRODUCT TO CART
+        ===================================================== */
+
+        const addProductButton =
+            document.getElementById(
+                "addProduct"
+            );
+
+
+        if (addProductButton) {
+
+            addProductButton.addEventListener(
+                "click",
+                function () {
+
+
+                    if (!product) {
+
+                        return;
+
+                    }
+
+
+                    const cart =
+                        getProductCart();
+
+
+                    const cartProduct = {
+
+                        id: product.id,
+
+                        name: product.name,
+
+                        price: product.price,
+
+                        image: product.image,
+
+                        category: product.category,
+
+                        size: selectedSize,
+
+                        quantity: quantity
+
+                    };
+
+
+                    const existing =
+                        cart.find(
+                            item =>
+
+                                item.id ===
+                                    cartProduct.id &&
+
+                                item.size ===
+                                    cartProduct.size
+
+                        );
+
+
+                    if (existing) {
+
+                        existing.quantity =
+                            (existing.quantity || 0) +
+                            quantity;
+
+                    }
+
+                    else {
+
+                        cart.push(
+                            cartProduct
+                        );
+
+                    }
+
+
+                    saveProductCart(
+                        cart
+                    );
+
+
+                    updateProductCartCount();
+
+
+                    /* =========================
+                       TOAST
+                    ========================= */
+
+                    const toast =
+                        document.getElementById(
+                            "toast"
+                        );
+
+
+                    if (toast) {
+
+                        toast.textContent =
+                            `${product.name} added to bag ✓`;
+
+
+                        toast.classList.add(
+                            "show"
+                        );
+
+
+                        setTimeout(
+                            function () {
+
+                                toast.classList.remove(
+                                    "show"
+                                );
+
+                            },
+                            2200
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           INITIAL CART COUNT
+        ===================================================== */
+
+        updateProductCartCount();
+
+
+        /* =====================================================
+           BAG LINK FIX
+           
+           product.js bag drawer code is made for pages
+           that contain a bag drawer. Product page does not
+           contain that drawer, so keep BAG as cart.html link.
+        ===================================================== */
+
+        const productBagButton =
+            document.querySelector(
+                ".bag-btn"
+            );
+
+
+        if (productBagButton) {
+
+            productBagButton.addEventListener(
+                "click",
+                function (event) {
+
+                    event.stopImmediatePropagation();
+
+                },
+                true
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

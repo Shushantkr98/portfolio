@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SALE — ÉLAN</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="E_commerce.css">
+
+    <style>
+
+        /* =========================
+           SALE PAGE
+        ========================= */
+
+        .sale-page {
+            padding: 90px 5vw 120px;
+        }
+
+        .sale-header {
+            text-align: center;
+            margin-bottom: 70px;
+        }
+
+        .sale-header .eyebrow {
+            margin-bottom: 15px;
+        }
+
+        .sale-header h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(55px, 8vw, 100px);
+            font-weight: 400;
+            line-height: 0.9;
+        }
+
+        .sale-header h1 em {
+            font-weight: 400;
+        }
+
+        .sale-header p {
+            max-width: 500px;
+            margin: 25px auto 0;
+            color: #77736d;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           SALE BADGE
+        ========================= */
+
+        .sale-badge {
+            position: absolute;
+
+            top: 15px;
+            left: 15px;
+
+            z-index: 4;
+
+            background: #171717;
+            color: #fff;
+
+            padding: 8px 12px;
+
+            font-size: 8px;
+            letter-spacing: 1.5px;
+        }
+
+        /* =========================
+           SALE PRICE
+        ========================= */
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+
+            margin-right: 8px;
+        }
+
+        .sale-price {
+            color: #171717;
+        }
+
+        /* =========================
+           PRODUCT IMAGE LINK
+        ========================= */
+
+        .sale-product-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .sale-product-link img {
+            display: block;
+            width: 100%;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .sale-page {
+                padding: 60px 20px 80px;
+            }
+
+            .sale-header {
+                margin-bottom: 45px;
+            }
+
+            .sale-header h1 {
+                font-size: 60px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         ANNOUNCEMENT
+    ========================= -->
+
+    <div class="announcement">
+        SALE — UP TO 40% OFF SELECTED STYLES
+    </div>
+
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <header class="navbar">
+
+        <a href="E_commerce.html" class="logo">
+            ÉLAN
+        </a>
+
+
+        <nav class="nav-links" id="navLinks">
+
+            <a href="new.html">
+                NEW IN
+            </a>
+
+            <a href="women.html">
+                WOMEN
+            </a>
+
+            <a href="men.html">
+                MEN
+            </a>
+
+            <a href="E_commerce.html#collections">
+                COLLECTIONS
+            </a>
+
+            <a href="sale.html">
+                SALE
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+
+            <!-- SEARCH -->
+
+            <button
+                class="icon-btn"
+                id="searchBtn"
+                aria-label="Search"
+                type="button"
+            >
+
+                <svg viewBox="0 0 24 24">
+
+                    <circle
+                        cx="11"
+                        cy="11"
+                        r="7"
+                    ></circle>
+
+                    <line
+                        x1="16.5"
+                        y1="16.5"
+                        x2="22"
+                        y2="22"
+                    ></line>
+
+                </svg>
+
+            </button>
+
+
+            <!-- ACCOUNT -->
+
+            <button
+                class="icon-btn"
+                aria-label="Account"
+                type="button"
+            >
+
+                <svg viewBox="0 0 24 24">
+
+                    <circle
+                        cx="12"
+                        cy="8"
+                        r="4"
+                    ></circle>
+
+                    <path
+                        d="M4 21c0-4 3.5-7 8-7s8 3 8 7"
+                    ></path>
+
+                </svg>
+
+            </button>
+
+
+            <!-- BAG -->
+
+            <a
+                href="cart.html"
+                class="bag-btn"
+            >
+                BAG
+                <span id="cartCount">0</span>
+            </a>
+
+
+            <!-- MOBILE MENU -->
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                type="button"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         SEARCH OVERLAY
+    ========================= -->
+
+    <div
+        class="search-overlay"
+        id="searchOverlay"
+    >
+
+        <button
+            class="close-search"
+            id="closeSearch"
+            type="button"
+        >
+            ×
+        </button>
+
+
+        <div class="search-box">
+
+            <span>
+                SEARCH
+            </span>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="What are you looking for?"
+            >
+
+        </div>
+
+
+        <div class="popular-searches">
+
+            <p>
+                POPULAR SEARCHES
+            </p>
+
+            <div>
+
+                <button type="button">
+                    Oversized T-Shirts
+                </button>
+
+                <button type="button">
+                    Hoodies
+                </button>
+
+                <button type="button">
+                    Cargo Pants
+                </button>
+
+                <button type="button">
+                    Dresses
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MAIN
+    ========================= -->
+
+    <main>
+
+
+        <section class="sale-page">
+
+
+            <!-- =========================
+                 SALE HEADER
+            ========================= -->
+
+            <div class="sale-header">
+
+                <p class="eyebrow">
+                    FINAL EDIT
+                </p>
+
+                <h1>
+                    SALE
+                    <em>up to 40% off.</em>
+                </h1>
+
+                <p>
+                    Discover selected ÉLAN pieces at special prices.
+                    Limited styles, limited quantities.
+                </p>
+
+            </div>
+
+
+            <!-- =========================
+                 SALE PRODUCTS
+            ========================= -->
+
+            <div class="product-grid">
+
+
+                <!-- =================================
+                     PRODUCT 1
+                     ID = 1
+                ================================= -->
+
+                <article
+                    class="product-card"
+                    data-id="1"
+                >
+
+                    <div class="product-image">
+
+
+                        <span class="sale-badge">
+                            30% OFF
+                        </span>
+
+
+                        <button
+                            class="wishlist"
+                            type="button"
+                            aria-label="Add to wishlist"
+                        >
+                            ♡
+                        </button>
+
+
+                        <a
+                            href="product.html?id=1"
+                            class="sale-product-link"
+                        >
+
+                            <img
+                                src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85"
+                                alt="Essential Oversized Tee"
+                                loading="lazy"
+                            >
+
+                        </a>
+
+
+                        <button
+                            class="quick-add"
+                            type="button"
+                            data-id="1"
+                        >
+                            ADD TO BAG
+                        </button>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <div>
+
+                            <h3>
+
+                                <a href="product.html?id=1">
+                                    Essential Oversized Tee
+                                </a>
+
+                            </h3>
+
+                            <p>
+                                Heavy cotton / Black
+                            </p>
+
+                        </div>
+
+
+                        <strong>
+
+                            <span class="old-price">
+                                ₹1,499
+                            </span>
+
+                            <span class="sale-price">
+                                ₹1,049
+                            </span>
+
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================
+                     PRODUCT 2
+                     ID = 5
+                ================================= -->
+
+                <article
+                    class="product-card"
+                    data-id="5"
+                >
+
+                    <div class="product-image">
+
+
+                        <span class="sale-badge">
+                            25% OFF
+                        </span>
+
+
+                        <button
+                            class="wishlist"
+                            type="button"
+                            aria-label="Add to wishlist"
+                        >
+                            ♡
+                        </button>
+
+
+                        <a
+                            href="product.html?id=5"
+                            class="sale-product-link"
+                        >
+
+                            <img
+                                src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85"
+                                alt="Everyday Pullover"
+                                loading="lazy"
+                            >
+
+                        </a>
+
+
+                        <button
+                            class="quick-add"
+                            type="button"
+                            data-id="5"
+                        >
+                            ADD TO BAG
+                        </button>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <div>
+
+                            <h3>
+
+                                <a href="product.html?id=5">
+                                    Everyday Pullover
+                                </a>
+
+                            </h3>
+
+                            <p>
+                                Heavyweight / Grey
+                            </p>
+
+                        </div>
+
+
+                        <strong>
+
+                            <span class="old-price">
+                                ₹2,999
+                            </span>
+
+                            <span class="sale-price">
+                                ₹2,249
+                            </span>
+
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================
+                     PRODUCT 3
+                     ID = 105
+                ================================= -->
+
+                <article
+                    class="product-card"
+                    data-id="105"
+                >
+
+                    <div class="product-image">
+
+
+                        <span class="sale-badge">
+                            20% OFF
+                        </span>
+
+
+                        <button
+                            class="wishlist"
+                            type="button"
+                            aria-label="Add to wishlist"
+                        >
+                            ♡
+                        </button>
+
+
+                        <a
+                            href="product.html?id=105"
+                            class="sale-product-link"
+                        >
+
+                            <img
+                                src="https://avybells.com/cdn/shop/files/TG6339_ne.jpg?v=1716927063&width=1000"
+                                alt="Oversized Linen Shirt"
+                                loading="lazy"
+                            >
+
+                        </a>
+
+
+                        <button
+                            class="quick-add"
+                            type="button"
+                            data-id="105"
+                        >
+                            ADD TO BAG
+                        </button>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <div>
+
+                            <h3>
+
+                                <a href="product.html?id=105">
+                                    Oversized Linen Shirt
+                                </a>
+
+                            </h3>
+
+                            <p>
+                                Relaxed fit / Ivory
+                            </p>
+
+                        </div>
+
+
+                        <strong>
+
+                            <span class="old-price">
+                                ₹2,499
+                            </span>
+
+                            <span class="sale-price">
+                                ₹1,999
+                            </span>
+
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- =================================
+                     PRODUCT 4
+                     ID = 101
+                ================================= -->
+
+                <article
+                    class="product-card"
+                    data-id="101"
+                >
+
+                    <div class="product-image">
+
+
+                        <span class="sale-badge">
+                            40% OFF
+                        </span>
+
+
+                        <button
+                            class="wishlist"
+                            type="button"
+                            aria-label="Add to wishlist"
+                        >
+                            ♡
+                        </button>
+
+
+                        <a
+                            href="product.html?id=101"
+                            class="sale-product-link"
+                        >
+
+                            <img
+                                src="https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=900&q=85"
+                                alt="Silk Slip Dress"
+                                loading="lazy"
+                            >
+
+                        </a>
+
+
+                        <button
+                            class="quick-add"
+                            type="button"
+                            data-id="101"
+                        >
+                            ADD TO BAG
+                        </button>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <div>
+
+                            <h3>
+
+                                <a href="product.html?id=101">
+                                    Silk Slip Dress
+                                </a>
+
+                            </h3>
+
+                            <p>
+                                Silk blend / Charcoal
+                            </p>
+
+                        </div>
+
+
+                        <strong>
+
+                            <span class="old-price">
+                                ₹4,499
+                            </span>
+
+                            <span class="sale-price">
+                                ₹2,699
+                            </span>
+
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="footer">
+
+
+        <div class="footer-top">
+
+
+            <div class="footer-brand">
+
+                <a
+                    href="E_commerce.html"
+                    class="logo"
+                >
+                    ÉLAN
+                </a>
+
+                <p>
+                    Modern clothing for
+                    modern expression.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    SHOP
+                </h4>
+
+                <a href="women.html">
+                    Women
+                </a>
+
+                <a href="men.html">
+                    Men
+                </a>
+
+                <a href="new.html">
+                    New Arrivals
+                </a>
+
+                <a href="sale.html">
+                    Sale
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    HELP
+                </h4>
+
+                <a href="#">
+                    Contact
+                </a>
+
+                <a href="#">
+                    Shipping
+                </a>
+
+                <a href="#">
+                    Returns
+                </a>
+
+                <a href="#">
+                    FAQ
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    FOLLOW
+                </h4>
+
+                <a href="#">
+                    Instagram
+                </a>
+
+                <a href="#">
+                    Pinterest
+                </a>
+
+                <a href="#">
+                    Facebook
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 ÉLAN. ALL RIGHTS RESERVED.
+            </span>
+
+            <span>
+                PRIVACY · TERMS
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         TOAST
+    ========================= -->
+
+    <div
+        class="toast"
+        id="toast"
+    >
+        Added to bag ✓
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+
+        /* =========================================
+           WISHLIST
+        ========================================= */
+
+        document
+            .querySelectorAll(".wishlist")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    event => {
+
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        button.classList.toggle(
+                            "active"
+                        );
+
+                        button.textContent =
+                            button.classList.contains(
+                                "active"
+                            )
+                                ? "♥"
+                                : "♡";
+
+                    }
+                );
+
+            });
+
+
+        /* =========================================
+           CART
+        ========================================= */
+
+        function getCart() {
+
+            try {
+
+                return JSON.parse(
+                    localStorage.getItem(
+                        "elanCart"
+                    )
+                ) || [];
+
+            } catch (error) {
+
+                return [];
+
+            }
+
+        }
+
+
+        function saveCart(cart) {
+
+            localStorage.setItem(
+                "elanCart",
+                JSON.stringify(cart)
+            );
+
+        }
+
+
+        /* =========================================
+           CART COUNT
+        ========================================= */
+
+        function updateCartCount() {
+
+            const cart =
+                getCart();
+
+            const total =
+                cart.reduce(
+                    (sum, item) =>
+                        sum + (
+                            Number(
+                                item.quantity
+                            ) || 1
+                        ),
+                    0
+                );
+
+            const cartCount =
+                document.getElementById(
+                    "cartCount"
+                );
+
+            if (cartCount) {
+
+                cartCount.textContent =
+                    total;
+
+            }
+
+        }
+
+
+        /* =========================================
+           QUICK ADD
+        ========================================= */
+
+        document
+            .querySelectorAll(".quick-add")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    event => {
+
+                        event.preventDefault();
+                        event.stopPropagation();
+
+
+                        const id =
+                            Number(
+                                button.dataset.id
+                            );
+
+
+                        /*
+                         * IMPORTANT:
+                         * Sale page ab existing
+                         * ELAN product IDs use karega.
+                         */
+
+                        const saleProducts = {
+
+                            1: {
+                                id: 1,
+                                name:
+                                    "Essential Oversized Tee",
+                                price: 1049,
+                                image:
+                                    "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85",
+                                category:
+                                    "MEN / T-SHIRTS",
+                                size: "M"
+                            },
+
+                            5: {
+                                id: 5,
+                                name:
+                                    "Everyday Pullover",
+                                price: 2249,
+                                image:
+                                    "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85",
+                                category:
+                                    "MEN / HOODIES",
+                                size: "M"
+                            },
+
+                            105: {
+                                id: 105,
+                                name:
+                                    "Oversized Linen Shirt",
+                                price: 1999,
+                                image:
+                                    "https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=900&q=85",
+                                category:
+                                    "WOMEN / SHIRTS",
+                                size: "M"
+                            },
+
+                            101: {
+                                id: 101,
+                                name:
+                                    "Silk Slip Dress",
+                                price: 2699,
+                                image:
+                                    "https://images.unsplash.com/photo-1566174053879-31528523f8ae?auto=format&fit=crop&w=900&q=85",
+                                category:
+                                    "WOMEN / DRESSES",
+                                size: "M"
+                            }
+
+                        };
+
+
+                        const product =
+                            saleProducts[id];
+
+
+                        if (!product) {
+                            return;
+                        }
+
+
+                        const cart =
+                            getCart();
+
+
+                        const existing =
+                            cart.find(
+                                item =>
+                                    Number(item.id) ===
+                                        product.id &&
+                                    item.size ===
+                                        product.size
+                            );
+
+
+                        if (existing) {
+
+                            existing.quantity =
+                                (
+                                    Number(
+                                        existing.quantity
+                                    ) || 1
+                                ) + 1;
+
+                        } else {
+
+                            cart.push({
+
+                                id: product.id,
+
+                                name:
+                                    product.name,
+
+                                price:
+                                    product.price,
+
+                                image:
+                                    product.image,
+
+                                category:
+                                    product.category,
+
+                                size:
+                                    product.size,
+
+                                quantity: 1
+
+                            });
+
+                        }
+
+
+                        saveCart(cart);
+
+                        updateCartCount();
+
+
+                        /* =========================
+                           TOAST
+                        ========================= */
+
+                        const toast =
+                            document.getElementById(
+                                "toast"
+                            );
+
+
+                        if (toast) {
+
+                            toast.textContent =
+                                `${product.name} added to bag ✓`;
+
+                            toast.classList.add(
+                                "show"
+                            );
+
+
+                            setTimeout(
+                                () => {
+
+                                    toast.classList.remove(
+                                        "show"
+                                    );
+
+                                },
+                                2200
+                            );
+
+                        }
+
+                    }
+                );
+
+            });
+
+
+        /* =========================================
+           MOBILE MENU
+        ========================================= */
+
+        const menuBtn =
+            document.getElementById(
+                "menuBtn"
+            );
+
+        const navLinks =
+            document.getElementById(
+                "navLinks"
+            );
+
+
+        if (menuBtn && navLinks) {
+
+            menuBtn.addEventListener(
+                "click",
+                event => {
+
+                    event.preventDefault();
+
+                    navLinks.classList.toggle(
+                        "active"
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =========================================
+           SEARCH
+        ========================================= */
+
+        const searchBtn =
+            document.getElementById(
+                "searchBtn"
+            );
+
+        const searchOverlay =
+            document.getElementById(
+                "searchOverlay"
+            );
+
+        const closeSearch =
+            document.getElementById(
+                "closeSearch"
+            );
+
+
+        if (
+            searchBtn &&
+            searchOverlay
+        ) {
+
+            searchBtn.addEventListener(
+                "click",
+                event => {
+
+                    event.preventDefault();
+
+                    searchOverlay.classList.add(
+                        "active"
+                    );
+
+                    document.body.style.overflow =
+                        "hidden";
+
+                }
+            );
+
+        }
+
+
+        if (
+            closeSearch &&
+            searchOverlay
+        ) {
+
+            closeSearch.addEventListener(
+                "click",
+                event => {
+
+                    event.preventDefault();
+
+                    searchOverlay.classList.remove(
+                        "active"
+                    );
+
+                    document.body.style.overflow =
+                        "";
+
+                }
+            );
+
+        }
+
+
+        /* =========================================
+           ESCAPE KEY
+        ========================================= */
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Escape" &&
+                    searchOverlay
+                ) {
+
+                    searchOverlay.classList.remove(
+                        "active"
+                    );
+
+                    document.body.style.overflow =
+                        "";
+
+                }
+
+            }
+        );
+
+
+        /* =========================================
+           INITIAL LOAD
+        ========================================= */
+
+        updateCartCount();
+
+    </script>
+
+</body>
+
+</html>

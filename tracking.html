@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Track Order — ÉLAN</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="product.css">
+
+    <style>
+
+        .tracking-page {
+            min-height: 70vh;
+            padding: 80px 5vw 120px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .tracking-container {
+            width: 100%;
+            max-width: 760px;
+        }
+
+        .tracking-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .tracking-header h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(48px, 7vw, 76px);
+            font-weight: 400;
+            line-height: 1;
+            margin: 15px 0 20px;
+        }
+
+        .tracking-header p {
+            color: #77736d;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* SEARCH */
+
+        .tracking-search {
+            border: 1px solid #d8d5ce;
+            padding: 30px;
+            margin-bottom: 45px;
+        }
+
+        .tracking-search label {
+            display: block;
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            margin-bottom: 9px;
+        }
+
+        .tracking-search-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tracking-search input {
+            flex: 1;
+            min-width: 0;
+            padding: 16px 14px;
+            border: 1px solid #c9c6bf;
+            background: transparent;
+            font-family: "DM Sans", sans-serif;
+            font-size: 13px;
+            outline: none;
+        }
+
+        .tracking-search input:focus {
+            border-color: #171717;
+        }
+
+        .tracking-search button {
+            border: 0;
+            background: #171717;
+            color: #fff;
+            padding: 0 25px;
+            font-size: 10px;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        .tracking-search button:hover {
+            background: #333;
+        }
+
+        .tracking-message {
+            min-height: 18px;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #77736d;
+        }
+
+        /* RESULT */
+
+        .tracking-result {
+            display: none;
+        }
+
+        .tracking-result.active {
+            display: block;
+        }
+
+        .order-card {
+            border: 1px solid #d8d5ce;
+            padding: 35px;
+        }
+
+        .order-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #d8d5ce;
+        }
+
+        .order-card-header h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 32px;
+            font-weight: 400;
+            margin: 8px 0 0;
+        }
+
+        .order-date {
+            color: #77736d;
+            font-size: 11px;
+            margin-top: 6px;
+        }
+
+        .order-status {
+            background: #171717;
+            color: #fff;
+            padding: 9px 13px;
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            white-space: nowrap;
+        }
+
+        /* DETAILS */
+
+        .order-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            padding: 25px 0;
+            border-bottom: 1px solid #d8d5ce;
+        }
+
+        .order-detail span {
+            display: block;
+            font-size: 9px;
+            letter-spacing: 1.3px;
+            margin-bottom: 7px;
+        }
+
+        .order-detail strong {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* TIMELINE */
+
+        .timeline {
+            padding: 35px 0;
+        }
+
+        .timeline-title {
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item {
+            display: flex;
+            position: relative;
+            min-height: 65px;
+        }
+
+        .timeline-left {
+            width: 35px;
+            position: relative;
+        }
+
+        .timeline-dot {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #d0cdc6;
+            position: absolute;
+            top: 2px;
+            left: 0;
+        }
+
+        .timeline-item.completed .timeline-dot {
+            background: #171717;
+        }
+
+        .timeline-item:not(:last-child)
+        .timeline-left::after {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 52px;
+            background: #d0cdc6;
+            left: 6px;
+            top: 15px;
+        }
+
+        .timeline-item.completed
+        .timeline-left::after {
+            background: #171717;
+        }
+
+        .timeline-content {
+            padding-left: 5px;
+            padding-bottom: 25px;
+        }
+
+        .timeline-content strong {
+            display: block;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content span {
+            color: #77736d;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        /* PRODUCTS */
+
+        .tracked-products {
+            border-top: 1px solid #d8d5ce;
+            padding-top: 25px;
+        }
+
+        .tracked-products-title {
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .tracked-product {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #eeeae3;
+        }
+
+        .tracked-product img {
+            width: 58px;
+            height: 70px;
+            object-fit: cover;
+            background: #dedbd4;
+        }
+
+        .tracked-product-info {
+            flex: 1;
+        }
+
+        .tracked-product-info h3 {
+            font-size: 12px;
+            font-weight: 500;
+            margin: 0 0 5px;
+        }
+
+        .tracked-product-info p {
+            color: #77736d;
+            font-size: 10px;
+            margin: 0;
+        }
+
+        .tracked-product strong {
+            font-size: 12px;
+        }
+
+        .tracked-total {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+        }
+
+        .tracked-total strong {
+            font-size: 14px;
+            letter-spacing: 0;
+        }
+
+        /* BUTTONS */
+
+        .tracking-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .tracking-action {
+            flex: 1;
+            padding: 16px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            background: #171717;
+            color: #fff;
+        }
+
+        .tracking-action.secondary {
+            background: transparent;
+            color: #171717;
+            border: 1px solid #171717;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            .tracking-page {
+                padding: 55px 20px 80px;
+            }
+
+            .tracking-search {
+                padding: 20px;
+            }
+
+            .tracking-search-row {
+                flex-direction: column;
+            }
+
+            .tracking-search button {
+                padding: 16px;
+            }
+
+            .order-card {
+                padding: 22px;
+            }
+
+            .order-card-header {
+                flex-direction: column;
+            }
+
+            .order-details {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .tracking-actions {
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ANNOUNCEMENT -->
+
+    <div class="announcement">
+        FREE SHIPPING ON ORDERS OVER ₹2,999
+    </div>
+
+
+    <!-- NAVBAR -->
+
+    <header class="navbar">
+
+        <a
+            href="E_commerce.html"
+            class="logo"
+        >
+            ÉLAN
+        </a>
+
+
+        <nav class="nav-links">
+
+            <a href="E_commerce.html">
+                HOME
+            </a>
+
+            <a href="new.html">
+                NEW IN
+            </a>
+
+            <a href="women.html">
+                WOMEN
+            </a>
+
+            <a href="men.html">
+                MEN
+            </a>
+
+            <a href="sale.html">
+                SALE
+            </a>
+
+        </nav>
+
+
+        <div class="nav-actions">
+
+            <a
+                href="account.html"
+                class="bag-btn"
+            >
+                ACCOUNT
+            </a>
+
+
+            <a
+                href="cart.html"
+                class="bag-btn"
+            >
+                BAG
+                <span id="cartCount">0</span>
+            </a>
+
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- TRACKING -->
+
+    <main class="tracking-page">
+
+        <div class="tracking-container">
+
+
+            <div class="tracking-header">
+
+                <p class="eyebrow">
+                    ÉLAN / ORDER TRACKING
+                </p>
+
+                <h1>
+                    Track your <em>order.</em>
+                </h1>
+
+                <p>
+                    Enter your ÉLAN order number
+                    to see your order status.
+                </p>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="tracking-search">
+
+                <label>
+                    ORDER NUMBER
+                </label>
+
+
+                <div class="tracking-search-row">
+
+                    <input
+                        type="text"
+                        id="orderIdInput"
+                        placeholder="Example: ELAN-12345678"
+                        autocomplete="off"
+                    >
+
+
+                    <button
+                        id="trackOrderBtn"
+                    >
+                        TRACK ORDER →
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="tracking-message"
+                    id="trackingMessage"
+                ></div>
+
+            </div>
+
+
+            <!-- RESULT -->
+
+            <section
+                class="tracking-result"
+                id="trackingResult"
+            >
+
+                <div class="order-card">
+
+
+                    <div class="order-card-header">
+
+                        <div>
+
+                            <p class="eyebrow">
+                                ORDER DETAILS
+                            </p>
+
+                            <h2 id="resultOrderId">
+                                —
+                            </h2>
+
+                            <p
+                                class="order-date"
+                                id="resultOrderDate"
+                            >
+                                —
+                            </p>
+
+                        </div>
+
+
+                        <span
+                            class="order-status"
+                            id="resultStatus"
+                        >
+                            ORDER CONFIRMED
+                        </span>
+
+                    </div>
+
+
+                    <!-- DETAILS -->
+
+                    <div class="order-details">
+
+                        <div class="order-detail">
+
+                            <span>
+                                CUSTOMER
+                            </span>
+
+                            <strong id="resultCustomer">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                PAYMENT
+                            </span>
+
+                            <strong id="resultPayment">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="order-detail">
+
+                            <span>
+                                TOTAL
+                            </span>
+
+                            <strong id="resultTotal">
+                                ₹0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TIMELINE -->
+
+                    <div class="timeline">
+
+                        <div class="timeline-title">
+                            DELIVERY STATUS
+                        </div>
+
+
+                        <div
+                            class="timeline-item completed"
+                            data-status="Order Confirmed"
+                        >
+
+                            <div class="timeline-left">
+                                <div class="timeline-dot"></div>
+                            </div>
+
+                            <div class="timeline-content">
+
+                                <strong>
+                                    Order Confirmed
+                                </strong>
+
+                                <span>
+                                    We've received your order.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="timeline-item"
+                            data-status="Processing"
+                        >
+
+                            <div class="timeline-left">
+                                <div class="timeline-dot"></div>
+                            </div>
+
+                            <div class="timeline-content">
+
+                                <strong>
+                                    Processing
+                                </strong>
+
+                                <span>
+                                    Your order is being prepared.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="timeline-item"
+                            data-status="Shipped"
+                        >
+
+                            <div class="timeline-left">
+                                <div class="timeline-dot"></div>
+                            </div>
+
+                            <div class="timeline-content">
+
+                                <strong>
+                                    Shipped
+                                </strong>
+
+                                <span>
+                                    Your order has left our facility.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="timeline-item"
+                            data-status="Out for Delivery"
+                        >
+
+                            <div class="timeline-left">
+                                <div class="timeline-dot"></div>
+                            </div>
+
+                            <div class="timeline-content">
+
+                                <strong>
+                                    Out for Delivery
+                                </strong>
+
+                                <span>
+                                    Your order is on its way.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="timeline-item"
+                            data-status="Delivered"
+                        >
+
+                            <div class="timeline-left">
+                                <div class="timeline-dot"></div>
+                            </div>
+
+                            <div class="timeline-content">
+
+                                <strong>
+                                    Delivered
+                                </strong>
+
+                                <span>
+                                    Your order has been delivered.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCTS -->
+
+                    <div class="tracked-products">
+
+                        <div class="tracked-products-title">
+                            ITEMS IN THIS ORDER
+                        </div>
+
+
+                        <div id="trackedProducts"></div>
+
+
+                        <div class="tracked-total">
+
+                            <span>
+                                TOTAL
+                            </span>
+
+                            <strong id="trackedTotal">
+                                ₹0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- ACTIONS -->
+
+                    <div class="tracking-actions">
+
+                        <a
+                            href="account.html"
+                            class="tracking-action"
+                        >
+                            MY ACCOUNT
+                        </a>
+
+
+                        <a
+                            href="E_commerce.html"
+                            class="tracking-action secondary"
+                        >
+                            CONTINUE SHOPPING
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        /* =========================
+           CART COUNT
+        ========================= */
+
+        function updateCartCount() {
+
+            const cart =
+                JSON.parse(
+                    localStorage.getItem(
+                        "elanCart"
+                    )
+                ) || [];
+
+
+            const total =
+                cart.reduce(
+                    (sum, item) =>
+                        sum +
+                        Number(item.quantity),
+                    0
+                );
+
+
+            const count =
+                document.getElementById(
+                    "cartCount"
+                );
+
+
+            if (count) {
+
+                count.textContent = total;
+
+            }
+
+        }
+
+
+        /* =========================
+           PRICE
+        ========================= */
+
+        function formatPrice(price) {
+
+            return "₹" +
+                Number(price)
+                    .toLocaleString("en-IN");
+
+        }
+
+
+        /* =========================
+           GET ORDERS
+        ========================= */
+
+        function getOrders() {
+
+            return JSON.parse(
+                localStorage.getItem(
+                    "elanOrders"
+                )
+            ) || [];
+
+        }
+
+
+        /* =========================
+           FIND ORDER
+        ========================= */
+
+        function findOrder(orderId) {
+
+            const lastOrder =
+                JSON.parse(
+                    localStorage.getItem(
+                        "elanLastOrder"
+                    )
+                );
+
+
+            if (
+                lastOrder &&
+                lastOrder.orderId &&
+                lastOrder.orderId.toUpperCase() ===
+                orderId.toUpperCase()
+            ) {
+
+                return lastOrder;
+
+            }
+
+
+            const orders = getOrders();
+
+
+            return orders.find(
+                order =>
+                    order.orderId &&
+                    order.orderId.toUpperCase() ===
+                    orderId.toUpperCase()
+            );
+
+        }
+
+
+        /* =========================
+           TRACK ORDER
+        ========================= */
+
+        function trackOrder() {
+
+            const input =
+                document
+                    .getElementById(
+                        "orderIdInput"
+                    )
+                    .value
+                    .trim();
+
+
+            const message =
+                document.getElementById(
+                    "trackingMessage"
+                );
+
+
+            const result =
+                document.getElementById(
+                    "trackingResult"
+                );
+
+
+            if (!input) {
+
+                result.classList.remove("active");
+
+                message.textContent =
+                    "Please enter your order number.";
+
+                return;
+
+            }
+
+
+            const order =
+                findOrder(input);
+
+
+            if (!order) {
+
+                result.classList.remove("active");
+
+                message.textContent =
+                    "Order not found. Please check your order number.";
+
+                return;
+
+            }
+
+
+            message.textContent = "";
+
+            renderOrder(order);
+
+        }
+
+
+        /* =========================
+           RENDER ORDER
+        ========================= */
+
+        function renderOrder(order) {
+
+            const result =
+                document.getElementById(
+                    "trackingResult"
+                );
+
+
+            result.classList.add("active");
+
+
+            document.getElementById(
+                "resultOrderId"
+            ).textContent =
+                order.orderId;
+
+
+            const date =
+                new Date(order.date);
+
+
+            document.getElementById(
+                "resultOrderDate"
+            ).textContent =
+                "Placed on " +
+                date.toLocaleDateString(
+                    "en-IN",
+                    {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric"
+                    }
+                );
+
+
+            document.getElementById(
+                "resultCustomer"
+            ).textContent =
+                order.customer.firstName +
+                " " +
+                order.customer.lastName;
+
+
+            document.getElementById(
+                "resultPayment"
+            ).textContent =
+                order.payment === "cod"
+                    ? "Cash on Delivery"
+                    : "Online Payment";
+
+
+            document.getElementById(
+                "resultTotal"
+            ).textContent =
+                formatPrice(order.total);
+
+
+            document.getElementById(
+                "trackedTotal"
+            ).textContent =
+                formatPrice(order.total);
+
+
+            const status =
+                order.status ||
+                "Order Confirmed";
+
+
+            document.getElementById(
+                "resultStatus"
+            ).textContent =
+                status.toUpperCase();
+
+
+            updateTimeline(status);
+
+
+            renderProducts(order.products);
+
+        }
+
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        function renderProducts(products) {
+
+            const container =
+                document.getElementById(
+                    "trackedProducts"
+                );
+
+
+            if (!products || !products.length) {
+
+                container.innerHTML =
+                    "<p>No products found.</p>";
+
+                return;
+
+            }
+
+
+            container.innerHTML =
+                products.map(item => {
+
+                    const itemTotal =
+                        Number(item.price) *
+                        Number(item.quantity);
+
+
+                    return `
+
+                        <div class="tracked-product">
+
+                            <img
+                                src="${item.image}"
+                                alt="${item.name}"
+                            >
+
+                            <div class="tracked-product-info">
+
+                                <h3>
+                                    ${item.name}
+                                </h3>
+
+                                <p>
+                                    Quantity:
+                                    ${item.quantity}
+                                </p>
+
+                            </div>
+
+                            <strong>
+                                ${formatPrice(itemTotal)}
+                            </strong>
+
+                        </div>
+
+                    `;
+
+                }).join("");
+
+        }
+
+
+        /* =========================
+           TIMELINE
+        ========================= */
+
+        function updateTimeline(status) {
+
+            const statuses = [
+
+                "Order Confirmed",
+                "Processing",
+                "Shipped",
+                "Out for Delivery",
+                "Delivered"
+
+            ];
+
+
+            let currentIndex =
+                statuses.indexOf(status);
+
+
+            if (currentIndex < 0) {
+
+                currentIndex = 0;
+
+            }
+
+
+            document
+                .querySelectorAll(
+                    ".timeline-item"
+                )
+                .forEach(
+                    (item, index) => {
+
+                        if (
+                            index <= currentIndex
+                        ) {
+
+                            item.classList.add(
+                                "completed"
+                            );
+
+                        } else {
+
+                            item.classList.remove(
+                                "completed"
+                            );
+
+                        }
+
+                    }
+                );
+
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        document
+            .getElementById(
+                "trackOrderBtn"
+            )
+            .addEventListener(
+                "click",
+                trackOrder
+            );
+
+
+        /* ENTER KEY */
+
+        document
+            .getElementById(
+                "orderIdInput"
+            )
+            .addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (
+                        event.key === "Enter"
+                    ) {
+
+                        trackOrder();
+
+                    }
+
+                }
+            );
+
+
+        /* =========================
+           AUTO LOAD LAST ORDER
+        ========================= */
+
+        const lastOrder =
+            JSON.parse(
+                localStorage.getItem(
+                    "elanLastOrder"
+                )
+            );
+
+
+        if (lastOrder) {
+
+            document.getElementById(
+                "orderIdInput"
+            ).value =
+                lastOrder.orderId;
+
+        }
+
+
+        updateCartCount();
+
+    </script>
+
+</body>
+
+</html>
