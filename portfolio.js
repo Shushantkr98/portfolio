@@ -1,726 +1,945 @@
-/* ==================================================
-   NAVBAR ACTIVE LINK
-================================================== */
+/* =========================================================
+   PORTFOLIO JAVASCRIPT
+========================================================= */
+
+
+/* =========================================================
+   PAGE LOADER
+========================================================= */
+
+window.addEventListener("load", () => {
+
+    const loader = document.getElementById("pageLoader");
+
+    if (!loader) return;
+
+    setTimeout(() => {
+        loader.classList.add("hide");
+    }, 500);
+
+});
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const navbar = document.getElementById("navbar");
+
+const menuToggle = document.getElementById("menuToggle");
+
+const navMenu = document.getElementById("navMenu");
 
 const navLinks = document.querySelectorAll(".nav-link");
 
-navLinks.forEach((link) => {
-
-    link.addEventListener("click", function () {
-
-        navLinks.forEach((item) => {
-            item.classList.remove("active");
-        });
-
-        this.classList.add("active");
-
-    });
-
-});
-
-/* ==================================================
-   ABOUT ME MODAL
-================================================== */
-
-const aboutModal = document.getElementById("aboutModal");
-const openAboutModal = document.getElementById("openAboutModal");
-const closeAboutModal = document.getElementById("closeAboutModal");
-const closeAboutButton = document.getElementById("closeAboutButton");
-
-
-/* Open Modal */
-
-openAboutModal.addEventListener("click", () => {
-
-    aboutModal.classList.add("active");
-
-    document.body.style.overflow = "hidden";
-
-});
-
-
-/* Close Modal - Outside Click */
-
-closeAboutModal.addEventListener("click", () => {
-
-    aboutModal.classList.remove("active");
-
-    document.body.style.overflow = "";
-
-});
-
-
-/* Close Modal - X Button */
-
-closeAboutButton.addEventListener("click", () => {
-
-    aboutModal.classList.remove("active");
-
-    document.body.style.overflow = "";
-
-});
-
-
-/* Close Modal - Escape Key */
-
-document.addEventListener("keydown", (event) => {
-
-    if (event.key === "Escape") {
-
-        aboutModal.classList.remove("active");
-
-        document.body.style.overflow = "";
-
-    }
-
-});
-
-/* ================= HOME SECTION JS ================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    /* Typing Cursor */
-
-    const cursor = document.querySelector(".typing-cursor");
-
-    if (cursor) {
-
-        setInterval(() => {
-            cursor.style.opacity =
-                cursor.style.opacity === "0" ? "1" : "0";
-        }, 500);
-
-    }
-
-
-    /* Stat Counter Animation */
-
-    const stats = document.querySelectorAll(".stat-box h3");
-
-    stats.forEach(stat => {
-
-        const originalText = stat.textContent;
-        const number = parseInt(originalText);
-
-        let current = 0;
-
-        const interval = setInterval(() => {
-
-            current++;
-
-            stat.textContent =
-                current + originalText.replace(number, "");
-
-            if (current >= number) {
-                clearInterval(interval);
-                stat.textContent = originalText;
-            }
-
-        }, 70);
-
-    });
-
-
-    /* Mouse Parallax */
-
-    const visual = document.querySelector(".home-visual");
-
-    if (visual) {
-
-        visual.addEventListener("mousemove", (e) => {
-
-            const rect = visual.getBoundingClientRect();
-
-            const x =
-                (e.clientX - rect.left) / rect.width - 0.5;
-
-            const y =
-                (e.clientY - rect.top) / rect.height - 0.5;
-
-            visual.style.transform =
-                `translate(${x * 8}px, ${y * 8}px)`;
-
-        });
-
-        visual.addEventListener("mouseleave", () => {
-
-            visual.style.transform = "translate(0, 0)";
-
-        });
-
-    }
-
-});
-
-/* ================= ABOUT SECTION JS ================= */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    const aboutSection =
-        document.querySelector(".about-section");
-
-    const aboutStats =
-        document.querySelectorAll(".about-stat h3");
-
-
-    if (!aboutSection) return;
-
-
-    /* Scroll Reveal */
-
-    const observer = new IntersectionObserver(
-        (entries) => {
-
-            entries.forEach(entry => {
-
-                if (entry.isIntersecting) {
-
-                    aboutSection.classList.add("about-visible");
-
-                    observer.unobserve(entry.target);
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.2
-        }
-    );
-
-    observer.observe(aboutSection);
-
-
-    /* Statistics Counter */
-
-    aboutStats.forEach(stat => {
-
-        const finalValue = stat.textContent;
-
-        const number =
-            parseInt(finalValue.replace(/\D/g, ""));
-
-        const suffix =
-            finalValue.replace(/[0-9]/g, "");
-
-        let current = 0;
-
-        const duration = 1200;
-
-        const steps = Math.max(
-            number,
-            1
-        );
-
-        const incrementTime =
-            duration / steps;
-
-
-        const counter = setInterval(() => {
-
-            current++;
-
-            stat.textContent =
-                current + suffix;
-
-            if (current >= number) {
-
-                clearInterval(counter);
-
-                stat.textContent =
-                    finalValue;
-            }
-
-        }, incrementTime);
-
-    });
-
-
-    /* Image Tilt Effect */
-
-    const imageWrapper =
-        document.querySelector(
-            ".about-image-wrapper"
-        );
-
-
-    if (imageWrapper) {
-
-        imageWrapper.addEventListener(
-            "mousemove",
-            (event) => {
-
-                const rect =
-                    imageWrapper.getBoundingClientRect();
-
-                const x =
-                    event.clientX - rect.left;
-
-                const y =
-                    event.clientY - rect.top;
-
-                const rotateX =
-                    ((y / rect.height) - .5) * -8;
-
-                const rotateY =
-                    ((x / rect.width) - .5) * 8;
-
-                imageWrapper.style.transform =
-                    `perspective(700px)
-                     rotateX(${rotateX}deg)
-                     rotateY(${rotateY}deg)
-                     translateY(-5px)`;
-
-            }
-        );
-
-
-        imageWrapper.addEventListener(
-            "mouseleave",
-            () => {
-
-                imageWrapper.style.transform =
-                    "perspective(700px) rotateX(0) rotateY(0)";
-
-            }
-        );
-
-    }
-
-});
 
 /* =========================================================
-   SKILLS SECTION ANIMATION
+   MOBILE MENU
 ========================================================= */
 
-document.addEventListener(
-    "DOMContentLoaded",
-    () => {
+if (menuToggle && navMenu) {
 
-        const skillsSection =
-            document.querySelector(
-                ".skills-section"
+    menuToggle.addEventListener("click", (event) => {
+
+        event.stopPropagation();
+
+        const isOpen =
+            navMenu.classList.toggle("active");
+
+        menuToggle.classList.toggle(
+            "active",
+            isOpen
+        );
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+
+    });
+
+
+    /* Close menu after clicking a link */
+
+    navLinks.forEach((link) => {
+
+        link.addEventListener("click", () => {
+
+            navMenu.classList.remove("active");
+
+            menuToggle.classList.remove("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
             );
 
-        const skillsHeading =
-            document.querySelector(
-                ".skills-heading"
+        });
+
+    });
+
+
+    /* Close menu when clicking outside */
+
+    document.addEventListener("click", (event) => {
+
+        if (
+            !navMenu.contains(event.target) &&
+            !menuToggle.contains(event.target)
+        ) {
+
+            navMenu.classList.remove("active");
+
+            menuToggle.classList.remove("active");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                "false"
             );
 
-        const skillCards =
-            document.querySelectorAll(
-                ".skill-card"
-            );
+        }
+
+    });
+
+}
 
 
-        if (!skillsSection) {
+/* =========================================================
+   NAVBAR SCROLL
+========================================================= */
+
+function handleNavbarScroll() {
+
+    if (!navbar) return;
+
+    if (window.scrollY > 30) {
+
+        navbar.classList.add("scrolled");
+
+    } else {
+
+        navbar.classList.remove("scrolled");
+
+    }
+
+}
+
+window.addEventListener(
+    "scroll",
+    handleNavbarScroll,
+    { passive: true }
+);
+
+handleNavbarScroll();
+
+
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
+
+const sections =
+    document.querySelectorAll("section[id]");
+
+
+function updateActiveNav() {
+
+    if (!navLinks.length) return;
+
+    const scrollPosition =
+        window.scrollY + 180;
+
+    let currentSection = "home";
+
+
+    sections.forEach((section) => {
+
+        const top =
+            section.offsetTop;
+
+        const height =
+            section.offsetHeight;
+
+        const id =
+            section.getAttribute("id");
+
+
+        if (
+            scrollPosition >= top &&
+            scrollPosition < top + height
+        ) {
+
+            currentSection = id;
+
+        }
+
+    });
+
+
+    navLinks.forEach((link) => {
+
+        const href =
+            link.getAttribute("href");
+
+
+        if (href === `#${currentSection}`) {
+
+            link.classList.add("active");
+
+        } else {
+
+            link.classList.remove("active");
+
+        }
+
+    });
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateActiveNav,
+    { passive: true }
+);
+
+window.addEventListener(
+    "resize",
+    updateActiveNav
+);
+
+updateActiveNav();
+
+
+/* =========================================================
+   SMOOTH SCROLL
+========================================================= */
+
+document.querySelectorAll(
+    'a[href^="#"]'
+).forEach((link) => {
+
+    link.addEventListener("click", (event) => {
+
+        const targetId =
+            link.getAttribute("href");
+
+        if (
+            !targetId ||
+            targetId === "#"
+        ) {
             return;
         }
 
 
-        let animationStarted = false;
+        const target =
+            document.querySelector(targetId);
+
+        if (!target) return;
 
 
-        /* =================================================
-           INTERSECTION OBSERVER
-        ================================================= */
-
-        const skillsObserver =
-            new IntersectionObserver(
-                (entries) => {
-
-                    entries.forEach(
-                        (entry) => {
-
-                            if (
-                                entry.isIntersecting &&
-                                !animationStarted
-                            ) {
-
-                                animationStarted = true;
+        event.preventDefault();
 
 
-                                /* Heading */
+        target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
 
-                                if (
-                                    skillsHeading
-                                ) {
+    });
 
-                                    skillsHeading
-                                        .classList
-                                        .add(
-                                            "active"
-                                        );
+});
 
-                                }
-
-
-                                /* Cards */
-
-                                skillCards.forEach(
-                                    (card) => {
-
-                                        card.classList
-                                            .add(
-                                                "active"
-                                            );
-
-                                    }
-                                );
-
-
-                                /* Progress */
-
-                                skillCards.forEach(
-                                    (card) => {
-
-                                        const progress =
-                                            card.querySelector(
-                                                ".skill-progress"
-                                            );
-
-                                        const circle =
-                                            card.querySelector(
-                                                ".progress-circle"
-                                            );
-
-
-                                        if (
-                                            !progress ||
-                                            !circle
-                                        ) {
-                                            return;
-                                        }
-
-
-                                        const percentage =
-                                            parseInt(
-                                                progress
-                                                    .dataset
-                                                    .percent
-                                            );
-
-
-                                        /* Start at 0 */
-
-                                        circle.style
-                                            .setProperty(
-                                                "--progress",
-                                                "0%"
-                                            );
-
-
-                                        /*
-                                         * Wait for card
-                                         * reveal animation
-                                         */
-
-                                        setTimeout(
-                                            () => {
-
-                                                let current =
-                                                    0;
-
-                                                const duration =
-                                                    1400;
-
-                                                const intervalTime =
-                                                    duration /
-                                                    percentage;
-
-
-                                                const timer =
-                                                    setInterval(
-                                                        () => {
-
-                                                            current++;
-
-
-                                                            circle.style
-                                                                .setProperty(
-                                                                    "--progress",
-                                                                    current +
-                                                                    "%"
-                                                                );
-
-
-                                                            if (
-                                                                current >=
-                                                                percentage
-                                                            ) {
-
-                                                                clearInterval(
-                                                                    timer
-                                                                );
-
-                                                            }
-
-                                                        },
-                                                        intervalTime
-                                                    );
-
-                                            },
-                                            500
-                                        );
-
-                                    }
-                                );
-
-
-                                /*
-                                 * Observe only once
-                                 */
-
-                                skillsObserver
-                                    .unobserve(
-                                        skillsSection
-                                    );
-
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    threshold: 0.25
-                }
-            );
-
-
-        skillsObserver.observe(
-            skillsSection
-        );
-
-    }
-);
 
 /* =========================================================
-   PROJECTS SECTION ANIMATION
+   TYPING CURSOR
 ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    const projectsSection =
-        document.querySelector(".projects-section");
-
-    const heading =
-        document.querySelector(".projects-heading");
-
-    const cards =
-        document.querySelectorAll(".project-card");
+const typingCursor =
+    document.querySelector(".typing-cursor");
 
 
-    /* =====================================================
-       PROJECT ANIMATION
-    ===================================================== */
+if (typingCursor) {
 
-    if (projectsSection) {
+    setInterval(() => {
 
-        const observer =
-            new IntersectionObserver(
-                function (entries) {
+        typingCursor.style.opacity =
+            typingCursor.style.opacity === "0"
+                ? "1"
+                : "0";
 
-                    entries.forEach(function (entry) {
+    }, 500);
 
-                        if (entry.isIntersecting) {
-
-                            if (heading) {
-
-                                heading.classList.add("show");
-
-                            }
+}
 
 
-                            cards.forEach(function (card) {
+/* =========================================================
+   NUMBER COUNTER
+========================================================= */
 
-                                card.classList.add("show");
+function animateCounter(element) {
 
-                            });
-
-
-                            observer.unobserve(
-                                projectsSection
-                            );
-
-                        }
-
-                    });
-
-                },
-                {
-                    threshold: 0.15
-                }
-            );
+    if (!element) return;
 
 
-        observer.observe(
-            projectsSection
+    const target =
+        parseInt(
+            element.dataset.count,
+            10
         );
+
+
+    if (isNaN(target)) return;
+
+
+    const originalText =
+        element.textContent.trim();
+
+
+    let suffix = "";
+
+    if (originalText.includes("%")) {
+
+        suffix = "%";
+
+    } else if (originalText.includes("+")) {
+
+        suffix = "+";
 
     }
 
 
-    /* =====================================================
-       CLOSE MODAL WHEN CLICKING OUTSIDE
-    ===================================================== */
+    let current = 0;
 
-    const modal =
-        document.getElementById("codeModal");
+    const duration = 1200;
+
+    const startTime =
+        performance.now();
 
 
-    if (modal) {
+    function updateCounter(currentTime) {
 
-        modal.addEventListener(
-            "click",
-            function (event) {
+        const progress =
+            Math.min(
+                (currentTime - startTime) /
+                duration,
+                1
+            );
 
-                if (
-                    event.target === modal
-                ) {
 
-                    closeCode();
+        const eased =
+            1 -
+            Math.pow(
+                1 - progress,
+                3
+            );
 
-                }
 
+        current =
+            Math.floor(
+                eased * target
+            );
+
+
+        element.textContent =
+            `${current}${suffix}`;
+
+
+        if (progress < 1) {
+
+            requestAnimationFrame(
+                updateCounter
+            );
+
+        } else {
+
+            element.textContent =
+                `${target}${suffix}`;
+
+        }
+
+    }
+
+
+    requestAnimationFrame(
+        updateCounter
+    );
+
+}
+
+
+/* =========================================================
+   COUNTER OBSERVER
+========================================================= */
+
+const counterElements =
+    document.querySelectorAll(
+        "[data-count]"
+    );
+
+
+if ("IntersectionObserver" in window) {
+
+    const counterObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach((entry) => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        animateCounter(
+                            entry.target
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.4
             }
         );
 
-    }
+
+    counterElements.forEach((counter) => {
+
+        counterObserver.observe(counter);
+
+    });
+
+}
 
 
-    /* =====================================================
-       ESC KEY
-    ===================================================== */
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
 
-    document.addEventListener(
-        "keydown",
-        function (event) {
+const revealElements =
+    document.querySelectorAll(
+        ".reveal-up, .reveal-left, .reveal-right"
+    );
+
+
+if ("IntersectionObserver" in window) {
+
+    const revealObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach((entry) => {
+
+                    if (
+                        entry.isIntersecting
+                    ) {
+
+                        entry.target.classList.add(
+                            "show"
+                        );
+
+                        observer.unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+    revealElements.forEach((element) => {
+
+        revealObserver.observe(element);
+
+    });
+
+} else {
+
+    /* Fallback for older browsers */
+
+    revealElements.forEach((element) => {
+
+        element.classList.add("show");
+
+    });
+
+}
+
+
+/* =========================================================
+   SKILLS PROGRESS
+========================================================= */
+
+const skillCards =
+    document.querySelectorAll(
+        ".skill-card"
+    );
+
+
+if ("IntersectionObserver" in window) {
+
+    const skillObserver =
+        new IntersectionObserver(
+            (entries, observer) => {
+
+                entries.forEach((entry) => {
+
+                    if (
+                        !entry.isIntersecting
+                    ) {
+                        return;
+                    }
+
+
+                    const progress =
+                        entry.target.querySelector(
+                            ".skill-progress"
+                        );
+
+
+                    if (!progress) return;
+
+
+                    const percent =
+                        parseInt(
+                            progress.dataset.percent,
+                            10
+                        );
+
+
+                    const bar =
+                        progress.querySelector(
+                            ".progress-bar span"
+                        );
+
+
+                    if (
+                        bar &&
+                        !isNaN(percent)
+                    ) {
+
+                        setTimeout(() => {
+
+                            bar.style.width =
+                                `${percent}%`;
+
+                        }, 250);
+
+                    }
+
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                });
+
+            },
+            {
+                threshold: 0.35
+            }
+        );
+
+
+    skillCards.forEach((card) => {
+
+        skillObserver.observe(card);
+
+    });
+
+}
+
+
+/* =========================================================
+   HOME VISUAL PARALLAX
+========================================================= */
+
+const homeVisual =
+    document.getElementById(
+        "homeVisual"
+    );
+
+
+if (
+    homeVisual &&
+    window.matchMedia("(pointer: fine)").matches
+) {
+
+    homeVisual.addEventListener(
+        "mousemove",
+        (event) => {
+
+            const rect =
+                homeVisual.getBoundingClientRect();
+
+
+            const x =
+                (event.clientX - rect.left) /
+                rect.width -
+                0.5;
+
+
+            const y =
+                (event.clientY - rect.top) /
+                rect.height -
+                0.5;
+
+
+            const moveX =
+                x * 14;
+
+            const moveY =
+                y * 14;
+
+
+            homeVisual.style.transform =
+                `translate3d(${moveX}px, ${moveY}px, 0)`;
+
+        }
+    );
+
+
+    homeVisual.addEventListener(
+        "mouseleave",
+        () => {
+
+            homeVisual.style.transform =
+                "translate3d(0, 0, 0)";
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   ABOUT IMAGE TILT
+========================================================= */
+
+const aboutImage =
+    document.querySelector(
+        ".about-image-wrapper"
+    );
+
+
+if (
+    aboutImage &&
+    window.matchMedia("(pointer: fine)").matches
+) {
+
+    aboutImage.addEventListener(
+        "mousemove",
+        (event) => {
+
+            const rect =
+                aboutImage.getBoundingClientRect();
+
+
+            const x =
+                (event.clientX - rect.left) /
+                rect.width -
+                0.5;
+
+
+            const y =
+                (event.clientY - rect.top) /
+                rect.height -
+                0.5;
+
+
+            const rotateX =
+                y * -8;
+
+            const rotateY =
+                x * 8;
+
+
+            aboutImage.style.transform =
+                `perspective(700px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)
+                 translateY(-5px)`;
+
+        }
+    );
+
+
+    aboutImage.addEventListener(
+        "mouseleave",
+        () => {
+
+            /* FIXED: template literal used
+               for multi-line transform */
+
+            aboutImage.style.transform =
+                `perspective(700px)
+                 rotateX(0deg)
+                 rotateY(0deg)
+                 translateY(0)`;
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   ABOUT MODAL
+========================================================= */
+
+const aboutModal =
+    document.getElementById(
+        "aboutModal"
+    );
+
+
+const openAboutModal =
+    document.getElementById(
+        "openAboutModal"
+    );
+
+
+const closeAboutModal =
+    document.getElementById(
+        "closeAboutModal"
+    );
+
+
+const closeAboutButton =
+    document.getElementById(
+        "closeAboutButton"
+    );
+
+
+function openAbout() {
+
+    if (!aboutModal) return;
+
+
+    aboutModal.classList.add(
+        "active"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+}
+
+
+function closeAbout() {
+
+    if (!aboutModal) return;
+
+
+    aboutModal.classList.remove(
+        "active"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
+
+}
+
+
+if (openAboutModal) {
+
+    openAboutModal.addEventListener(
+        "click",
+        openAbout
+    );
+
+}
+
+
+if (closeAboutModal) {
+
+    closeAboutModal.addEventListener(
+        "click",
+        closeAbout
+    );
+
+}
+
+
+if (closeAboutButton) {
+
+    closeAboutButton.addEventListener(
+        "click",
+        closeAbout
+    );
+
+}
+
+
+/* =========================================================
+   CLOSE ABOUT MODAL ON OUTSIDE CLICK
+========================================================= */
+
+if (aboutModal) {
+
+    aboutModal.addEventListener(
+        "click",
+        (event) => {
 
             if (
-                event.key === "Escape"
+                event.target === aboutModal
             ) {
 
-                closeCode();
+                closeAbout();
 
             }
 
         }
     );
 
-});
-
+}
 
 
 /* =========================================================
-   PROJECT FILES
+   PROJECT CODE MODAL
 ========================================================= */
 
 const projectFiles = {
 
-    /* =====================================================
-       RASHTRAPATI UDYAN
-    ===================================================== */
-
     rashtrapati: {
 
-        title: "Rashtrapati Udyan - Source Code",
+        title:
+            "Rashtrapati Udyan - Source Code",
 
         files: [
 
             {
-                name: "website project.html",
-                path: "./website%20project.html"
+                name:
+                    "website project.html",
+
+                path:
+                    "./website%20project.html"
             },
 
             {
-                name: "website.css",
-                path: "./website.css"
+                name:
+                    "website.css",
+
+                path:
+                    "./website.css"
             }
 
         ]
 
     },
 
-
-    /* =====================================================
-       CALCULATOR
-    ===================================================== */
 
     calculator: {
 
-        title: "Calculator - Source Code",
+        title:
+            "Calculator - Source Code",
 
         files: [
 
             {
-                name: "calculation.html",
-                path: "./calculation.html"
+                name:
+                    "calculation.html",
+
+                path:
+                    "./calculation.html"
             },
 
             {
-                name: "cal.css",
-                path: "./cal.css"
+                name:
+                    "cal.css",
+
+                path:
+                    "./cal.css"
             },
 
             {
-                name: "calci.js",
-                path: "./calci.js"
+                name:
+                    "calci.js",
+
+                path:
+                    "./calci.js"
             }
 
         ]
 
     },
 
-/* =====================================================
-   BLOG WEBSITE
-===================================================== */
 
-blog: {
+    blog: {
 
-    title: "Blog Website - Source Code",
+        title:
+            "Blog Website - Source Code",
 
-    files: [
+        files: [
 
-        {
-            name: "project.html",
-            path: "./project.html"
-        },
+            {
+                name:
+                    "project.html",
 
-        {
-            name: "about.html",
-            path: "./about.html"
-        },
+                path:
+                    "./project.html"
+            },
 
-        {
-            name: "contact.html",
-            path: "./contact.html"
-        }
+            {
+                name:
+                    "about.html",
 
-    ]
+                path:
+                    "./about.html"
+            },
 
-}
+            {
+                name:
+                    "contact.html",
+
+                path:
+                    "./contact.html"
+            }
+
+        ]
+
+    }
+
 };
-
 
 
 /* =========================================================
    OPEN PROJECT CODE
 ========================================================= */
 
-async function openProjectCode(
-    projectName
-) {
+async function openProjectCode(projectName) {
 
     const modal =
-        document.getElementById("codeModal");
+        document.getElementById(
+            "codeModal"
+        );
+
 
     const viewer =
-        document.getElementById("codeViewer");
+        document.getElementById(
+            "codeViewer"
+        );
+
 
     const modalTitle =
-        document.getElementById("codeModalTitle");
+        document.getElementById(
+            "codeModalTitle"
+        );
 
 
     if (
@@ -761,344 +980,354 @@ async function openProjectCode(
     );
 
 
-    document.body.style.overflow =
-        "hidden";
+    document.body.classList.add(
+        "modal-open"
+    );
 
 
-    try {
-
-        let completeCode = "";
+    let completeCode = "";
 
 
-        for (
-            const file
-            of project.files
-        ) {
+    for (
+        const file
+        of project.files
+    ) {
 
-            try {
-
-                const response =
-                    await fetch(
-                        file.path
-                    );
-
-
-                if (!response.ok) {
-
-                    throw new Error(
-                        "File not found"
-                    );
-
-                }
+        completeCode +=
+            "\n\n" +
+            "============================================================\n" +
+            `FILE: ${file.name}\n` +
+            "============================================================\n\n";
 
 
-                const code =
-                    await response.text();
+        try {
+
+            const response =
+                await fetch(
+                    file.path
+                );
 
 
-                completeCode +=
-                    "\n\n" +
-                    "============================================================\n" +
-                    "FILE: " +
-                    file.name +
-                    "\n" +
-                    "============================================================\n\n" +
-                    code +
-                    "\n";
+            if (!response.ok) {
+
+                throw new Error(
+                    "File not found"
+                );
 
             }
 
-            catch (error) {
 
-                completeCode +=
-                    "\n\n" +
-                    "============================================================\n" +
-                    "FILE: " +
-                    file.name +
-                    "\n" +
-                    "============================================================\n\n" +
-                    "Unable to load this file.\n" +
-                    "Make sure the file exists in the same folder as portfolio.html.\n";
+            const code =
+                await response.text();
 
-            }
+
+            completeCode +=
+                code +
+                "\n";
 
         }
 
+        catch (error) {
 
-        viewer.textContent =
-            completeCode;
+            completeCode +=
+                "Unable to load this file.\n" +
+                "Make sure the file exists in the same folder as your portfolio.\n";
 
-    }
-
-    catch (error) {
-
-        viewer.textContent =
-            "Unable to load source code.";
-
-        console.error(error);
+        }
 
     }
+
+
+    viewer.textContent =
+        completeCode;
 
 }
 
 
-
 /* =========================================================
-   CLOSE CODE MODAL
+   CLOSE PROJECT CODE
 ========================================================= */
 
 function closeCode() {
 
     const modal =
-        document.getElementById("codeModal");
-
-
-    if (modal) {
-
-        modal.classList.remove(
-            "active"
+        document.getElementById(
+            "codeModal"
         );
 
-    }
+
+    if (!modal) return;
 
 
-    document.body.style.overflow =
-        "";
+    modal.classList.remove(
+        "active"
+    );
+
+
+    document.body.classList.remove(
+        "modal-open"
+    );
 
 }
 
+
 /* =========================================================
-   EDUCATION SECTION ANIMATION
+   CLOSE PROJECT MODAL ON OUTSIDE CLICK
+========================================================= */
+
+const codeModal =
+    document.getElementById(
+        "codeModal"
+    );
+
+
+if (codeModal) {
+
+    codeModal.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target === codeModal
+            ) {
+
+                closeCode();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   ESCAPE KEY
 ========================================================= */
 
 document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+    "keydown",
+    (event) => {
 
-
-        /* =================================================
-           SELECT EDUCATION ELEMENTS
-        ================================================== */
-
-        const educationSection =
-            document.querySelector(
-                ".education-section"
-            );
-
-
-        const educationHeading =
-            document.querySelector(
-                ".education-heading"
-            );
-
-
-        const educationItems =
-            document.querySelectorAll(
-                ".education-item"
-            );
-
-
-
-        /* =================================================
-           CHECK SECTION
-        ================================================== */
-
-        if (!educationSection) {
-
+        if (event.key !== "Escape") {
             return;
-
         }
 
 
+        closeAbout();
 
-        /* =================================================
-           INTERSECTION OBSERVER
-        ================================================== */
-
-        const educationObserver =
-            new IntersectionObserver(
-
-                function (entries) {
-
-
-                    entries.forEach(
-                        function (entry) {
-
-
-                            /* =============================
-                               SECTION VISIBLE
-                            ============================== */
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-
-                                /* =============================
-                                   HEADING ANIMATION
-                                ============================== */
-
-                                if (
-                                    educationHeading
-                                ) {
-
-                                    educationHeading.classList.add(
-                                        "show"
-                                    );
-
-                                }
-
-
-
-                                /* =============================
-                                   EDUCATION ITEMS ANIMATION
-                                ============================== */
-
-                                educationItems.forEach(
-                                    function (item) {
-
-                                        item.classList.add(
-                                            "show"
-                                        );
-
-                                    }
-                                );
-
-
-
-                                /* =============================
-                                   STOP OBSERVING
-                                ============================== */
-
-                                educationObserver.unobserve(
-                                    educationSection
-                                );
-
-                            }
-
-                        }
-                    );
-
-                },
-
-
-                {
-                    threshold: 0.2
-                }
-
-            );
-
-
-
-        /* =================================================
-           START OBSERVER
-        ================================================== */
-
-        educationObserver.observe(
-            educationSection
-        );
-
-
+        closeCode();
 
     }
 );
+
 
 /* =========================================================
    CONTACT FORM
 ========================================================= */
 
 const contactForm =
-    document.getElementById("contactForm");
+    document.getElementById(
+        "contactForm"
+    );
+
 
 if (contactForm) {
 
     contactForm.addEventListener(
         "submit",
-        function (event) {
+        (event) => {
 
             event.preventDefault();
 
-            const button =
-                contactForm.querySelector("button");
 
-            const originalText =
+            const button =
+                contactForm.querySelector(
+                    "button"
+                );
+
+
+            if (!button) return;
+
+
+            const originalHTML =
                 button.innerHTML;
 
+
+            button.disabled = true;
+
+
             button.innerHTML =
-                '<i class="fa-solid fa-check"></i> Message Sent';
+                `
+                <i class="fa-solid fa-check"></i>
+                <span>Message Sent</span>
+                `;
+
 
             button.style.background =
-                "linear-gradient(90deg, #18a85c, #08743c)";
+                "linear-gradient(90deg, #16a34a, #15803d)";
 
 
-            setTimeout(function () {
+            setTimeout(() => {
 
                 button.innerHTML =
-                    originalText;
+                    originalHTML;
+
+
+                button.disabled = false;
+
 
                 button.style.background =
-                    "linear-gradient(90deg, #7628e8, #6530df)";
+                    "";
+
 
                 contactForm.reset();
 
-            }, 2500);
+            }, 2200);
 
         }
     );
 
 }
+
+
 /* =========================================================
    BACK TO TOP
 ========================================================= */
 
 const backToTop =
-    document.getElementById("backToTop");
+    document.getElementById(
+        "backToTop"
+    );
 
 
-window.addEventListener("scroll", function () {
+function handleBackToTop() {
 
-    if (window.scrollY > 300) {
+    if (!backToTop) return;
 
-        backToTop.style.opacity = "1";
 
-        backToTop.style.visibility = "visible";
+    if (window.scrollY > 400) {
+
+        backToTop.classList.add(
+            "show"
+        );
 
     } else {
 
-        backToTop.style.opacity = "0";
-
-        backToTop.style.visibility = "hidden";
+        backToTop.classList.remove(
+            "show"
+        );
 
     }
 
-});
+}
 
 
-backToTop.addEventListener("click", function () {
+window.addEventListener(
+    "scroll",
+    handleBackToTop,
+    { passive: true }
+);
 
-    window.scrollTo({
 
-        top: 0,
+if (backToTop) {
 
-        behavior: "smooth"
+    backToTop.addEventListener(
+        "click",
+        () => {
 
-    });
+            window.scrollTo({
 
-});
+                top: 0,
 
-// ================= VIEW ALL PROJECTS =================
+                behavior: "smooth"
 
-const viewAllProjects = document.getElementById("viewAllProjects");
-const hiddenProject = document.querySelector(".hidden-project");
+            });
 
-if (viewAllProjects && hiddenProject) {
-
-    viewAllProjects.addEventListener("click", function () {
-
-        hiddenProject.classList.add("show-project");
-
-        viewAllProjects.style.display = "none";
-
-    });
+        }
+    );
 
 }
+
+
+/* =========================================================
+   PROJECT CARD IMAGE FALLBACK
+========================================================= */
+
+document.querySelectorAll(
+    ".project-image img"
+).forEach((image) => {
+
+    image.addEventListener(
+        "error",
+        () => {
+
+            image.style.display =
+                "none";
+
+
+            if (image.parentElement) {
+
+                image.parentElement.style.background =
+                    "linear-gradient(135deg, #111c40, #301064)";
+
+            }
+
+        }
+    );
+
+});
+
+
+/* =========================================================
+   PREVENT ACCIDENTAL HORIZONTAL SCROLL
+========================================================= */
+
+function checkOverflow() {
+
+    const bodyWidth =
+        document.documentElement.scrollWidth;
+
+    const viewportWidth =
+        window.innerWidth;
+
+
+    if (
+        bodyWidth >
+        viewportWidth + 2
+    ) {
+
+        console.warn(
+            "Horizontal overflow detected:",
+            bodyWidth - viewportWidth,
+            "px"
+        );
+
+    }
+
+}
+
+
+window.addEventListener(
+    "load",
+    checkOverflow
+);
+
+
+window.addEventListener(
+    "resize",
+    checkOverflow
+);
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+handleNavbarScroll();
+
+updateActiveNav();
+
+handleBackToTop();
+
+checkOverflow();
