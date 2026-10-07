@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Workora | Find Your Next Opportunity</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <header class="navbar">
+
+        <div class="container nav-container">
+
+
+            <!-- ================= LOGO ================= -->
+
+            <a href="index.html" class="logo">
+
+                <span>
+                    W
+                </span>
+
+                Workora
+
+            </a>
+
+
+
+            <!-- ================= MAIN NAVIGATION ================= -->
+
+            <nav class="nav-links" id="navLinks">
+
+                <a
+                    href="#home"
+                    class="active"
+                >
+                    Home
+                </a>
+
+                <a href="#jobs">
+                    Jobs
+                </a>
+
+                <a href="companies.html">
+                    Companies
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+                <a href="saved-jobs.html">
+                    ♡ Saved Jobs
+                </a>
+
+            </nav>
+
+
+
+            <!-- =================================================
+                 AUTH NAVIGATION
+            ================================================== -->
+
+            <div class="nav-actions">
+
+
+                <!-- ================= BEFORE LOGIN ================= -->
+
+                <div
+                    id="guestNav"
+                    class="guest-nav"
+                >
+
+                    <a
+                        href="login.html"
+                        class="login-btn"
+                    >
+                        Login
+                    </a>
+
+
+                    <a
+                        href="register.html"
+                        class="register-btn"
+                    >
+                        Register
+                    </a>
+
+                </div>
+
+
+
+                <!-- ================= AFTER LOGIN ================= -->
+
+                <div
+                    id="userNav"
+                    class="user-nav"
+                    style="display: none;"
+                >
+
+                    <a
+                        href="dashboard.html"
+                        class="dashboard-nav-btn"
+                    >
+                        📊 Dashboard
+                    </a>
+
+
+                    <a
+                        href="profile.html"
+                        class="profile-nav-btn"
+                    >
+
+                        <span class="profile-icon">
+                            👤
+                        </span>
+
+                        <span id="profileNavName">
+                            Profile
+                        </span>
+
+                    </a>
+
+
+                    <button
+                        type="button"
+                        class="logout-btn"
+                        id="logoutBtn"
+                    >
+                        Logout
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= MOBILE MENU ================= -->
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                type="button"
+                aria-label="Open navigation menu"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             HERO SECTION
+        ================================================== -->
+
+        <section
+            class="hero"
+            id="home"
+        >
+
+            <div class="container hero-container">
+
+
+                <!-- ================= HERO CONTENT ================= -->
+
+                <div class="hero-content">
+
+
+                    <div class="hero-badge">
+                        🚀 Your Career Starts Here
+                    </div>
+
+
+                    <h1>
+
+                        Find Your
+
+                        <span>
+                            Dream Job
+                        </span>
+
+                        Today.
+
+                    </h1>
+
+
+                    <p>
+
+                        Discover thousands of job opportunities and connect
+                        with companies looking for talented people like you.
+
+                    </p>
+
+
+
+                    <!-- ================= SEARCH ================= -->
+
+                    <div class="search-box">
+
+
+                        <div class="search-field">
+
+                            <span class="search-icon">
+                                🔍
+                            </span>
+
+                            <input
+                                type="text"
+                                id="jobSearch"
+                                placeholder="Job title, skills or keywords"
+                            >
+
+                        </div>
+
+
+                        <div class="search-field location-field">
+
+                            <span class="search-icon">
+                                📍
+                            </span>
+
+                            <input
+                                type="text"
+                                id="locationSearch"
+                                placeholder="Location"
+                            >
+
+                        </div>
+
+
+                        <button
+                            class="search-btn"
+                            id="searchBtn"
+                            type="button"
+                        >
+                            Search Jobs
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- ================= POPULAR SEARCHES ================= -->
+
+                    <div class="popular-searches">
+
+                        <span>
+                            Popular:
+                        </span>
+
+                        <a href="#jobs">
+                            Frontend Developer
+                        </a>
+
+                        <a href="#jobs">
+                            Java Developer
+                        </a>
+
+                        <a href="#jobs">
+                            UI/UX Designer
+                        </a>
+
+                        <a href="#jobs">
+                            Data Analyst
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ================= HERO VISUAL ================= -->
+
+                <div class="hero-visual">
+
+
+                    <!-- Main Hero Card -->
+
+                    <div class="hero-card main-card">
+
+                        <div class="card-top">
+
+                            <div class="company-logo">
+                                G
+                            </div>
+
+
+                            <div>
+
+                                <h3>
+                                    Frontend Developer
+                                </h3>
+
+                                <p>
+                                    Google Technologies
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="job-info">
+
+                            <span>
+                                📍 Delhi
+                            </span>
+
+                            <span>
+                                💼 Full Time
+                            </span>
+
+                        </div>
+
+
+                        <div class="job-bottom">
+
+                            <strong>
+                                ₹6 - 10 LPA
+                            </strong>
+
+                            <button type="button">
+                                Apply
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Floating Card 1 -->
+
+                    <div class="floating-card floating-card-one">
+
+                        <div class="floating-icon">
+                            ✓
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                Job Applied
+                            </strong>
+
+                            <span>
+                                Frontend Developer
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Floating Card 2 -->
+
+                    <div class="floating-card floating-card-two">
+
+                        <div class="floating-icon purple">
+                            ★
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                10K+
+                            </strong>
+
+                            <span>
+                                Active Jobs
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             STATS
+        ================================================== -->
+
+        <section
+            class="stats-section"
+            id="companies"
+        >
+
+            <div class="container stats-grid">
+
+
+                <div class="stat-card">
+
+                    <strong>
+                        10K+
+                    </strong>
+
+                    <span>
+                        Active Jobs
+                    </span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <strong>
+                        5K+
+                    </strong>
+
+                    <span>
+                        Companies
+                    </span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <strong>
+                        25K+
+                    </strong>
+
+                    <span>
+                        Job Seekers
+                    </span>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <strong>
+                        8K+
+                    </strong>
+
+                    <span>
+                        Successful Hires
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             JOBS SECTION
+        ================================================== -->
+
+        <section
+            class="jobs-section"
+            id="jobs"
+        >
+
+            <div class="container">
+
+
+                <!-- Section Heading -->
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            OPPORTUNITIES
+                        </span>
+
+                        <h2>
+                            Featured Jobs
+                        </h2>
+
+                    </div>
+
+
+                    <a
+                        href="jobs.html"
+                        class="view-all"
+                    >
+                        View All Jobs →
+                    </a>
+
+                </div>
+
+
+
+                <!-- ================= JOB GRID ================= -->
+
+                <div class="jobs-grid">
+
+
+                    <!-- =================================================
+                         JOB 1
+                    ================================================== -->
+
+                    <article
+                        class="job-card"
+                        data-job-id="frontend"
+                    >
+
+                        <div class="job-card-top">
+
+                            <div class="company-logo blue">
+                                G
+                            </div>
+
+
+                            <button
+                                class="save-btn"
+                                type="button"
+                                aria-label="Save job"
+                                title="Save job"
+                            >
+                                ♡
+                            </button>
+
+                        </div>
+
+
+                        <h3>
+                            Frontend Developer
+                        </h3>
+
+
+                        <p class="company-name">
+                            Google Technologies
+                        </p>
+
+
+                        <div class="job-tags">
+
+                            <span>
+                                Full Time
+                            </span>
+
+                            <span>
+                                Remote
+                            </span>
+
+                        </div>
+
+
+                        <div class="job-card-bottom">
+
+                            <div>
+
+                                <strong>
+                                    ₹6 - 10 LPA
+                                </strong>
+
+                                <small>
+                                    Delhi
+                                </small>
+
+                            </div>
+
+
+                            <a href="job-details.html?job=frontend">
+                                View →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         JOB 2
+                    ================================================== -->
+
+                    <article
+                        class="job-card"
+                        data-job-id="java"
+                    >
+
+                        <div class="job-card-top">
+
+                            <div class="company-logo orange">
+                                M
+                            </div>
+
+
+                            <button
+                                class="save-btn"
+                                type="button"
+                                aria-label="Save job"
+                                title="Save job"
+                            >
+                                ♡
+                            </button>
+
+                        </div>
+
+
+                        <h3>
+                            Java Developer
+                        </h3>
+
+
+                        <p class="company-name">
+                            Microsoft
+                        </p>
+
+
+                        <div class="job-tags">
+
+                            <span>
+                                Full Time
+                            </span>
+
+                            <span>
+                                Hybrid
+                            </span>
+
+                        </div>
+
+
+                        <div class="job-card-bottom">
+
+                            <div>
+
+                                <strong>
+                                    ₹8 - 14 LPA
+                                </strong>
+
+                                <small>
+                                    Bangalore
+                                </small>
+
+                            </div>
+
+
+                            <a href="job-details.html?job=java">
+                                View →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+
+                    <!-- =================================================
+                         JOB 3
+                    ================================================== -->
+
+                    <article
+                        class="job-card"
+                        data-job-id="designer"
+                    >
+
+                        <div class="job-card-top">
+
+                            <div class="company-logo purple">
+                                A
+                            </div>
+
+
+                            <button
+                                class="save-btn"
+                                type="button"
+                                aria-label="Save job"
+                                title="Save job"
+                            >
+                                ♡
+                            </button>
+
+                        </div>
+
+
+                        <h3>
+                            UI/UX Designer
+                        </h3>
+
+
+                        <p class="company-name">
+                            Adobe
+                        </p>
+
+
+                        <div class="job-tags">
+
+                            <span>
+                                Full Time
+                            </span>
+
+                            <span>
+                                Remote
+                            </span>
+
+                        </div>
+
+
+                        <div class="job-card-bottom">
+
+                            <div>
+
+                                <strong>
+                                    ₹5 - 9 LPA
+                                </strong>
+
+                                <small>
+                                    Mumbai
+                                </small>
+
+                            </div>
+
+
+                            <a href="job-details.html?job=designer">
+                                View →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FEATURES / ABOUT
+        ================================================== -->
+
+        <section
+            class="features-section"
+            id="about"
+        >
+
+            <div class="container">
+
+
+                <div class="section-heading centered">
+
+                    <span class="section-label">
+                        WHY WORKORA
+                    </span>
+
+
+                    <h2>
+
+                        Everything You Need
+
+                        <br>
+
+                        To Build Your Career
+
+                    </h2>
+
+
+                    <p>
+
+                        Workora.AI simplifies the recruitment process for
+                        job seekers, employers and recruiters.
+
+                    </p>
+
+                </div>
+
+
+
+                <div class="features-grid">
+
+
+                    <!-- Feature 1 -->
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            🔎
+                        </div>
+
+
+                        <h3>
+                            Smart Job Search
+                        </h3>
+
+
+                        <p>
+
+                            Search and filter job opportunities based on
+                            your skills, location and preferences.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- Feature 2 -->
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            👤
+                        </div>
+
+
+                        <h3>
+                            Profile Management
+                        </h3>
+
+
+                        <p>
+
+                            Create and manage your professional profile
+                            and showcase your skills and experience.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- Feature 3 -->
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            📄
+                        </div>
+
+
+                        <h3>
+                            Easy Applications
+                        </h3>
+
+
+                        <p>
+
+                            Apply for suitable jobs and keep track of
+                            your application status in one place.
+
+                        </p>
+
+                    </div>
+
+
+
+                    <!-- Feature 4 -->
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            🏢
+                        </div>
+
+
+                        <h3>
+                            For Employers
+                        </h3>
+
+
+                        <p>
+
+                            Post job vacancies and manage candidates
+                            through an organized recruitment workflow.
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CTA
+        ================================================== -->
+
+        <section class="cta-section">
+
+            <div class="container">
+
+                <div class="cta-box">
+
+
+                    <div>
+
+                        <span>
+                            START YOUR JOURNEY
+                        </span>
+
+
+                        <h2>
+
+                            Ready to Find Your
+
+                            <br>
+
+                            Next Opportunity?
+
+                        </h2>
+
+
+                        <p>
+
+                            Create your profile and start exploring
+                            opportunities today.
+
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="register.html"
+                        class="cta-btn"
+                    >
+                        Get Started →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <div class="container footer-container">
+
+
+            <!-- Footer Brand -->
+
+            <div class="footer-brand">
+
+                <a
+                    href="index.html"
+                    class="logo"
+                >
+
+                    <span class="logo-icon">
+                        W
+                    </span>
+
+
+                    <span>
+
+                        Workora<span class="logo-dot">
+                            .AI
+                        </span>
+
+                    </span>
+
+                </a>
+
+
+                <p>
+
+                    Connecting talent with opportunities
+                    and helping businesses find the right people.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- Footer Links -->
+
+            <div class="footer-links">
+
+
+                <!-- Platform -->
+
+                <div>
+
+                    <h4>
+                        Platform
+                    </h4>
+
+
+                    <a href="#jobs">
+                        Find Jobs
+                    </a>
+
+
+                    <a href="#companies">
+                        Companies
+                    </a>
+
+
+                    <a href="#about">
+                        About Workora
+                    </a>
+
+
+                    <a href="saved-jobs.html">
+                        ♡ Saved Jobs
+                    </a>
+
+                </div>
+
+
+
+                <!-- Employers -->
+
+                <div>
+
+                    <h4>
+                        For Employers
+                    </h4>
+
+
+                    <a href="post-job.html">
+                        Post a Job
+                    </a>
+
+
+                    <a href="employer-applicants.html">
+                        Find Candidates
+                    </a>
+
+
+                    <a href="employer-dashboard.html">
+                        Employer Dashboard
+                    </a>
+
+
+                    <a href="profile.html">
+                        Company Profile
+                    </a>
+
+                </div>
+
+
+
+                <!-- Support -->
+
+                <div>
+
+                    <h4>
+                        Support
+                    </h4>
+
+
+                    <a href="#">
+                        Help Center
+                    </a>
+
+
+                    <a href="#">
+                        Contact Us
+                    </a>
+
+
+                    <a href="#">
+                        Privacy Policy
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Footer Bottom -->
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <p>
+                    © 2026 Workora.AI. All rights reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+         Authentication is handled by style.js
+    ====================================================== -->
+
+    <script src="style.js"></script>
+
+
+</body>
+
+</html>

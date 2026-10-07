@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Workora</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body class="auth-page">
+
+
+    <!-- ========================================
+         AUTH CONTAINER
+    ========================================= -->
+
+    <main class="auth-container">
+
+
+        <!-- ========================================
+             LEFT SIDE
+        ========================================= -->
+
+        <section class="auth-left">
+
+
+            <!-- Logo -->
+
+            <a href="index.html" class="auth-logo">
+
+                <span class="auth-logo-icon">
+                    W
+                </span>
+
+                <span>
+                    Workora<span class="logo-dot">.AI</span>
+                </span>
+
+            </a>
+
+
+            <!-- Content -->
+
+            <div class="auth-left-content">
+
+                <span class="auth-small-title">
+                    WELCOME BACK
+                </span>
+
+                <h1>
+                    Your career,
+                    <span>your future.</span>
+                </h1>
+
+                <p>
+                    Login to your Workora account and
+                    continue exploring opportunities that
+                    match your skills and career goals.
+                </p>
+
+
+                <!-- Features -->
+
+                <div class="auth-features">
+
+                    <div class="auth-feature">
+
+                        <span class="auth-feature-icon">
+                            ✓
+                        </span>
+
+                        <span>
+                            Discover relevant job opportunities
+                        </span>
+
+                    </div>
+
+
+                    <div class="auth-feature">
+
+                        <span class="auth-feature-icon">
+                            ✓
+                        </span>
+
+                        <span>
+                            Manage your saved jobs
+                        </span>
+
+                    </div>
+
+
+                    <div class="auth-feature">
+
+                        <span class="auth-feature-icon">
+                            ✓
+                        </span>
+
+                        <span>
+                            Apply to jobs easily
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Bottom -->
+
+            <div class="auth-left-bottom">
+
+                <span>
+                    © 2026 Workora.AI
+                </span>
+
+                <span>
+                    Your career starts here.
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             RIGHT SIDE
+        ========================================= -->
+
+        <section class="auth-right">
+
+
+            <div class="auth-card">
+
+
+                <!-- Mobile Logo -->
+
+                <a href="index.html" class="auth-mobile-logo">
+
+                    <span class="auth-logo-icon">
+                        W
+                    </span>
+
+                    <span>
+                        Workora<span class="logo-dot">.AI</span>
+                    </span>
+
+                </a>
+
+
+
+                <!-- Heading -->
+
+                <div class="auth-heading">
+
+                    <span>
+                        WELCOME BACK
+                    </span>
+
+                    <h2>
+                        Login
+                    </h2>
+
+                    <p>
+                        Login to continue your journey.
+                    </p>
+
+                </div>
+
+
+
+                <!-- ========================================
+                     LOGIN FORM
+                ========================================= -->
+
+                <form id="loginForm">
+
+
+                    <!-- Email -->
+
+                    <div class="form-group">
+
+                        <label for="loginEmail">
+                            Email Address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                ✉
+                            </span>
+
+                            <input
+                                type="email"
+                                id="loginEmail"
+                                placeholder="Enter your email"
+                                autocomplete="email"
+                            >
+
+                        </div>
+
+                        <small
+                            class="form-error"
+                            id="emailError"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- Password -->
+
+                    <div class="form-group">
+
+                        <label for="loginPassword">
+                            Password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                🔒
+                            </span>
+
+                            <input
+                                type="password"
+                                id="loginPassword"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="togglePassword"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="form-error"
+                            id="passwordError"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- Remember / Forgot -->
+
+                    <div class="login-options">
+
+                        <label class="remember-label">
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                            >
+
+                            <span>
+                                Remember me
+                            </span>
+
+                        </label>
+
+
+                        <a
+                            href="#"
+                            id="forgotPassword"
+                        >
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+
+
+                    <!-- Login Button -->
+
+                    <button
+                        type="submit"
+                        class="auth-submit-btn"
+                    >
+
+                        Login
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- Message -->
+
+                    <div
+                        class="auth-message"
+                        id="loginMessage"
+                    ></div>
+
+
+                </form>
+
+
+
+                <!-- Register -->
+
+                <div class="auth-switch">
+
+                    <span>
+                        Don't have an account?
+                    </span>
+
+                    <a href="register.html">
+                        Create Account
+                    </a>
+
+                </div>
+
+
+
+                <!-- Back Home -->
+
+                <a
+                    href="index.html"
+                    class="back-home"
+                >
+                    ← Back to Home
+                </a>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ========================================
+         LOGIN JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+        // ========================================
+        // CHECK LOGIN STATUS
+        // ========================================
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const loggedInUser =
+                localStorage.getItem("workoraLoggedIn");
+
+            if (loggedInUser) {
+
+                window.location.href = "index.html";
+
+            }
+
+        });
+
+
+
+        // ========================================
+        // PASSWORD SHOW / HIDE
+        // ========================================
+
+        const loginPassword =
+            document.getElementById("loginPassword");
+
+        const togglePassword =
+            document.getElementById("togglePassword");
+
+
+        togglePassword.addEventListener(
+            "click",
+            function () {
+
+                if (loginPassword.type === "password") {
+
+                    loginPassword.type = "text";
+
+                    togglePassword.textContent = "🙈";
+
+                } else {
+
+                    loginPassword.type = "password";
+
+                    togglePassword.textContent = "👁";
+
+                }
+
+            }
+        );
+
+
+
+        // ========================================
+        // FORM ELEMENTS
+        // ========================================
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+        const emailInput =
+            document.getElementById("loginEmail");
+
+        const passwordInput =
+            document.getElementById("loginPassword");
+
+        const rememberMe =
+            document.getElementById("rememberMe");
+
+        const forgotPassword =
+            document.getElementById("forgotPassword");
+
+
+        // Errors
+
+        const emailError =
+            document.getElementById("emailError");
+
+        const passwordError =
+            document.getElementById("passwordError");
+
+        const loginMessage =
+            document.getElementById("loginMessage");
+
+
+
+        // ========================================
+        // REMEMBER ME
+        // ========================================
+
+        const rememberValue =
+            localStorage.getItem("workoraRememberMe");
+
+
+        if (rememberValue === "true") {
+
+            rememberMe.checked = true;
+
+        }
+
+
+
+        // ========================================
+        // LOGIN FORM
+        // ========================================
+
+        loginForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                // ========================================
+                // CLEAR ERRORS
+                // ========================================
+
+                emailError.textContent = "";
+
+                passwordError.textContent = "";
+
+                loginMessage.textContent = "";
+
+                loginMessage.className =
+                    "auth-message";
+
+
+                // ========================================
+                // GET VALUES
+                // ========================================
+
+                const email =
+                    emailInput.value.trim().toLowerCase();
+
+                const password =
+                    passwordInput.value;
+
+
+                let isValid = true;
+
+
+
+                // ========================================
+                // EMAIL VALIDATION
+                // ========================================
+
+                if (email === "") {
+
+                    emailError.textContent =
+                        "Please enter your email address.";
+
+                    isValid = false;
+
+                } else {
+
+                    const emailPattern =
+                        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                    if (!emailPattern.test(email)) {
+
+                        emailError.textContent =
+                            "Please enter a valid email address.";
+
+                        isValid = false;
+
+                    }
+
+                }
+
+
+
+                // ========================================
+                // PASSWORD VALIDATION
+                // ========================================
+
+                if (password === "") {
+
+                    passwordError.textContent =
+                        "Please enter your password.";
+
+                    isValid = false;
+
+                }
+
+
+
+                // ========================================
+                // STOP IF INVALID
+                // ========================================
+
+                if (!isValid) {
+
+                    return;
+
+                }
+
+
+
+                // ========================================
+                // GET REGISTERED USER
+                // ========================================
+
+                let registeredUser = null;
+
+
+                try {
+
+                    registeredUser =
+                        JSON.parse(
+                            localStorage.getItem("workoraUser")
+                        );
+
+                } catch (error) {
+
+                    registeredUser = null;
+
+                }
+
+
+
+                // ========================================
+                // CHECK ACCOUNT
+                // ========================================
+
+                if (!registeredUser) {
+
+                    loginMessage.textContent =
+                        "No account found. Please create an account first.";
+
+                    loginMessage.classList.add(
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+
+                // ========================================
+                // CHECK EMAIL
+                // ========================================
+
+                if (
+                    !registeredUser.email ||
+                    registeredUser.email.toLowerCase() !== email
+                ) {
+
+                    emailError.textContent =
+                        "Email address is not registered.";
+
+                    return;
+
+                }
+
+
+
+                // ========================================
+                // CHECK PASSWORD
+                // ========================================
+
+                if (
+                    !registeredUser.password ||
+                    registeredUser.password !== password
+                ) {
+
+                    passwordError.textContent =
+                        "Incorrect password.";
+
+                    return;
+
+                }
+
+
+
+                // ========================================
+                // LOGIN SUCCESS
+                // ========================================
+
+                const loggedInUser = {
+
+                    name:
+                        registeredUser.name,
+
+                    email:
+                        registeredUser.email
+
+                };
+
+
+                // Save login state
+
+                localStorage.setItem(
+                    "workoraLoggedIn",
+                    JSON.stringify(loggedInUser)
+                );
+
+
+
+                // ========================================
+                // REMEMBER ME
+                // ========================================
+
+                if (rememberMe.checked) {
+
+                    localStorage.setItem(
+                        "workoraRememberMe",
+                        "true"
+                    );
+
+                } else {
+
+                    localStorage.removeItem(
+                        "workoraRememberMe"
+                    );
+
+                }
+
+
+
+                // ========================================
+                // SUCCESS MESSAGE
+                // ========================================
+
+                loginMessage.textContent =
+                    "Login successful! Redirecting...";
+
+                loginMessage.classList.add(
+                    "success"
+                );
+
+
+                // Disable button
+
+                const submitButton =
+                    loginForm.querySelector(
+                        ".auth-submit-btn"
+                    );
+
+
+                if (submitButton) {
+
+                    submitButton.disabled = true;
+
+                }
+
+
+
+                // ========================================
+                // REDIRECT HOME
+                // ========================================
+
+                setTimeout(
+                    function () {
+
+                        window.location.href =
+                            "index.html";
+
+                    },
+                    800
+                );
+
+            }
+        );
+
+
+
+        // ========================================
+        // FORGOT PASSWORD
+        // ========================================
+
+        forgotPassword.addEventListener(
+            "click",
+            function (event) {
+
+                event.preventDefault();
+
+
+                const email =
+                    emailInput.value.trim();
+
+
+                if (email === "") {
+
+                    alert(
+                        "Please enter your registered email address first."
+                    );
+
+                    emailInput.focus();
+
+                    return;
+
+                }
+
+
+                alert(
+                    "Password reset functionality will be connected with the backend later."
+                );
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

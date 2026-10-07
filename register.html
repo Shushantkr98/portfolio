@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register | Workora</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body class="auth-page">
+
+
+    <!-- ========================================
+         AUTH CONTAINER
+    ========================================= -->
+
+    <main class="auth-container">
+
+
+        <!-- ========================================
+             LEFT SIDE
+        ========================================= -->
+
+        <section class="auth-left">
+
+            <!-- Logo -->
+
+            <a href="index.html" class="auth-logo">
+
+                <span class="auth-logo-icon">
+                    W
+                </span>
+
+                <span>
+                    Workora<span class="logo-dot">.AI</span>
+                </span>
+
+            </a>
+
+
+            <!-- Content -->
+
+            <div class="auth-left-content">
+
+                <span class="auth-small-title">
+                    JOIN WORKORA
+                </span>
+
+                <h1>
+                    Build your
+                    <span>career.</span>
+                </h1>
+
+                <p>
+                    Create your Workora account and start
+                    exploring opportunities that match your
+                    skills and career goals.
+                </p>
+
+
+                <!-- Features -->
+
+                <div class="auth-features">
+
+                    <div class="auth-feature">
+
+                        <span class="auth-feature-icon">
+                            ✓
+                        </span>
+
+                        <span>
+                            Explore thousands of opportunities
+                        </span>
+
+                    </div>
+
+
+                    <div class="auth-feature">
+
+                        <span class="auth-feature-icon">
+                            ✓
+                        </span>
+
+                        <span>
+                            Save your favorite jobs
+                        </span>
+
+                    </div>
+
+
+                    <div class="auth-feature">
+
+                        <span class="auth-feature-icon">
+                            ✓
+                        </span>
+
+                        <span>
+                            Apply to jobs with ease
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Bottom -->
+
+            <div class="auth-left-bottom">
+
+                <span>
+                    © 2026 Workora.AI
+                </span>
+
+                <span>
+                    Your career starts here.
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ========================================
+             RIGHT SIDE
+        ========================================= -->
+
+        <section class="auth-right">
+
+
+            <div class="auth-card">
+
+
+                <!-- Mobile Logo -->
+
+                <a href="index.html" class="auth-mobile-logo">
+
+                    <span class="auth-logo-icon">
+                        W
+                    </span>
+
+                    <span>
+                        Workora<span class="logo-dot">.AI</span>
+                    </span>
+
+                </a>
+
+
+                <!-- Heading -->
+
+                <div class="auth-heading">
+
+                    <span>
+                        CREATE ACCOUNT
+                    </span>
+
+                    <h2>
+                        Get started
+                    </h2>
+
+                    <p>
+                        Create your account to start your journey.
+                    </p>
+
+                </div>
+
+
+
+                <!-- ========================================
+                     REGISTER FORM
+                ========================================= -->
+
+                <form id="registerForm">
+
+
+                    <!-- Full Name -->
+
+                    <div class="form-group">
+
+                        <label for="registerName">
+                            Full Name
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                👤
+                            </span>
+
+                            <input
+                                type="text"
+                                id="registerName"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                            >
+
+                        </div>
+
+                        <small
+                            class="form-error"
+                            id="nameError"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- Email -->
+
+                    <div class="form-group">
+
+                        <label for="registerEmail">
+                            Email Address
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                ✉
+                            </span>
+
+                            <input
+                                type="email"
+                                id="registerEmail"
+                                placeholder="Enter your email"
+                                autocomplete="email"
+                            >
+
+                        </div>
+
+                        <small
+                            class="form-error"
+                            id="registerEmailError"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- Password -->
+
+                    <div class="form-group">
+
+                        <label for="registerPassword">
+                            Password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                🔒
+                            </span>
+
+                            <input
+                                type="password"
+                                id="registerPassword"
+                                placeholder="Create a password"
+                                autocomplete="new-password"
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="toggleRegisterPassword"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="form-error"
+                            id="registerPasswordError"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- Confirm Password -->
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password
+                        </label>
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                🔐
+                            </span>
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                placeholder="Confirm your password"
+                                autocomplete="new-password"
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="toggleConfirmPassword"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                        <small
+                            class="form-error"
+                            id="confirmPasswordError"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- Terms -->
+
+                    <div class="register-terms">
+
+                        <label class="remember-label">
+
+                            <input
+                                type="checkbox"
+                                id="termsCheckbox"
+                            >
+
+                            <span>
+                                I agree to the
+                                <a href="#">
+                                    Terms & Conditions
+                                </a>
+                            </span>
+
+                        </label>
+
+                        <small
+                            class="form-error"
+                            id="termsError"
+                        ></small>
+
+                    </div>
+
+
+
+                    <!-- Register Button -->
+
+                    <button
+                        type="submit"
+                        class="auth-submit-btn"
+                    >
+
+                        Create Account
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- Message -->
+
+                    <div
+                        class="auth-message"
+                        id="registerMessage"
+                    ></div>
+
+
+                </form>
+
+
+
+                <!-- Login -->
+
+                <div class="auth-switch">
+
+                    <span>
+                        Already have an account?
+                    </span>
+
+                    <a href="login.html">
+                        Login
+                    </a>
+
+                </div>
+
+
+
+                <!-- Back Home -->
+
+                <a
+                    href="index.html"
+                    class="back-home"
+                >
+                    ← Back to Home
+                </a>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ========================================
+         REGISTER JAVASCRIPT
+    ========================================= -->
+
+    <script>
+
+        // ========================================
+        // CHECK LOGIN STATUS
+        // ========================================
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const loggedInUser =
+                localStorage.getItem("workoraLoggedIn");
+
+            if (loggedInUser) {
+
+                window.location.href = "index.html";
+
+            }
+
+        });
+
+
+
+        // ========================================
+        // PASSWORD SHOW / HIDE
+        // ========================================
+
+        const registerPassword =
+            document.getElementById("registerPassword");
+
+        const toggleRegisterPassword =
+            document.getElementById("toggleRegisterPassword");
+
+
+        toggleRegisterPassword.addEventListener(
+            "click",
+            function () {
+
+                if (registerPassword.type === "password") {
+
+                    registerPassword.type = "text";
+
+                    toggleRegisterPassword.textContent = "🙈";
+
+                } else {
+
+                    registerPassword.type = "password";
+
+                    toggleRegisterPassword.textContent = "👁";
+
+                }
+
+            }
+        );
+
+
+
+        // ========================================
+        // CONFIRM PASSWORD SHOW / HIDE
+        // ========================================
+
+        const confirmPassword =
+            document.getElementById("confirmPassword");
+
+        const toggleConfirmPassword =
+            document.getElementById("toggleConfirmPassword");
+
+
+        toggleConfirmPassword.addEventListener(
+            "click",
+            function () {
+
+                if (confirmPassword.type === "password") {
+
+                    confirmPassword.type = "text";
+
+                    toggleConfirmPassword.textContent = "🙈";
+
+                } else {
+
+                    confirmPassword.type = "password";
+
+                    toggleConfirmPassword.textContent = "👁";
+
+                }
+
+            }
+        );
+
+
+
+        // ========================================
+        // FORM ELEMENTS
+        // ========================================
+
+        const registerForm =
+            document.getElementById("registerForm");
+
+        const nameInput =
+            document.getElementById("registerName");
+
+        const emailInput =
+            document.getElementById("registerEmail");
+
+        const passwordInput =
+            document.getElementById("registerPassword");
+
+        const confirmPasswordInput =
+            document.getElementById("confirmPassword");
+
+        const termsCheckbox =
+            document.getElementById("termsCheckbox");
+
+
+
+        // ========================================
+        // ERROR ELEMENTS
+        // ========================================
+
+        const nameError =
+            document.getElementById("nameError");
+
+        const emailError =
+            document.getElementById("registerEmailError");
+
+        const passwordError =
+            document.getElementById("registerPasswordError");
+
+        const confirmPasswordError =
+            document.getElementById("confirmPasswordError");
+
+        const termsError =
+            document.getElementById("termsError");
+
+        const registerMessage =
+            document.getElementById("registerMessage");
+
+
+
+        // ========================================
+        // FORM SUBMIT
+        // ========================================
+
+        registerForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                // ========================================
+                // CLEAR OLD ERRORS
+                // ========================================
+
+                nameError.textContent = "";
+
+                emailError.textContent = "";
+
+                passwordError.textContent = "";
+
+                confirmPasswordError.textContent = "";
+
+                termsError.textContent = "";
+
+                registerMessage.textContent = "";
+
+                registerMessage.className = "auth-message";
+
+
+                // ========================================
+                // GET VALUES
+                // ========================================
+
+                const name =
+                    nameInput.value.trim();
+
+                const email =
+                    emailInput.value.trim().toLowerCase();
+
+                const password =
+                    passwordInput.value;
+
+                const confirmPassword =
+                    confirmPasswordInput.value;
+
+
+                let isValid = true;
+
+
+
+                // ========================================
+                // NAME VALIDATION
+                // ========================================
+
+                if (name === "") {
+
+                    nameError.textContent =
+                        "Please enter your full name.";
+
+                    isValid = false;
+
+                } else if (name.length < 3) {
+
+                    nameError.textContent =
+                        "Name must be at least 3 characters.";
+
+                    isValid = false;
+
+                }
+
+
+
+                // ========================================
+                // EMAIL VALIDATION
+                // ========================================
+
+                if (email === "") {
+
+                    emailError.textContent =
+                        "Please enter your email address.";
+
+                    isValid = false;
+
+                } else {
+
+                    const emailPattern =
+                        /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                    if (!emailPattern.test(email)) {
+
+                        emailError.textContent =
+                            "Please enter a valid email address.";
+
+                        isValid = false;
+
+                    }
+
+                }
+
+
+
+                // ========================================
+                // PASSWORD VALIDATION
+                // ========================================
+
+                if (password === "") {
+
+                    passwordError.textContent =
+                        "Please create a password.";
+
+                    isValid = false;
+
+                } else if (password.length < 6) {
+
+                    passwordError.textContent =
+                        "Password must be at least 6 characters.";
+
+                    isValid = false;
+
+                }
+
+
+
+                // ========================================
+                // CONFIRM PASSWORD
+                // ========================================
+
+                if (confirmPassword === "") {
+
+                    confirmPasswordError.textContent =
+                        "Please confirm your password.";
+
+                    isValid = false;
+
+                } else if (password !== confirmPassword) {
+
+                    confirmPasswordError.textContent =
+                        "Passwords do not match.";
+
+                    isValid = false;
+
+                }
+
+
+
+                // ========================================
+                // TERMS
+                // ========================================
+
+                if (!termsCheckbox.checked) {
+
+                    termsError.textContent =
+                        "Please accept the Terms & Conditions.";
+
+                    isValid = false;
+
+                }
+
+
+
+                // ========================================
+                // CHECK EXISTING USER
+                // ========================================
+
+                let existingUser = null;
+
+                try {
+
+                    existingUser =
+                        JSON.parse(
+                            localStorage.getItem("workoraUser")
+                        );
+
+                } catch (error) {
+
+                    existingUser = null;
+
+                }
+
+
+                if (
+                    isValid &&
+                    existingUser &&
+                    existingUser.email &&
+                    existingUser.email.toLowerCase() === email
+                ) {
+
+                    emailError.textContent =
+                        "An account with this email already exists.";
+
+                    isValid = false;
+
+                }
+
+
+
+                // ========================================
+                // SAVE USER
+                // ========================================
+
+                if (isValid) {
+
+                    const user = {
+
+                        name: name,
+
+                        email: email,
+
+                        password: password,
+
+                        registered: true
+
+                    };
+
+
+                    // Save registered user
+
+                    localStorage.setItem(
+                        "workoraUser",
+                        JSON.stringify(user)
+                    );
+
+
+                    // Make sure old login state is removed
+
+                    localStorage.removeItem(
+                        "workoraLoggedIn"
+                    );
+
+                    localStorage.removeItem(
+                        "workoraRememberMe"
+                    );
+
+
+                    // Success message
+
+                    registerMessage.textContent =
+                        "Account created successfully! Redirecting to login...";
+
+                    registerMessage.classList.add(
+                        "success"
+                    );
+
+
+                    // Disable button
+
+                    const submitButton =
+                        registerForm.querySelector(
+                            ".auth-submit-btn"
+                        );
+
+                    if (submitButton) {
+
+                        submitButton.disabled = true;
+
+                    }
+
+
+                    // Clear form
+
+                    registerForm.reset();
+
+
+                    // ========================================
+                    // REDIRECT TO LOGIN
+                    // ========================================
+
+                    setTimeout(
+                        function () {
+
+                            window.location.href =
+                                "login.html";
+
+                        },
+                        1200
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

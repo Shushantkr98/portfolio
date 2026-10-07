@@ -1,0 +1,2607 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Find Jobs | Workora.AI</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+
+    <style>
+
+        /* =====================================================
+           JOBS PAGE
+        ===================================================== */
+
+        .jobs-page {
+            padding: 70px 0 90px;
+            min-height: 70vh;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .jobs-page-header {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 45px;
+        }
+
+
+        .jobs-page-header .section-label {
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+
+        .jobs-page-header h1 {
+            font-size: clamp(36px, 5vw, 56px);
+            line-height: 1.1;
+            margin-bottom: 18px;
+        }
+
+
+        .jobs-page-header h1 span {
+            color: #6c63ff;
+        }
+
+
+        .jobs-page-header p {
+            color: #777;
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        .jobs-search-box {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr auto;
+            gap: 12px;
+            max-width: 1000px;
+            margin: 0 auto 35px;
+            padding: 10px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(128, 128, 128, .18);
+        }
+
+
+        .jobs-search-field {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 15px;
+        }
+
+
+        .jobs-search-field span {
+            font-size: 18px;
+        }
+
+
+        .jobs-search-field input {
+            width: 100%;
+            border: none;
+            outline: none;
+            background: transparent;
+            padding: 14px 0;
+            color: inherit;
+            font-size: 14px;
+        }
+
+
+        .jobs-search-field input::placeholder {
+            color: #999;
+        }
+
+
+        .jobs-search-btn {
+            border: none;
+            border-radius: 11px;
+            padding: 0 25px;
+            background: #6c63ff;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s ease;
+        }
+
+
+        .jobs-search-btn:hover {
+            transform: translateY(-2px);
+            opacity: .9;
+        }
+
+
+        /* =====================================================
+           LAYOUT
+        ===================================================== */
+
+        .jobs-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+
+        /* =====================================================
+           FILTERS
+        ===================================================== */
+
+        .jobs-filters {
+            padding: 24px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(128, 128, 128, .18);
+            position: sticky;
+            top: 95px;
+        }
+
+
+        .filters-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+
+        .filters-header h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+
+
+        .clear-filters {
+            border: none;
+            background: transparent;
+            color: #6c63ff;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+
+        .filter-group {
+            margin-bottom: 22px;
+        }
+
+
+        .filter-group:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 9px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+
+        .filter-group select {
+            width: 100%;
+            padding: 11px 12px;
+            border-radius: 9px;
+            border: 1px solid rgba(128, 128, 128, .2);
+            background: transparent;
+            color: inherit;
+            outline: none;
+            cursor: pointer;
+        }
+
+
+        .filter-group select option {
+            background: #fff;
+            color: #111;
+        }
+
+
+        /* =====================================================
+           RESULTS HEADER
+        ===================================================== */
+
+        .jobs-results-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+
+        .jobs-results-header h2 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+
+        .jobs-count {
+            color: #888;
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           JOB LIST
+        ===================================================== */
+
+        .jobs-list {
+            display: grid;
+            gap: 18px;
+        }
+
+
+        .jobs-page-card {
+            padding: 25px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid rgba(128, 128, 128, .18);
+            transition: .3s ease;
+        }
+
+
+        .jobs-page-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(108, 99, 255, .45);
+            box-shadow: 0 15px 35px rgba(108, 99, 255, .08);
+        }
+
+
+        /* =====================================================
+           JOB CARD HEADER
+        ===================================================== */
+
+        .job-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+
+        .job-main-info {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+
+        .job-company-logo {
+            width: 54px;
+            height: 54px;
+            min-width: 54px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #6c63ff, #8f5cff);
+            color: white;
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+
+        .job-main-info h3 {
+            margin: 0 0 7px;
+            font-size: 19px;
+        }
+
+
+        .job-company {
+            margin: 0 0 8px;
+            color: #6c63ff;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+
+        .job-location {
+            margin: 0;
+            color: #888;
+            font-size: 13px;
+        }
+
+
+        /* =====================================================
+           SAVE BUTTON
+        ===================================================== */
+
+        .save-job-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: 1px solid rgba(128, 128, 128, .2);
+            background: transparent;
+            color: inherit;
+            cursor: pointer;
+            font-size: 18px;
+            transition: .3s ease;
+        }
+
+
+        .save-job-btn:hover,
+        .save-job-btn.saved {
+            color: #6c63ff;
+            border-color: #6c63ff;
+        }
+
+
+        .save-job-btn.saved {
+            background: rgba(108, 99, 255, .1);
+        }
+
+
+        /* =====================================================
+           JOB TAGS
+        ===================================================== */
+
+        .job-page-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0;
+        }
+
+
+        .job-page-tags span {
+            padding: 7px 11px;
+            border-radius: 7px;
+            background: rgba(108, 99, 255, .08);
+            color: #777;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+
+        /* =====================================================
+           JOB FOOTER
+        ===================================================== */
+
+        .job-page-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(128, 128, 128, .15);
+        }
+
+
+        .job-salary {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+
+        .job-salary strong {
+            font-size: 15px;
+        }
+
+
+        .job-salary small {
+            color: #888;
+            font-size: 12px;
+        }
+
+
+        .view-job-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 17px;
+            border-radius: 9px;
+            background: #6c63ff;
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: .3s ease;
+        }
+
+
+        .view-job-btn:hover {
+            transform: translateY(-2px);
+            opacity: .9;
+        }
+
+
+        /* =====================================================
+           NO JOBS
+        ===================================================== */
+
+        .no-jobs {
+            display: none;
+            text-align: center;
+            padding: 70px 20px;
+            border-radius: 18px;
+            border: 1px solid rgba(128, 128, 128, .15);
+            color: #888;
+        }
+
+
+        /* =====================================================
+           USER NAV
+        ===================================================== */
+
+        #userNav {
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        #userNav a,
+        #userNav button {
+            white-space: nowrap;
+        }
+
+
+        .dashboard-nav-btn,
+        .profile-nav-btn,
+        .logout-btn {
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .jobs-layout {
+                grid-template-columns: 1fr;
+            }
+
+
+            .jobs-filters {
+                position: static;
+            }
+
+
+            .jobs-search-box {
+                grid-template-columns: 1fr;
+            }
+
+
+            .jobs-search-btn {
+                min-height: 48px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .jobs-page {
+                padding: 50px 0 70px;
+            }
+
+
+            .job-card-header {
+                flex-direction: column;
+            }
+
+
+            .save-job-btn {
+                position: absolute;
+                right: 20px;
+            }
+
+
+            .jobs-page-card {
+                position: relative;
+            }
+
+
+            .job-page-footer {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+
+            .view-job-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="container nav-container">
+
+
+        <!-- LOGO -->
+
+        <a href="index.html" class="logo">
+
+            <span>W</span>
+
+            Workora
+
+        </a>
+
+
+        <!-- NAV LINKS -->
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+
+            <a href="jobs.html" class="active">
+                Jobs
+            </a>
+
+
+            <a href="companies.html">
+                Companies
+            </a>
+
+
+            <a href="index.html#about">
+                About
+            </a>
+
+
+            <a href="saved-jobs.html">
+                ♡ Saved Jobs
+            </a>
+
+        </nav>
+
+
+        <!-- NAV ACTIONS -->
+
+        <div class="nav-actions">
+
+
+            <!-- ================================
+                 GUEST NAV
+            ================================= -->
+
+            <div
+                id="guestNav"
+                style="display:flex;"
+            >
+
+                <a
+                    href="login.html"
+                    class="login-btn"
+                >
+                    Login
+                </a>
+
+
+                <a
+                    href="register.html"
+                    class="register-btn"
+                >
+                    Register
+                </a>
+
+            </div>
+
+
+            <!-- ================================
+                 USER NAV
+            ================================= -->
+
+            <div
+                id="userNav"
+                style="display:none;"
+            >
+
+                <a
+                    href="dashboard.html"
+                    class="dashboard-nav-btn"
+                >
+                    📊 Dashboard
+                </a>
+
+
+                <a
+                    href="profile.html"
+                    class="profile-nav-btn"
+                >
+
+                    <span class="profile-icon">
+                        👤
+                    </span>
+
+                    <span id="profileNavName">
+                        Profile
+                    </span>
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="logout-btn"
+                    id="logoutBtn"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- MOBILE MENU -->
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            type="button"
+        >
+            ☰
+        </button>
+
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main>
+
+<section class="jobs-page">
+
+<div class="container">
+
+
+    <!-- PAGE HEADER -->
+
+    <div class="jobs-page-header">
+
+        <span class="section-label">
+            EXPLORE OPPORTUNITIES
+        </span>
+
+
+        <h1>
+
+            Find Your
+
+            <span>
+                Next Job
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            Search opportunities and find a job that matches
+            your skills and goals.
+
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         SEARCH
+    ================================================== -->
+
+    <div class="jobs-search-box">
+
+
+        <div class="jobs-search-field">
+
+            <span>
+                🔍
+            </span>
+
+
+            <input
+                type="text"
+                id="jobSearch"
+                placeholder="Job title, company or keyword"
+            >
+
+        </div>
+
+
+        <div class="jobs-search-field">
+
+            <span>
+                📍
+            </span>
+
+
+            <input
+                type="text"
+                id="locationSearch"
+                placeholder="Location"
+            >
+
+        </div>
+
+
+        <button
+            type="button"
+            class="jobs-search-btn"
+            id="searchBtn"
+        >
+            Search Jobs
+        </button>
+
+
+    </div>
+
+
+    <!-- =================================================
+         JOBS LAYOUT
+    ================================================== -->
+
+    <div class="jobs-layout">
+
+
+        <!-- FILTERS -->
+
+        <aside class="jobs-filters">
+
+
+            <div class="filters-header">
+
+                <h3>
+                    Filters
+                </h3>
+
+
+                <button
+                    type="button"
+                    class="clear-filters"
+                    id="clearFilters"
+                >
+                    Clear All
+                </button>
+
+            </div>
+
+
+            <!-- JOB TYPE -->
+
+            <div class="filter-group">
+
+                <label for="jobTypeFilter">
+                    Job Type
+                </label>
+
+
+                <select id="jobTypeFilter">
+
+                    <option value="">
+                        All Types
+                    </option>
+
+
+                    <option value="Full Time">
+                        Full Time
+                    </option>
+
+
+                    <option value="Part Time">
+                        Part Time
+                    </option>
+
+
+                    <option value="Internship">
+                        Internship
+                    </option>
+
+
+                    <option value="Contract">
+                        Contract
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- WORK MODE -->
+
+            <div class="filter-group">
+
+                <label for="workModeFilter">
+                    Work Mode
+                </label>
+
+
+                <select id="workModeFilter">
+
+                    <option value="">
+                        All Modes
+                    </option>
+
+
+                    <option value="Remote">
+                        Remote
+                    </option>
+
+
+                    <option value="Hybrid">
+                        Hybrid
+                    </option>
+
+
+                    <option value="On-site">
+                        On-site
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- EXPERIENCE -->
+
+            <div class="filter-group">
+
+                <label for="experienceFilter">
+                    Experience
+                </label>
+
+
+                <select id="experienceFilter">
+
+                    <option value="">
+                        Any Experience
+                    </option>
+
+
+                    <option value="0-1 Years">
+                        0-1 Years
+                    </option>
+
+
+                    <option value="1-3 Years">
+                        1-3 Years
+                    </option>
+
+
+                    <option value="1-4 Years">
+                        1-4 Years
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- SALARY -->
+
+            <div class="filter-group">
+
+                <label for="salaryFilter">
+                    Salary
+                </label>
+
+
+                <select id="salaryFilter">
+
+                    <option value="">
+                        Any Salary
+                    </option>
+
+
+                    <option value="0-5">
+                        Up to ₹5 LPA
+                    </option>
+
+
+                    <option value="5-10">
+                        ₹5 - ₹10 LPA
+                    </option>
+
+
+                    <option value="10-15">
+                        ₹10 - ₹15 LPA
+                    </option>
+
+
+                    <option value="15+">
+                        ₹15+ LPA
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </aside>
+
+
+        <!-- JOB RESULTS -->
+
+        <div class="jobs-results">
+
+
+            <div class="jobs-results-header">
+
+                <h2>
+                    Available Jobs
+                </h2>
+
+
+                <span
+                    class="jobs-count"
+                    id="jobsCount"
+                >
+                    0 jobs
+                </span>
+
+            </div>
+
+
+            <div
+                class="jobs-list"
+                id="jobsList"
+            ></div>
+
+
+            <div
+                class="no-jobs"
+                id="noJobs"
+            >
+
+                <h3>
+                    No jobs found
+                </h3>
+
+
+                <p>
+                    Try changing your search or filters.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+</section>
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="container footer-container">
+
+
+        <div class="footer-brand">
+
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+
+                <span class="logo-icon">
+                    W
+                </span>
+
+
+                <span>
+
+                    Workora<span class="logo-dot">
+                        .AI
+                    </span>
+
+                </span>
+
+            </a>
+
+
+            <p>
+
+                Connecting talent with opportunities
+                and helping businesses find the right people.
+
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+
+            <!-- PLATFORM -->
+
+            <div>
+
+                <h4>
+                    Platform
+                </h4>
+
+
+                <a href="jobs.html">
+                    Find Jobs
+                </a>
+
+
+                <a href="companies.html">
+                    Companies
+                </a>
+
+
+                <a href="index.html#about">
+                    About Workora
+                </a>
+
+
+                <a href="saved-jobs.html">
+                    ♡ Saved Jobs
+                </a>
+
+            </div>
+
+
+            <!-- EMPLOYERS -->
+
+            <div>
+
+                <h4>
+                    For Employers
+                </h4>
+
+
+                <a href="post-job.html">
+                    Post a Job
+                </a>
+
+
+                <a href="employer-applicants.html">
+                    Find Candidates
+                </a>
+
+
+                <a href="employer-dashboard.html">
+                    Employer Dashboard
+                </a>
+
+            </div>
+
+
+            <!-- SUPPORT -->
+
+            <div>
+
+                <h4>
+                    Support
+                </h4>
+
+
+                <a href="#">
+                    Help Center
+                </a>
+
+
+                <a href="#">
+                    Contact Us
+                </a>
+
+
+                <a href="#">
+                    Privacy Policy
+                </a>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <div class="container">
+
+            <p>
+                © 2026 Workora.AI. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   WORKORA - ALL 15 DEFAULT JOBS
+===================================================== */
+
+const defaultJobs = [
+
+    {
+        id: "frontend",
+        title: "Frontend Developer",
+        company: "Google Technologies",
+        location: "Delhi",
+        type: "Full Time",
+        workMode: "Remote",
+        experience: "0-1 Years",
+        salary: "₹6 - 10 LPA",
+        category: "Technology",
+        skills: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Responsive Design",
+            "Git"
+        ]
+    },
+
+
+    {
+        id: "java",
+        title: "Java Developer",
+        company: "Microsoft",
+        location: "Bangalore",
+        type: "Full Time",
+        workMode: "Hybrid",
+        experience: "1-3 Years",
+        salary: "₹8 - 14 LPA",
+        category: "Technology",
+        skills: [
+            "Java",
+            "OOP",
+            "SQL",
+            "Spring Boot",
+            "Git"
+        ]
+    },
+
+
+    {
+        id: "designer",
+        title: "UI/UX Designer",
+        company: "Adobe",
+        location: "Mumbai",
+        type: "Full Time",
+        workMode: "Remote",
+        experience: "0-1 Years",
+        salary: "₹5 - 9 LPA",
+        category: "Design",
+        skills: [
+            "Figma",
+            "UI Design",
+            "UX Design",
+            "Wireframing",
+            "Prototyping"
+        ]
+    },
+
+
+    {
+        id: "backend",
+        title: "Backend Developer",
+        company: "Amazon",
+        location: "Bangalore",
+        type: "Full Time",
+        workMode: "Hybrid",
+        experience: "1-3 Years",
+        salary: "₹7 - 13 LPA",
+        category: "Technology",
+        skills: [
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "REST API",
+            "Git"
+        ]
+    },
+
+
+    {
+        id: "react",
+        title: "React Developer",
+        company: "Flipkart",
+        location: "Bangalore",
+        type: "Full Time",
+        workMode: "Remote",
+        experience: "1-3 Years",
+        salary: "₹6 - 12 LPA",
+        category: "Technology",
+        skills: [
+            "React",
+            "JavaScript",
+            "HTML",
+            "CSS",
+            "Git"
+        ]
+    },
+
+
+    {
+        id: "python",
+        title: "Python Developer",
+        company: "Infosys",
+        location: "Pune",
+        type: "Full Time",
+        workMode: "Hybrid",
+        experience: "0-1 Years",
+        salary: "₹5 - 10 LPA",
+        category: "Technology",
+        skills: [
+            "Python",
+            "Django",
+            "SQL",
+            "REST API",
+            "Git"
+        ]
+    },
+
+
+    {
+        id: "fullstack",
+        title: "Full Stack Developer",
+        company: "TCS",
+        location: "Mumbai",
+        type: "Full Time",
+        workMode: "Hybrid",
+        experience: "1-4 Years",
+        salary: "₹7 - 14 LPA",
+        category: "Technology",
+        skills: [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "React",
+            "Node.js"
+        ]
+    },
+
+
+    {
+        id: "mobile",
+        title: "Android Developer",
+        company: "PhonePe",
+        location: "Bangalore",
+        type: "Full Time",
+        workMode: "On-site",
+        experience: "1-3 Years",
+        salary: "₹6 - 11 LPA",
+        category: "Mobile Development",
+        skills: [
+            "Kotlin",
+            "Android",
+            "Java",
+            "Firebase",
+            "Git"
+        ]
+    },
+
+
+    {
+        id: "data",
+        title: "Data Analyst",
+        company: "Deloitte",
+        location: "Gurgaon",
+        type: "Full Time",
+        workMode: "Hybrid",
+        experience: "0-1 Years",
+        salary: "₹5 - 9 LPA",
+        category: "Data",
+        skills: [
+            "Excel",
+            "SQL",
+            "Python",
+            "Power BI",
+            "Data Analysis"
+        ]
+    },
+
+
+    {
+        id: "devops",
+        title: "DevOps Engineer",
+        company: "Wipro",
+        location: "Hyderabad",
+        type: "Full Time",
+        workMode: "Hybrid",
+        experience: "1-4 Years",
+        salary: "₹7 - 13 LPA",
+        category: "Cloud & DevOps",
+        skills: [
+            "Docker",
+            "AWS",
+            "Linux",
+            "Jenkins",
+            "CI/CD"
+        ]
+    },
+
+
+    {
+        id: "cybersecurity",
+        title: "Cybersecurity Analyst",
+        company: "IBM",
+        location: "Pune",
+        type: "Full Time",
+        workMode: "On-site",
+        experience: "1-3 Years",
+        salary: "₹6 - 12 LPA",
+        category: "Cybersecurity",
+        skills: [
+            "Cybersecurity",
+            "Network Security",
+            "Linux",
+            "SIEM",
+            "Security"
+        ]
+    },
+
+
+    {
+        id: "digitalmarketing",
+        title: "Digital Marketing Executive",
+        company: "HCL Technologies",
+        location: "Noida",
+        type: "Full Time",
+        workMode: "Remote",
+        experience: "0-1 Years",
+        salary: "₹4 - 8 LPA",
+        category: "Marketing",
+        skills: [
+            "SEO",
+            "SEM",
+            "Social Media",
+            "Google Ads",
+            "Analytics"
+        ]
+    },
+
+
+    {
+        id: "productdesigner",
+        title: "Product Designer",
+        company: "Myntra",
+        location: "Bangalore",
+        type: "Full Time",
+        workMode: "Hybrid",
+        experience: "1-3 Years",
+        salary: "₹7 - 13 LPA",
+        category: "Design",
+        skills: [
+            "Figma",
+            "UI Design",
+            "UX Research",
+            "Prototyping",
+            "Design Systems"
+        ]
+    },
+
+
+    {
+        id: "software",
+        title: "Software Engineer",
+        company: "Accenture",
+        location: "Hyderabad",
+        type: "Full Time",
+        workMode: "Hybrid",
+        experience: "0-1 Years",
+        salary: "₹6 - 11 LPA",
+        category: "Software Development",
+        skills: [
+            "Java",
+            "Python",
+            "SQL",
+            "DSA",
+            "Git"
+        ]
+    },
+
+
+    {
+        id: "business",
+        title: "Business Analyst",
+        company: "EY",
+        location: "Gurgaon",
+        type: "Full Time",
+        workMode: "Hybrid",
+        experience: "1-3 Years",
+        salary: "₹6 - 10 LPA",
+        category: "Business",
+        skills: [
+            "Business Analysis",
+            "Excel",
+            "SQL",
+            "Power BI",
+            "Communication"
+        ]
+    }
+
+];
+
+
+/* =====================================================
+   EMPLOYER JOBS
+===================================================== */
+
+let employerJobs = [];
+
+
+try {
+
+    employerJobs =
+        JSON.parse(
+            localStorage.getItem(
+                "workoraEmployerJobs"
+            )
+        ) || [];
+
+} catch (error) {
+
+    employerJobs = [];
+
+}
+
+
+employerJobs =
+    employerJobs.filter(function (job) {
+
+        const status =
+            String(
+                job.status || "active"
+            ).toLowerCase();
+
+        return status !== "closed";
+
+    });
+
+
+/* =====================================================
+   COMBINE JOBS
+===================================================== */
+
+const allJobs = [
+
+    ...defaultJobs,
+
+    ...employerJobs.map(function (job) {
+
+        return {
+
+            id: String(job.id),
+
+            title:
+                job.title ||
+                "Untitled Job",
+
+            company:
+                job.company ||
+                "Company",
+
+            location:
+                job.location ||
+                "India",
+
+            type:
+                job.type ||
+                "Full Time",
+
+            workMode:
+                job.workMode ||
+                "Remote",
+
+            experience:
+                job.experience ||
+                "0-1 Years",
+
+            salary:
+                job.salary ||
+                "Salary not specified",
+
+            category:
+                job.category ||
+                "Job Opportunity",
+
+            skills:
+                Array.isArray(job.skills)
+                    ? job.skills
+                    : []
+
+        };
+
+    })
+
+];
+
+
+/* =====================================================
+   DOM ELEMENTS
+===================================================== */
+
+const jobsList =
+    document.getElementById(
+        "jobsList"
+    );
+
+
+const jobsCount =
+    document.getElementById(
+        "jobsCount"
+    );
+
+
+const noJobs =
+    document.getElementById(
+        "noJobs"
+    );
+
+
+const jobSearch =
+    document.getElementById(
+        "jobSearch"
+    );
+
+
+const locationSearch =
+    document.getElementById(
+        "locationSearch"
+    );
+
+
+const jobTypeFilter =
+    document.getElementById(
+        "jobTypeFilter"
+    );
+
+
+const workModeFilter =
+    document.getElementById(
+        "workModeFilter"
+    );
+
+
+const experienceFilter =
+    document.getElementById(
+        "experienceFilter"
+    );
+
+
+const salaryFilter =
+    document.getElementById(
+        "salaryFilter"
+    );
+
+
+const searchBtn =
+    document.getElementById(
+        "searchBtn"
+    );
+
+
+const clearFilters =
+    document.getElementById(
+        "clearFilters"
+    );
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(value) {
+
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+/* =====================================================
+   SAVED JOBS
+===================================================== */
+
+function getSavedJobs() {
+
+    try {
+
+        const saved =
+            JSON.parse(
+                localStorage.getItem(
+                    "workoraSavedJobs"
+                )
+            );
+
+
+        if (!Array.isArray(saved)) {
+
+            return [];
+
+        }
+
+
+        return saved
+            .map(function (item) {
+
+                if (
+                    typeof item === "object" &&
+                    item !== null
+                ) {
+
+                    return item.id;
+
+                }
+
+
+                return item;
+
+            })
+            .filter(function (id) {
+
+                return (
+                    id !== undefined &&
+                    id !== null
+                );
+
+            })
+            .map(function (id) {
+
+                return String(id);
+
+            });
+
+    } catch (error) {
+
+        return [];
+
+    }
+
+}
+
+
+/* =====================================================
+   SAVE / UNSAVE JOB
+===================================================== */
+
+function saveJob(jobId) {
+
+    let savedJobs =
+        getSavedJobs();
+
+
+    jobId =
+        String(jobId);
+
+
+    if (
+        savedJobs.includes(jobId)
+    ) {
+
+        savedJobs =
+            savedJobs.filter(
+                function (id) {
+
+                    return id !== jobId;
+
+                }
+            );
+
+    } else {
+
+        savedJobs.push(
+            jobId
+        );
+
+    }
+
+
+    localStorage.setItem(
+        "workoraSavedJobs",
+        JSON.stringify(savedJobs)
+    );
+
+
+    renderJobs();
+
+}
+
+
+/* =====================================================
+   SALARY VALUE
+===================================================== */
+
+function getSalaryValue(salary) {
+
+    const numbers =
+        String(salary || "")
+            .replace(/,/g, "")
+            .match(/\d+(?:\.\d+)?/g);
+
+
+    if (!numbers) {
+
+        return 0;
+
+    }
+
+
+    return Math.max(
+        ...numbers.map(Number)
+    );
+
+}
+
+
+/* =====================================================
+   SALARY FILTER
+===================================================== */
+
+function matchesSalary(
+    job,
+    selected
+) {
+
+    if (!selected) {
+
+        return true;
+
+    }
+
+
+    const salary =
+        getSalaryValue(
+            job.salary
+        );
+
+
+    if (selected === "0-5") {
+
+        return salary <= 5;
+
+    }
+
+
+    if (selected === "5-10") {
+
+        return (
+            salary >= 5 &&
+            salary <= 10
+        );
+
+    }
+
+
+    if (selected === "10-15") {
+
+        return (
+            salary >= 10 &&
+            salary <= 15
+        );
+
+    }
+
+
+    if (selected === "15+") {
+
+        return salary >= 15;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =====================================================
+   CREATE JOB CARD
+===================================================== */
+
+function createJobCard(job) {
+
+    const savedJobs =
+        getSavedJobs();
+
+
+    const jobId =
+        String(job.id);
+
+
+    const isSaved =
+        savedJobs.includes(
+            jobId
+        );
+
+
+    const logo =
+        String(
+            job.company || "W"
+        )
+        .charAt(0)
+        .toUpperCase();
+
+
+    const tags = [
+
+        job.type,
+        job.workMode,
+        job.experience
+
+    ].filter(Boolean);
+
+
+    const card =
+        document.createElement(
+            "article"
+        );
+
+
+    card.className =
+        "jobs-page-card";
+
+
+    card.innerHTML = `
+
+        <div class="job-card-header">
+
+            <div class="job-main-info">
+
+                <div class="job-company-logo">
+                    ${escapeHtml(logo)}
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        ${escapeHtml(job.title)}
+                    </h3>
+
+
+                    <p class="job-company">
+                        ${escapeHtml(job.company)}
+                    </p>
+
+
+                    <p class="job-location">
+                        📍 ${escapeHtml(job.location)}
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="save-job-btn ${isSaved ? "saved" : ""}"
+                data-save-id="${escapeHtml(jobId)}"
+                title="${isSaved ? "Remove from Saved Jobs" : "Save Job"}"
+            >
+                ${isSaved ? "♥" : "♡"}
+            </button>
+
+        </div>
+
+
+        <div class="job-page-tags">
+
+            ${tags.map(function (tag) {
+
+                return `
+
+                    <span>
+                        ${escapeHtml(tag)}
+                    </span>
+
+                `;
+
+            }).join("")}
+
+        </div>
+
+
+        <div class="job-page-footer">
+
+            <div class="job-salary">
+
+                <strong>
+                    ${escapeHtml(job.salary)}
+                </strong>
+
+
+                <small>
+                    ${escapeHtml(job.category)}
+                </small>
+
+            </div>
+
+
+            <a
+                href="job-details.html?job=${encodeURIComponent(jobId)}"
+                class="view-job-btn"
+            >
+                View Details →
+            </a>
+
+        </div>
+
+    `;
+
+
+    const saveButton =
+        card.querySelector(
+            ".save-job-btn"
+        );
+
+
+    if (saveButton) {
+
+        saveButton.addEventListener(
+            "click",
+            function () {
+
+                saveJob(
+                    jobId
+                );
+
+            }
+        );
+
+    }
+
+
+    return card;
+
+}
+
+
+/* =====================================================
+   FILTER JOBS
+===================================================== */
+
+function filterJobs() {
+
+    const search =
+        jobSearch.value
+            .toLowerCase()
+            .trim();
+
+
+    const location =
+        locationSearch.value
+            .toLowerCase()
+            .trim();
+
+
+    const type =
+        jobTypeFilter.value;
+
+
+    const mode =
+        workModeFilter.value;
+
+
+    const experience =
+        experienceFilter.value;
+
+
+    const salary =
+        salaryFilter.value;
+
+
+    return allJobs.filter(
+        function (job) {
+
+
+            const title =
+                String(
+                    job.title || ""
+                )
+                .toLowerCase();
+
+
+            const company =
+                String(
+                    job.company || ""
+                )
+                .toLowerCase();
+
+
+            const jobLocation =
+                String(
+                    job.location || ""
+                )
+                .toLowerCase();
+
+
+            const category =
+                String(
+                    job.category || ""
+                )
+                .toLowerCase();
+
+
+            const skills =
+                Array.isArray(job.skills)
+                    ? job.skills
+                        .join(" ")
+                        .toLowerCase()
+                    : "";
+
+
+            const matchesSearch =
+                !search ||
+                title.includes(search) ||
+                company.includes(search) ||
+                category.includes(search) ||
+                skills.includes(search);
+
+
+            const matchesLocation =
+                !location ||
+                jobLocation.includes(
+                    location
+                );
+
+
+            const matchesType =
+                !type ||
+                String(job.type)
+                    .toLowerCase() ===
+                type.toLowerCase();
+
+
+            const matchesMode =
+                !mode ||
+                String(job.workMode)
+                    .toLowerCase() ===
+                mode.toLowerCase();
+
+
+            const matchesExperience =
+                !experience ||
+                String(job.experience)
+                    .toLowerCase() ===
+                experience.toLowerCase();
+
+
+            const matchesSalaryFilter =
+                matchesSalary(
+                    job,
+                    salary
+                );
+
+
+            return (
+
+                matchesSearch &&
+                matchesLocation &&
+                matchesType &&
+                matchesMode &&
+                matchesExperience &&
+                matchesSalaryFilter
+
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   RENDER JOBS
+===================================================== */
+
+function renderJobs() {
+
+    const filteredJobs =
+        filterJobs();
+
+
+    jobsList.innerHTML =
+        "";
+
+
+    jobsCount.textContent =
+        `${filteredJobs.length} ${
+            filteredJobs.length === 1
+                ? "job"
+                : "jobs"
+        }`;
+
+
+    if (
+        filteredJobs.length === 0
+    ) {
+
+        noJobs.style.display =
+            "block";
+
+        return;
+
+    }
+
+
+    noJobs.style.display =
+        "none";
+
+
+    filteredJobs.forEach(
+        function (job) {
+
+            jobsList.appendChild(
+                createJobCard(job)
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   SEARCH BUTTON
+===================================================== */
+
+searchBtn.addEventListener(
+    "click",
+    renderJobs
+);
+
+
+/* =====================================================
+   ENTER SEARCH
+===================================================== */
+
+jobSearch.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            event.preventDefault();
+
+            renderJobs();
+
+        }
+
+    }
+);
+
+
+locationSearch.addEventListener(
+    "keydown",
+    function (event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            event.preventDefault();
+
+            renderJobs();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   FILTER EVENTS
+===================================================== */
+
+jobTypeFilter.addEventListener(
+    "change",
+    renderJobs
+);
+
+
+workModeFilter.addEventListener(
+    "change",
+    renderJobs
+);
+
+
+experienceFilter.addEventListener(
+    "change",
+    renderJobs
+);
+
+
+salaryFilter.addEventListener(
+    "change",
+    renderJobs
+);
+
+
+/* =====================================================
+   CLEAR FILTERS
+===================================================== */
+
+clearFilters.addEventListener(
+    "click",
+    function () {
+
+        jobSearch.value =
+            "";
+
+        locationSearch.value =
+            "";
+
+        jobTypeFilter.value =
+            "";
+
+        workModeFilter.value =
+            "";
+
+        experienceFilter.value =
+            "";
+
+        renderJobs();
+
+    }
+);
+
+
+/* =====================================================
+   MOBILE MENU
+===================================================== */
+
+const menuBtn =
+    document.getElementById(
+        "menuBtn"
+    );
+
+
+const navLinks =
+    document.querySelector(
+        ".nav-links"
+    );
+
+
+if (
+    menuBtn &&
+    navLinks
+) {
+
+    menuBtn.addEventListener(
+        "click",
+        function () {
+
+            navLinks.classList.toggle(
+                "active"
+            );
+
+
+            menuBtn.classList.toggle(
+                "active"
+            );
+
+        }
+    );
+
+
+    navLinks
+        .querySelectorAll("a")
+        .forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    function () {
+
+                        navLinks.classList.remove(
+                            "active"
+                        );
+
+
+                        menuBtn.classList.remove(
+                            "active"
+                        );
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+/* =====================================================
+   LOGIN / AUTHENTICATION
+   ===================================================== */
+
+const guestNav =
+    document.getElementById(
+        "guestNav"
+    );
+
+
+const userNav =
+    document.getElementById(
+        "userNav"
+    );
+
+
+const profileNavName =
+    document.getElementById(
+        "profileNavName"
+    );
+
+
+const logoutBtn =
+    document.getElementById(
+        "logoutBtn"
+    );
+
+
+/* =====================================================
+   GET LOGGED IN USER
+
+   login.html saves:
+   workoraLoggedIn = JSON.stringify({
+       name: ...,
+       email: ...
+   })
+===================================================== */
+
+function getLoggedInUser() {
+
+    try {
+
+        const storedUser =
+            localStorage.getItem(
+                "workoraLoggedIn"
+            );
+
+
+        if (!storedUser) {
+
+            return null;
+
+        }
+
+
+        const user =
+            JSON.parse(
+                storedUser
+            );
+
+
+        if (
+            user &&
+            typeof user === "object"
+        ) {
+
+            return user;
+
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "Workora authentication error:",
+            error
+        );
+
+    }
+
+
+    return null;
+
+}
+
+
+/* =====================================================
+   UPDATE AUTH NAVBAR
+===================================================== */
+
+function updateAuthNavbar() {
+
+    const loggedInUser =
+        getLoggedInUser();
+
+
+    /* =================================================
+       LOGGED IN
+    ================================================= */
+
+    if (loggedInUser) {
+
+
+        /* Hide Login + Register */
+
+        if (guestNav) {
+
+            guestNav.style.display =
+                "none";
+
+        }
+
+
+        /* Show Dashboard + Profile + Logout */
+
+        if (userNav) {
+
+            userNav.style.display =
+                "flex";
+
+        }
+
+
+        /* Show User Name */
+
+        if (profileNavName) {
+
+            profileNavName.textContent =
+                loggedInUser.name ||
+                "Profile";
+
+        }
+
+
+    }
+
+
+    /* =================================================
+       NOT LOGGED IN
+    ================================================= */
+
+    else {
+
+
+        /* Show Login + Register */
+
+        if (guestNav) {
+
+            guestNav.style.display =
+                "flex";
+
+        }
+
+
+        /* Hide Dashboard + Profile + Logout */
+
+        if (userNav) {
+
+            userNav.style.display =
+                "none";
+
+        }
+
+    }
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener(
+        "click",
+        function () {
+
+
+            /* Remove login state */
+
+            localStorage.removeItem(
+                "workoraLoggedIn"
+            );
+
+
+            /* Remove remember state */
+
+            localStorage.removeItem(
+                "workoraRememberMe"
+            );
+
+
+            /* Redirect */
+
+            window.location.href =
+                "index.html";
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   INITIALIZE AUTH NAVBAR
+===================================================== */
+
+updateAuthNavbar();
+
+
+/* =====================================================
+   INITIALIZE JOBS
+===================================================== */
+
+console.log(
+    "Workora jobs loaded:",
+    defaultJobs.length
+);
+
+
+renderJobs();
+
+</script>
+
+
+</body>
+
+</html>

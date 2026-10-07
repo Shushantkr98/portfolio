@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employer Dashboard | Workora.AI</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =====================================================
+           EMPLOYER DASHBOARD
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Inter", sans-serif;
+        }
+
+        .employer-page {
+            min-height: 100vh;
+            padding: 120px 6% 60px;
+        }
+
+        .employer-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 30px;
+            margin-bottom: 35px;
+        }
+
+        .dashboard-heading span {
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #8b5cf6;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .dashboard-heading h1 {
+            margin: 0 0 10px;
+            font-size: clamp(32px, 5vw, 48px);
+            line-height: 1.1;
+            font-weight: 800;
+        }
+
+        .dashboard-heading p {
+            margin: 0;
+            max-width: 650px;
+            color: #888;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .post-job-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 20px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(
+                135deg,
+                #8b5cf6,
+                #6366f1
+            );
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .post-job-btn:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 15px 35px
+                rgba(99, 102, 241, 0.3);
+        }
+
+        /* =====================================================
+           STATS
+        ===================================================== */
+
+        .employer-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            padding: 22px;
+            border: 1px solid rgba(139, 92, 246, 0.14);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            transition: 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(139, 92, 246, 0.35);
+        }
+
+        .stat-icon {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            background: rgba(139, 92, 246, 0.1);
+            font-size: 20px;
+        }
+
+        .stat-card h2 {
+            margin: 0 0 5px;
+            font-size: 28px;
+        }
+
+        .stat-card p {
+            margin: 0;
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* =====================================================
+           MAIN GRID
+        ===================================================== */
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 22px;
+        }
+
+        .dashboard-card {
+            padding: 25px;
+            border: 1px solid rgba(139, 92, 246, 0.13);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 22px;
+        }
+
+        .card-header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .card-header a {
+            color: #8b5cf6;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* =====================================================
+           JOB LIST
+        ===================================================== */
+
+        .job-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .job-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            padding: 16px;
+            border: 1px solid rgba(139, 92, 246, 0.09);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: 0.3s ease;
+        }
+
+        .job-item:hover {
+            border-color: rgba(139, 92, 246, 0.25);
+            transform: translateX(3px);
+        }
+
+        .job-left {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            min-width: 0;
+        }
+
+        .job-logo {
+            width: 46px;
+            height: 46px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(139, 92, 246, 0.1);
+            color: #8b5cf6;
+            font-weight: 800;
+        }
+
+        .job-text {
+            min-width: 0;
+        }
+
+        .job-text h3 {
+            margin: 0 0 5px;
+            font-size: 14px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .job-text p {
+            margin: 0;
+            color: #888;
+            font-size: 12px;
+        }
+
+        .job-status {
+            padding: 6px 10px;
+            border-radius: 50px;
+            color: #22c55e;
+            background: rgba(34, 197, 94, 0.09);
+            border: 1px solid rgba(34, 197, 94, 0.15);
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* =====================================================
+           QUICK ACTIONS
+        ===================================================== */
+
+        .quick-actions {
+            display: grid;
+            gap: 12px;
+        }
+
+        .quick-action {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 15px;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            border-radius: 14px;
+            color: inherit;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .quick-action:hover {
+            transform: translateX(4px);
+            border-color: rgba(139, 92, 246, 0.3);
+            background: rgba(139, 92, 246, 0.04);
+        }
+
+        .quick-icon {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            border-radius: 11px;
+            background: rgba(139, 92, 246, 0.1);
+            font-size: 18px;
+        }
+
+        .quick-action h3 {
+            margin: 0 0 4px;
+            font-size: 14px;
+        }
+
+        .quick-action p {
+            margin: 0;
+            color: #888;
+            font-size: 11px;
+        }
+
+        /* =====================================================
+           EMPTY STATE
+        ===================================================== */
+
+        .empty-jobs {
+            padding: 35px 15px;
+            text-align: center;
+            border: 1px dashed rgba(139, 92, 246, 0.18);
+            border-radius: 14px;
+        }
+
+        .empty-jobs .empty-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .empty-jobs h3 {
+            margin: 0 0 7px;
+            font-size: 16px;
+        }
+
+        .empty-jobs p {
+            margin: 0 0 18px;
+            color: #888;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        /* =====================================================
+           ACTIVITY
+        ===================================================== */
+
+        .activity-list {
+            display: grid;
+            gap: 17px;
+        }
+
+        .activity-item {
+            display: flex;
+            gap: 13px;
+            align-items: flex-start;
+        }
+
+        .activity-dot {
+            width: 10px;
+            height: 10px;
+            margin-top: 5px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: #8b5cf6;
+            box-shadow:
+                0 0 0 5px
+                rgba(139, 92, 246, 0.08);
+        }
+
+        .activity-item h4 {
+            margin: 0 0 4px;
+            font-size: 13px;
+        }
+
+        .activity-item p {
+            margin: 0;
+            color: #888;
+            font-size: 11px;
+        }
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 950px) {
+
+            .employer-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 650px) {
+
+            .employer-page {
+                padding: 100px 20px 40px;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .post-job-btn {
+                width: 100%;
+            }
+
+            .employer-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .job-item {
+                align-items: flex-start;
+            }
+
+            .job-status {
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                Workora<span>.AI</span>
+            </a>
+
+
+            <nav class="nav-menu">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="jobs.html">
+                    Jobs
+                </a>
+
+                <a href="employer-dashboard.html"
+                   class="active">
+                    Employer Dashboard
+                </a>
+
+                <a href="profile.html">
+                    Profile
+                </a>
+
+            </nav>
+
+
+            <button
+                class="mobile-menu-btn"
+                id="mobileMenuBtn"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ===================================================== -->
+
+    <main class="employer-page">
+
+        <div class="employer-container">
+
+
+            <!-- HEADER -->
+
+            <section class="dashboard-header">
+
+                <div class="dashboard-heading">
+
+                    <span>
+                        Employer Panel
+                    </span>
+
+                    <h1>
+                        Employer Dashboard
+                    </h1>
+
+                    <p>
+                        Manage your job postings, track applications,
+                        and connect with the right candidates from
+                        one place.
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="post-job.html"
+                    class="post-job-btn"
+                >
+                    + Post a Job
+                </a>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 STATS
+            ================================================= -->
+
+            <section class="employer-stats">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        💼
+                    </div>
+
+                    <h2 id="totalJobs">
+                        0
+                    </h2>
+
+                    <p>
+                        Total Jobs
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        🟢
+                    </div>
+
+                    <h2 id="activeJobs">
+                        0
+                    </h2>
+
+                    <p>
+                        Active Jobs
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        👥
+                    </div>
+
+                    <h2 id="totalApplicants">
+                        0
+                    </h2>
+
+                    <p>
+                        Total Applicants
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ⭐
+                    </div>
+
+                    <h2 id="shortlistedApplicants">
+                        0
+                    </h2>
+
+                    <p>
+                        Shortlisted
+                    </p>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 DASHBOARD GRID
+            ================================================= -->
+
+            <section class="dashboard-grid">
+
+
+                <!-- =============================================
+                     RECENT JOBS
+                ============================================== -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <h2>
+                            Recent Job Postings
+                        </h2>
+
+                        <a href="manage-jobs.html">
+                            View All
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="job-list"
+                        id="jobList"
+                    ></div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     QUICK ACTIONS
+                ============================================== -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <h2>
+                            Quick Actions
+                        </h2>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+
+                        <a
+                            href="post-job.html"
+                            class="quick-action"
+                        >
+
+                            <div class="quick-icon">
+                                ➕
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Post New Job
+                                </h3>
+
+                                <p>
+                                    Create a new job opening
+                                </p>
+
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="manage-jobs.html"
+                            class="quick-action"
+                        >
+
+                            <div class="quick-icon">
+                                📋
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Manage Jobs
+                                </h3>
+
+                                <p>
+                                    Edit or remove job postings
+                                </p>
+
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="employer-applicants.html"
+                            class="quick-action"
+                        >
+
+                            <div class="quick-icon">
+                                👥
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    View Applicants
+                                </h3>
+
+                                <p>
+                                    Review candidate applications
+                                </p>
+
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="profile.html"
+                            class="quick-action"
+                        >
+
+                            <div class="quick-icon">
+                                ⚙️
+                            </div>
+
+                            <div>
+
+                                <h3>
+                                    Company Profile
+                                </h3>
+
+                                <p>
+                                    Update your company information
+                                </p>
+
+                            </div>
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     RECENT ACTIVITY
+                ============================================== -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <h2>
+                            Recent Activity
+                        </h2>
+
+                    </div>
+
+
+                    <div class="activity-list">
+
+
+                        <div class="activity-item">
+
+                            <div class="activity-dot"></div>
+
+                            <div>
+
+                                <h4>
+                                    Employer dashboard created
+                                </h4>
+
+                                <p>
+                                    Your employer workspace is ready.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-item">
+
+                            <div class="activity-dot"></div>
+
+                            <div>
+
+                                <h4>
+                                    Start posting jobs
+                                </h4>
+
+                                <p>
+                                    Create your first job opening.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="activity-item">
+
+                            <div class="activity-dot"></div>
+
+                            <div>
+
+                                <h4>
+                                    Candidate applications
+                                </h4>
+
+                                <p>
+                                    Applications will appear here
+                                    once candidates apply.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     GET STARTED
+                ============================================== -->
+
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <h2>
+                            Get Started
+                        </h2>
+
+                    </div>
+
+
+                    <div class="empty-jobs">
+
+                        <div class="empty-icon">
+                            🚀
+                        </div>
+
+                        <h3>
+                            Build Your Hiring Pipeline
+                        </h3>
+
+                        <p>
+                            Post your first job and start receiving
+                            applications from candidates.
+                        </p>
+
+                        <a
+                            href="post-job.html"
+                            class="post-job-btn"
+                        >
+                            Post Your First Job
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+        /*
+         * Employer jobs storage
+         *
+         * Future post-job page will save jobs here.
+         */
+
+        const EMPLOYER_JOBS_KEY =
+            "workoraEmployerJobs";
+
+
+        const APPLICATIONS_KEY =
+            "workoraApplications";
+
+
+        /* =====================================================
+           GET JOBS
+        ===================================================== */
+
+        function getEmployerJobs() {
+
+            try {
+
+                const data =
+                    localStorage.getItem(
+                        EMPLOYER_JOBS_KEY
+                    );
+
+                if (!data) {
+                    return [];
+                }
+
+                const jobs =
+                    JSON.parse(data);
+
+                return Array.isArray(jobs)
+                    ? jobs
+                    : [];
+
+            } catch (error) {
+
+                console.error(error);
+
+                return [];
+
+            }
+
+        }
+
+
+        /* =====================================================
+           GET APPLICATIONS
+        ===================================================== */
+
+        function getApplications() {
+
+            try {
+
+                const data =
+                    localStorage.getItem(
+                        APPLICATIONS_KEY
+                    );
+
+                if (!data) {
+                    return [];
+                }
+
+                const applications =
+                    JSON.parse(data);
+
+                return Array.isArray(applications)
+                    ? applications
+                    : [];
+
+            } catch (error) {
+
+                console.error(error);
+
+                return [];
+
+            }
+
+        }
+
+
+        /* =====================================================
+           UPDATE DASHBOARD
+        ===================================================== */
+
+        function updateDashboard() {
+
+            const jobs =
+                getEmployerJobs();
+
+            const applications =
+                getApplications();
+
+
+            /*
+             * Total jobs
+             */
+
+            document.getElementById(
+                "totalJobs"
+            ).textContent =
+                jobs.length;
+
+
+            /*
+             * Active jobs
+             */
+
+            const activeJobs =
+                jobs.filter(
+                    job =>
+                        job.status !== "closed"
+                );
+
+            document.getElementById(
+                "activeJobs"
+            ).textContent =
+                activeJobs.length;
+
+
+            /*
+             * Total applicants
+             */
+
+            document.getElementById(
+                "totalApplicants"
+            ).textContent =
+                applications.length;
+
+
+            /*
+             * Shortlisted
+             */
+
+            const shortlisted =
+                applications.filter(
+                    application =>
+                        application.status ===
+                        "Shortlisted"
+                );
+
+            document.getElementById(
+                "shortlistedApplicants"
+            ).textContent =
+                shortlisted.length;
+
+
+            /*
+             * Render jobs
+             */
+
+            renderJobs(jobs);
+
+        }
+
+
+        /* =====================================================
+           RENDER JOBS
+        ===================================================== */
+
+        function renderJobs(jobs) {
+
+            const jobList =
+                document.getElementById(
+                    "jobList"
+                );
+
+
+            jobList.innerHTML = "";
+
+
+            /*
+             * No jobs yet
+             */
+
+            if (jobs.length === 0) {
+
+                jobList.innerHTML = `
+
+                    <div class="empty-jobs">
+
+                        <div class="empty-icon">
+                            💼
+                        </div>
+
+                        <h3>
+                            No Jobs Posted Yet
+                        </h3>
+
+                        <p>
+                            Create your first job opening
+                            to start hiring candidates.
+                        </p>
+
+                        <a
+                            href="post-job.html"
+                            class="post-job-btn"
+                        >
+                            + Post a Job
+                        </a>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            /*
+             * Latest 5 jobs
+             */
+
+            const recentJobs =
+                [...jobs]
+                    .reverse()
+                    .slice(0, 5);
+
+
+            recentJobs.forEach(
+                job => {
+
+                    const item =
+                        document.createElement(
+                            "div"
+                        );
+
+                    item.className =
+                        "job-item";
+
+
+                    const title =
+                        job.title ||
+                        "Untitled Job";
+
+
+                    const company =
+                        job.company ||
+                        "Your Company";
+
+
+                    const location =
+                        job.location ||
+                        "Location not specified";
+
+
+                    const status =
+                        job.status ||
+                        "active";
+
+
+                    item.innerHTML = `
+
+                        <div class="job-left">
+
+                            <div class="job-logo">
+                                ${company
+                                    .charAt(0)
+                                    .toUpperCase()}
+                            </div>
+
+                            <div class="job-text">
+
+                                <h3>
+                                    ${title}
+                                </h3>
+
+                                <p>
+                                    ${company}
+                                    •
+                                    ${location}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <span class="job-status">
+                            ${status === "closed"
+                                ? "Closed"
+                                : "Active"}
+                        </span>
+
+                    `;
+
+
+                    jobList.appendChild(item);
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
+
+        const mobileMenuBtn =
+            document.getElementById(
+                "mobileMenuBtn"
+            );
+
+
+        const navMenu =
+            document.querySelector(
+                ".nav-menu"
+            );
+
+
+        if (
+            mobileMenuBtn &&
+            navMenu
+        ) {
+
+            mobileMenuBtn.addEventListener(
+                "click",
+                () => {
+
+                    navMenu.classList.toggle(
+                        "active"
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           INITIAL LOAD
+        ===================================================== */
+
+        updateDashboard();
+
+    </script>
+
+</body>
+
+</html>

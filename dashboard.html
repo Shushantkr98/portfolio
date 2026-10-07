@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | Workora</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* ========================================
+           DASHBOARD
+        ======================================== */
+
+        .dashboard-page {
+            padding: 120px 0 70px;
+            min-height: 100vh;
+            background: #f8fbff;
+        }
+
+        .dashboard-header {
+            margin-bottom: 35px;
+        }
+
+        .dashboard-header h1 {
+            margin: 0 0 8px;
+            font-size: 36px;
+            font-weight: 800;
+            color: #0f172a;
+        }
+
+        .dashboard-header p {
+            margin: 0;
+            color: #64748b;
+            font-size: 16px;
+        }
+
+
+        /* ========================================
+           DASHBOARD GRID
+        ======================================== */
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-bottom: 35px;
+        }
+
+
+        /* ========================================
+           STAT CARD
+        ======================================== */
+
+        .dashboard-stat {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .dashboard-stat:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.10);
+        }
+
+        .stat-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 14px;
+            background: #eff6ff;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            flex-shrink: 0;
+        }
+
+        .stat-info span {
+            display: block;
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 5px;
+        }
+
+        .stat-info strong {
+            display: block;
+            font-size: 28px;
+            color: #0f172a;
+        }
+
+
+        /* ========================================
+           MAIN DASHBOARD CONTENT
+        ======================================== */
+
+        .dashboard-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 25px;
+            align-items: start;
+        }
+
+        .dashboard-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .dashboard-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .dashboard-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 22px;
+        }
+
+        .dashboard-card-header h2 {
+            margin: 0;
+            font-size: 20px;
+            color: #0f172a;
+        }
+
+        .dashboard-card-header a {
+            color: #2563eb;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .dashboard-card-header a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* ========================================
+           SAVED JOB
+        ======================================== */
+
+        .dashboard-job {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 18px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .dashboard-job:first-child {
+            padding-top: 0;
+        }
+
+        .dashboard-job:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .dashboard-job-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            min-width: 0;
+        }
+
+        .dashboard-company-logo {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: #eff6ff;
+            color: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .dashboard-job-text h3 {
+            margin: 0 0 5px;
+            font-size: 16px;
+            color: #0f172a;
+        }
+
+        .dashboard-job-text p {
+            margin: 0;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        .dashboard-job-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 9px 14px;
+            border-radius: 9px;
+            background: #eff6ff;
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .dashboard-job-btn:hover {
+            background: #2563eb;
+            color: #ffffff;
+        }
+
+
+        /* ========================================
+           APPLICATION
+        ======================================== */
+
+        .application-item {
+            padding: 18px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .application-item:first-child {
+            padding-top: 0;
+        }
+
+        .application-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .application-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .application-top h3 {
+            margin: 0 0 5px;
+            font-size: 16px;
+            color: #0f172a;
+        }
+
+        .application-top p {
+            margin: 0;
+            font-size: 13px;
+            color: #64748b;
+        }
+
+        .application-status {
+            padding: 6px 10px;
+            border-radius: 20px;
+            background: #eff6ff;
+            color: #2563eb;
+            font-size: 12px;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+
+        /* ========================================
+           PROFILE OVERVIEW
+        ======================================== */
+
+        .profile-overview {
+            text-align: center;
+        }
+
+        .dashboard-avatar {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 15px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-weight: 800;
+        }
+
+        .profile-overview h2 {
+            margin: 0 0 5px;
+            color: #0f172a;
+            font-size: 20px;
+        }
+
+        .profile-overview p {
+            margin: 0 0 20px;
+            color: #64748b;
+            font-size: 14px;
+            word-break: break-word;
+        }
+
+        .profile-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            background: #2563eb;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .profile-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+
+        /* ========================================
+           QUICK ACTIONS
+        ======================================== */
+
+        .quick-actions {
+            display: grid;
+            gap: 12px;
+        }
+
+        .quick-action {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 13px 15px;
+            border-radius: 10px;
+            background: #f8fafc;
+            color: #334155;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .quick-action:hover {
+            background: #eff6ff;
+            color: #2563eb;
+            transform: translateX(3px);
+        }
+
+        .quick-action span {
+            font-size: 19px;
+        }
+
+
+        /* ========================================
+           EMPTY STATE
+        ======================================== */
+
+        .dashboard-empty {
+            text-align: center;
+            padding: 25px 10px 5px;
+            color: #64748b;
+        }
+
+        .dashboard-empty-icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-empty p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+
+        /* ========================================
+           RESPONSIVE
+        ======================================== */
+
+        @media (max-width: 900px) {
+
+            .dashboard-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-content {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .dashboard-page {
+                padding: 100px 0 50px;
+            }
+
+            .dashboard-header h1 {
+                font-size: 28px;
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-card {
+                padding: 20px;
+            }
+
+            .dashboard-job {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .dashboard-job-btn {
+                width: 100%;
+            }
+
+            .application-top {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         NAVBAR
+    ======================================== -->
+
+    <header class="navbar">
+
+        <div class="container nav-container">
+
+            <a href="index.html" class="logo">
+                <span>W</span> Workora
+            </a>
+
+
+            <nav class="nav-links">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="index.html#jobs">
+                    Jobs
+                </a>
+
+                <a href="index.html#companies">
+                    Companies
+                </a>
+
+                <a href="index.html#about">
+                    About
+                </a>
+
+                <a href="saved-jobs.html">
+                    ♡ Saved Jobs
+                </a>
+
+            </nav>
+
+
+            <div class="nav-actions">
+
+                <a
+                    href="profile.html"
+                    class="profile-nav-btn"
+                >
+                    <span class="profile-icon">👤</span>
+                    <span id="navProfileName">Profile</span>
+                </a>
+
+                <button
+                    type="button"
+                    class="logout-btn"
+                    id="dashboardLogout"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+
+            <button
+                class="menu-btn"
+                id="menuBtn"
+                type="button"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ========================================
+         DASHBOARD
+    ======================================== -->
+
+    <main class="dashboard-page">
+
+        <div class="container">
+
+
+            <!-- Dashboard Heading -->
+
+            <div class="dashboard-header">
+
+                <h1>
+                    Welcome back,
+                    <span id="dashboardUserName">
+                        User
+                    </span> 👋
+                </h1>
+
+                <p>
+                    Manage your jobs, applications and profile from one place.
+                </p>
+
+            </div>
+
+
+
+            <!-- ========================================
+                 STAT CARDS
+            ======================================== -->
+
+            <div class="dashboard-grid">
+
+
+                <!-- Saved Jobs -->
+
+                <div class="dashboard-stat">
+
+                    <div class="stat-icon">
+                        ❤️
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>
+                            Saved Jobs
+                        </span>
+
+                        <strong id="savedJobsCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Applications -->
+
+                <div class="dashboard-stat">
+
+                    <div class="stat-icon">
+                        📋
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>
+                            Applications
+                        </span>
+
+                        <strong id="applicationsCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Skills -->
+
+                <div class="dashboard-stat">
+
+                    <div class="stat-icon">
+                        💡
+                    </div>
+
+                    <div class="stat-info">
+
+                        <span>
+                            Skills Added
+                        </span>
+
+                        <strong id="skillsCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ========================================
+                 MAIN CONTENT
+            ======================================== -->
+
+            <div class="dashboard-content">
+
+
+                <!-- LEFT COLUMN -->
+
+                <div>
+
+
+                    <!-- Saved Jobs -->
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-card-header">
+
+                            <h2>
+                                ❤️ Saved Jobs
+                            </h2>
+
+                            <a href="saved-jobs.html">
+                                View All
+                            </a>
+
+                        </div>
+
+
+                        <div id="dashboardSavedJobs">
+
+                            <!-- Jobs will be inserted by JavaScript -->
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Applications -->
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-card-header">
+
+                            <h2>
+                                📋 My Applications
+                            </h2>
+
+                        </div>
+
+
+                        <div id="dashboardApplications">
+
+                            <!-- Applications will be inserted by JavaScript -->
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- RIGHT COLUMN -->
+
+                <div>
+
+
+                    <!-- Profile -->
+
+                    <div class="dashboard-card profile-overview">
+
+                        <div class="dashboard-avatar" id="dashboardAvatar">
+                            U
+                        </div>
+
+                        <h2 id="profileName">
+                            User
+                        </h2>
+
+                        <p id="profileEmail">
+                            user@example.com
+                        </p>
+
+                        <a
+                            href="profile.html"
+                            class="profile-btn"
+                        >
+                            Edit Profile
+                        </a>
+
+                    </div>
+
+
+
+                    <!-- Quick Actions -->
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-card-header">
+
+                            <h2>
+                                Quick Actions
+                            </h2>
+
+                        </div>
+
+
+                        <div class="quick-actions">
+
+                            <a
+                                href="index.html#jobs"
+                                class="quick-action"
+                            >
+                                <span>🔎</span>
+                                Find Jobs
+                            </a>
+
+                            <a
+                                href="saved-jobs.html"
+                                class="quick-action"
+                            >
+                                <span>❤️</span>
+                                Saved Jobs
+                            </a>
+
+                            <!-- My Applications -->
+
+                            <a
+                                href="my-applications.html"
+                                class="quick-action"
+                            >
+                                <span>📋</span>
+                                My Applications
+                            </a>
+
+                            <a
+                                href="profile.html"
+                                class="quick-action"
+                            >
+                                <span>👤</span>
+                                Update Profile
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- ========================================
+         DASHBOARD JAVASCRIPT
+    ======================================== -->
+
+    <script>
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+
+                /* ========================================
+                   LOGIN CHECK
+                ======================================== */
+
+                const loggedInUser =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "workoraLoggedIn"
+                        )
+                    );
+
+
+                /*
+                   Dashboard sirf logged-in
+                   user ke liye hai.
+                */
+
+                if (!loggedInUser) {
+
+                    window.location.href =
+                        "login.html";
+
+                    return;
+
+                }
+
+
+
+                /* ========================================
+                   USER INFORMATION
+                ======================================== */
+
+                const userName =
+                    loggedInUser.name ||
+                    "User";
+
+                const userEmail =
+                    loggedInUser.email ||
+                    "user@example.com";
+
+
+                document.getElementById(
+                    "dashboardUserName"
+                ).textContent = userName;
+
+
+                document.getElementById(
+                    "profileName"
+                ).textContent = userName;
+
+
+                document.getElementById(
+                    "profileEmail"
+                ).textContent = userEmail;
+
+
+                document.getElementById(
+                    "navProfileName"
+                ).textContent = userName;
+
+
+
+                /* ========================================
+                   PROFILE AVATAR
+                ======================================== */
+
+                const avatar =
+                    document.getElementById(
+                        "dashboardAvatar"
+                    );
+
+                avatar.textContent =
+                    userName
+                        .charAt(0)
+                        .toUpperCase();
+
+
+
+                /* ========================================
+                   STORAGE KEYS
+                ======================================== */
+
+                const SAVED_JOBS_KEY =
+                    "workoraSavedJobs";
+
+                const APPLICATIONS_KEY =
+                    "workoraApplications";
+
+                const PROFILE_KEY =
+                    "workoraUserProfile";
+
+
+
+                /* ========================================
+                   SAVED JOBS
+                ======================================== */
+
+                let savedJobs =
+                    JSON.parse(
+                        localStorage.getItem(
+                            SAVED_JOBS_KEY
+                        )
+                    ) || [];
+
+
+                document.getElementById(
+                    "savedJobsCount"
+                ).textContent =
+                    savedJobs.length;
+
+
+
+                /*
+                   Job information
+                   Existing Workora jobs.
+                */
+
+                const jobs = {
+
+                    frontend: {
+                        title:
+                            "Frontend Developer",
+                        company:
+                            "Google Technologies",
+                        location:
+                            "Delhi",
+                        salary:
+                            "₹6-10 LPA",
+                        icon:
+                            "G"
+                    },
+
+                    java: {
+                        title:
+                            "Java Developer",
+                        company:
+                            "Microsoft",
+                        location:
+                            "Bangalore",
+                        salary:
+                            "₹8-14 LPA",
+                        icon:
+                            "M"
+                    },
+
+                    designer: {
+                        title:
+                            "UI/UX Designer",
+                        company:
+                            "Adobe",
+                        location:
+                            "Mumbai",
+                        salary:
+                            "₹5-9 LPA",
+                        icon:
+                            "A"
+                    }
+
+                };
+
+
+
+                /* ========================================
+                   SHOW SAVED JOBS
+                ======================================== */
+
+                const savedJobsContainer =
+                    document.getElementById(
+                        "dashboardSavedJobs"
+                    );
+
+
+                if (savedJobs.length === 0) {
+
+                    savedJobsContainer.innerHTML = `
+
+                        <div class="dashboard-empty">
+
+                            <div class="dashboard-empty-icon">
+                                ❤️
+                            </div>
+
+                            <p>
+                                You haven't saved any jobs yet.
+                            </p>
+
+                        </div>
+
+                    `;
+
+                } else {
+
+
+                    /*
+                       Sirf latest 3 saved jobs
+                       dashboard par show karenge.
+                    */
+
+                    const latestSaved =
+                        savedJobs.slice(0, 3);
+
+
+                    latestSaved.forEach(
+                        function (jobId) {
+
+
+                            const job =
+                                jobs[jobId];
+
+
+                            if (!job) {
+                                return;
+                            }
+
+
+                            savedJobsContainer.innerHTML += `
+
+                                <div class="dashboard-job">
+
+                                    <div class="dashboard-job-info">
+
+                                        <div class="dashboard-company-logo">
+                                            ${job.icon}
+                                        </div>
+
+                                        <div class="dashboard-job-text">
+
+                                            <h3>
+                                                ${job.title}
+                                            </h3>
+
+                                            <p>
+                                                ${job.company}
+                                                •
+                                                ${job.location}
+                                                •
+                                                ${job.salary}
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+
+                                    <a
+                                        href="job-details.html?job=${jobId}"
+                                        class="dashboard-job-btn"
+                                    >
+                                        View Job
+                                    </a>
+
+                                </div>
+
+                            `;
+
+                        }
+                    );
+
+                }
+
+
+
+                /* ========================================
+                   APPLICATIONS
+                ======================================== */
+
+                let applications =
+                    JSON.parse(
+                        localStorage.getItem(
+                            APPLICATIONS_KEY
+                        )
+                    ) || [];
+
+
+                document.getElementById(
+                    "applicationsCount"
+                ).textContent =
+                    applications.length;
+
+
+
+                const applicationsContainer =
+                    document.getElementById(
+                        "dashboardApplications"
+                    );
+
+
+                if (applications.length === 0) {
+
+                    applicationsContainer.innerHTML = `
+
+                        <div class="dashboard-empty">
+
+                            <div class="dashboard-empty-icon">
+                                📋
+                            </div>
+
+                            <p>
+                                You haven't applied to any jobs yet.
+                            </p>
+
+                        </div>
+
+                    `;
+
+                } else {
+
+
+                    /*
+                       Latest 5 applications
+                    */
+
+                    const latestApplications =
+                        applications.slice(0, 5);
+
+
+                    latestApplications.forEach(
+                        function (application) {
+
+
+                            applicationsContainer.innerHTML += `
+
+                                <div class="application-item">
+
+                                    <div class="application-top">
+
+                                        <div>
+
+                                            <h3>
+                                                ${
+                                                    application.title ||
+                                                    "Job Application"
+                                                }
+                                            </h3>
+
+                                            <p>
+                                                ${
+                                                    application.company ||
+                                                    "Company"
+                                                }
+                                            </p>
+
+                                        </div>
+
+                                        <span class="application-status">
+                                            ${
+                                                application.status ||
+                                                "Applied"
+                                            }
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            `;
+
+                        }
+                    );
+
+                }
+
+
+
+                /* ========================================
+                   PROFILE SKILLS
+                ======================================== */
+
+                const profile =
+                    JSON.parse(
+                        localStorage.getItem(
+                            PROFILE_KEY
+                        )
+                    ) || {};
+
+
+                let skills = [];
+
+
+                if (profile.skills) {
+
+                    skills =
+                        profile.skills
+                            .split(",")
+                            .map(
+                                function (skill) {
+                                    return skill.trim();
+                                }
+                            )
+                            .filter(
+                                function (skill) {
+                                    return skill !== "";
+                                }
+                            );
+
+                }
+
+
+                document.getElementById(
+                    "skillsCount"
+                ).textContent =
+                    skills.length;
+
+
+
+                /* ========================================
+                   LOGOUT
+                ======================================== */
+
+                const logoutButton =
+                    document.getElementById(
+                        "dashboardLogout"
+                    );
+
+
+                logoutButton.addEventListener(
+                    "click",
+                    function () {
+
+                        localStorage.removeItem(
+                            "workoraLoggedIn"
+                        );
+
+                        localStorage.removeItem(
+                            "workoraRememberMe"
+                        );
+
+                        window.location.href =
+                            "index.html";
+
+                    }
+                );
+
+            }
+
+        );
+
+    </script>
+
+
+</body>
+
+</html>

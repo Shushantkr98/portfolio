@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Applications | Workora.AI</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Existing Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =====================================================
+           MY APPLICATIONS PAGE
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Inter", sans-serif;
+        }
+
+        .applications-page {
+            min-height: 100vh;
+            padding: 120px 6% 60px;
+        }
+
+        .applications-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* =====================================================
+           PAGE HEADER
+        ===================================================== */
+
+        .applications-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 30px;
+            margin-bottom: 35px;
+        }
+
+        .applications-heading span {
+            display: inline-block;
+            color: #8b5cf6;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+        }
+
+        .applications-heading h1 {
+            margin: 0 0 10px;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .applications-heading p {
+            margin: 0;
+            max-width: 650px;
+            color: #888;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .browse-jobs-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 13px 20px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: 0.3s ease;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+
+        .browse-jobs-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.3);
+        }
+
+        /* =====================================================
+           STATS
+        ===================================================== */
+
+        .application-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .application-stat {
+            padding: 22px;
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            transition: 0.3s ease;
+        }
+
+        .application-stat:hover {
+            transform: translateY(-4px);
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+
+        .stat-icon {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(139, 92, 246, 0.12);
+            margin-bottom: 14px;
+            font-size: 20px;
+        }
+
+        .application-stat h3 {
+            margin: 0 0 5px;
+            font-size: 27px;
+        }
+
+        .application-stat p {
+            margin: 0;
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* =====================================================
+           TOOLBAR
+        ===================================================== */
+
+        .applications-toolbar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding: 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(139, 92, 246, 0.12);
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .application-search {
+            position: relative;
+            flex: 1;
+        }
+
+        .application-search span {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 17px;
+            opacity: 0.7;
+        }
+
+        .application-search input,
+        .status-filter {
+            width: 100%;
+            height: 48px;
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            border-radius: 11px;
+            background: rgba(255, 255, 255, 0.04);
+            color: inherit;
+            outline: none;
+            font-family: inherit;
+            transition: 0.3s ease;
+        }
+
+        .application-search input {
+            padding: 0 15px 0 45px;
+        }
+
+        .application-search input:focus,
+        .status-filter:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.08);
+        }
+
+        .status-filter {
+            width: 180px;
+            padding: 0 14px;
+        }
+
+        /* =====================================================
+           APPLICATION LIST
+        ===================================================== */
+
+        .applications-list {
+            display: grid;
+            gap: 18px;
+        }
+
+        .application-card {
+            position: relative;
+            padding: 24px;
+            border: 1px solid rgba(139, 92, 246, 0.14);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            transition: 0.3s ease;
+            overflow: hidden;
+        }
+
+        .application-card::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 3px;
+            height: 100%;
+            background: linear-gradient(
+                180deg,
+                #8b5cf6,
+                #6366f1
+            );
+        }
+
+        .application-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(139, 92, 246, 0.35);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .application-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .job-info {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .company-logo {
+            width: 55px;
+            height: 55px;
+            flex-shrink: 0;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(
+                135deg,
+                rgba(139, 92, 246, 0.18),
+                rgba(99, 102, 241, 0.18)
+            );
+            border: 1px solid rgba(139, 92, 246, 0.18);
+            color: #8b5cf6;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .job-info h2 {
+            margin: 2px 0 6px;
+            font-size: 20px;
+        }
+
+        .company-name {
+            margin: 0 0 7px;
+            color: #8b5cf6;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .application-date {
+            color: #888;
+            font-size: 12px;
+        }
+
+        /* =====================================================
+           STATUS
+        ===================================================== */
+
+        .application-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            height: 32px;
+            padding: 0 12px;
+            border-radius: 50px;
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            font-size: 12px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .application-status::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .application-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 22px 0;
+            padding: 18px 0;
+            border-top: 1px solid rgba(139, 92, 246, 0.08);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.08);
+        }
+
+        .detail-item span {
+            display: block;
+            color: #777;
+            font-size: 11px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        .detail-item strong {
+            font-size: 13px;
+            font-weight: 600;
+            word-break: break-word;
+        }
+
+        /* =====================================================
+           CARD ACTIONS
+        ===================================================== */
+
+        .application-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .view-job-btn,
+        .withdraw-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            min-height: 40px;
+            padding: 0 15px;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .view-job-btn {
+            color: white;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            border: none;
+        }
+
+        .view-job-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .withdraw-btn {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.07);
+            border: 1px solid rgba(239, 68, 68, 0.18);
+        }
+
+        .withdraw-btn:hover {
+            background: rgba(239, 68, 68, 0.12);
+        }
+
+        /* =====================================================
+           EMPTY STATE
+        ===================================================== */
+
+        .empty-state {
+            text-align: center;
+            padding: 70px 20px;
+            border: 1px dashed rgba(139, 92, 246, 0.2);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .empty-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            background: rgba(139, 92, 246, 0.1);
+            font-size: 30px;
+        }
+
+        .empty-state h2 {
+            margin: 0 0 8px;
+            font-size: 22px;
+        }
+
+        .empty-state p {
+            margin: 0 auto 22px;
+            max-width: 500px;
+            color: #888;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* =====================================================
+           NO SEARCH RESULT
+        ===================================================== */
+
+        .no-results {
+            display: none;
+            text-align: center;
+            padding: 50px 20px;
+            color: #888;
+        }
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 800px) {
+
+            .applications-page {
+                padding: 100px 20px 40px;
+            }
+
+            .applications-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .application-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .applications-toolbar {
+                flex-direction: column;
+            }
+
+            .status-filter {
+                width: 100%;
+            }
+
+            .application-top {
+                flex-direction: column;
+            }
+
+            .application-details {
+                grid-template-columns: 1fr;
+            }
+
+            .application-actions {
+                justify-content: stretch;
+                flex-direction: column;
+            }
+
+            .view-job-btn,
+            .withdraw-btn {
+                width: 100%;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                Workora<span>.AI</span>
+            </a>
+
+            <nav class="nav-menu">
+
+                <a href="index.html">Home</a>
+
+                <a href="jobs.html">Jobs</a>
+
+                <a href="saved-jobs.html">Saved Jobs</a>
+
+                <a href="dashboard.html">Dashboard</a>
+
+                <a href="profile.html">Profile</a>
+
+                <a href="my-applications.html" class="active">
+                    My Applications
+                </a>
+
+            </nav>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ===================================================== -->
+
+    <main class="applications-page">
+
+        <div class="applications-container">
+
+
+            <!-- HEADER -->
+
+            <div class="applications-header">
+
+                <div class="applications-heading">
+
+                    <span>Career Tracking</span>
+
+                    <h1>My Applications</h1>
+
+                    <p>
+                        Track all the jobs you have applied for and
+                        manage your application activity from one place.
+                    </p>
+
+                </div>
+
+                <a href="jobs.html" class="browse-jobs-btn">
+                    Browse Jobs →
+                </a>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 STATS
+            ================================================= -->
+
+            <div class="application-stats">
+
+                <div class="application-stat">
+
+                    <div class="stat-icon">
+                        📄
+                    </div>
+
+                    <h3 id="totalApplications">
+                        0
+                    </h3>
+
+                    <p>
+                        Total Applications
+                    </p>
+
+                </div>
+
+
+                <div class="application-stat">
+
+                    <div class="stat-icon">
+                        🏢
+                    </div>
+
+                    <h3 id="uniqueCompanies">
+                        0
+                    </h3>
+
+                    <p>
+                        Companies Applied
+                    </p>
+
+                </div>
+
+
+                <div class="application-stat">
+
+                    <div class="stat-icon">
+                        🕒
+                    </div>
+
+                    <h3 id="latestApplication">
+                        —
+                    </h3>
+
+                    <p>
+                        Latest Application
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SEARCH / FILTER
+            ================================================= -->
+
+            <div class="applications-toolbar">
+
+                <div class="application-search">
+
+                    <span>🔍</span>
+
+                    <input
+                        type="text"
+                        id="applicationSearch"
+                        placeholder="Search by job title, company, email..."
+                    >
+
+                </div>
+
+
+                <select
+                    class="status-filter"
+                    id="statusFilter"
+                >
+
+                    <option value="all">
+                        All Applications
+                    </option>
+
+                    <option value="Applied">
+                        Applied
+                    </option>
+
+                    <option value="Shortlisted">
+                        Shortlisted
+                    </option>
+
+                    <option value="Rejected">
+                        Rejected
+                    </option>
+
+                    <option value="Selected">
+                        Selected
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 APPLICATIONS
+            ================================================= -->
+
+            <div
+                class="applications-list"
+                id="applicationsList"
+            ></div>
+
+
+            <!-- NO SEARCH RESULT -->
+
+            <div
+                class="no-results"
+                id="noResults"
+            >
+
+                <h2>
+                    No applications found
+                </h2>
+
+                <p>
+                    Try another search or change the status filter.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+        /* =====================================================
+           STORAGE KEY
+        ===================================================== */
+
+        const APPLICATIONS_KEY = "workoraApplications";
+
+
+        /* =====================================================
+           GET APPLICATIONS
+        ===================================================== */
+
+        function getApplications() {
+
+            try {
+
+                const savedApplications =
+                    localStorage.getItem(APPLICATIONS_KEY);
+
+                if (!savedApplications) {
+                    return [];
+                }
+
+                const applications =
+                    JSON.parse(savedApplications);
+
+                return Array.isArray(applications)
+                    ? applications
+                    : [];
+
+            } catch (error) {
+
+                console.error(
+                    "Could not load applications:",
+                    error
+                );
+
+                return [];
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SAVE APPLICATIONS
+        ===================================================== */
+
+        function saveApplications(applications) {
+
+            localStorage.setItem(
+                APPLICATIONS_KEY,
+                JSON.stringify(applications)
+            );
+
+        }
+
+
+        /* =====================================================
+           ESCAPE HTML
+        ===================================================== */
+
+        function escapeHTML(value) {
+
+            const div = document.createElement("div");
+
+            div.textContent =
+                value ?? "";
+
+            return div.innerHTML;
+
+        }
+
+
+        /* =====================================================
+           GET LOGO LETTER
+        ===================================================== */
+
+        function getCompanyLetter(company) {
+
+            if (!company) {
+                return "W";
+            }
+
+            return company
+                .trim()
+                .charAt(0)
+                .toUpperCase();
+
+        }
+
+
+        /* =====================================================
+           FORMAT DATE
+        ===================================================== */
+
+        function formatApplicationDate(dateValue) {
+
+            if (!dateValue) {
+                return "Date not available";
+            }
+
+            const date =
+                new Date(dateValue);
+
+            if (isNaN(date.getTime())) {
+
+                return dateValue;
+
+            }
+
+            return date.toLocaleDateString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           FORMAT LATEST DATE
+        ===================================================== */
+
+        function formatShortDate(dateValue) {
+
+            if (!dateValue) {
+                return "—";
+            }
+
+            const date =
+                new Date(dateValue);
+
+            if (isNaN(date.getTime())) {
+
+                return "—";
+
+            }
+
+            return date.toLocaleDateString(
+                "en-IN",
+                {
+                    day: "2-digit",
+                    month: "short"
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           UPDATE STATS
+        ===================================================== */
+
+        function updateStats(applications) {
+
+            const totalElement =
+                document.getElementById(
+                    "totalApplications"
+                );
+
+            const companiesElement =
+                document.getElementById(
+                    "uniqueCompanies"
+                );
+
+            const latestElement =
+                document.getElementById(
+                    "latestApplication"
+                );
+
+
+            totalElement.textContent =
+                applications.length;
+
+
+            const companies =
+                new Set(
+                    applications
+                        .map(app => app.company)
+                        .filter(Boolean)
+                );
+
+            companiesElement.textContent =
+                companies.size;
+
+
+            if (applications.length === 0) {
+
+                latestElement.textContent =
+                    "—";
+
+                return;
+
+            }
+
+
+            const sorted =
+                [...applications].sort(
+                    (a, b) => {
+
+                        const dateA =
+                            new Date(
+                                a.submittedAt || 0
+                            );
+
+                        const dateB =
+                            new Date(
+                                b.submittedAt || 0
+                            );
+
+                        return dateB - dateA;
+
+                    }
+                );
+
+
+            latestElement.textContent =
+                formatShortDate(
+                    sorted[0].submittedAt
+                );
+
+        }
+
+
+        /* =====================================================
+           CREATE APPLICATION CARD
+        ===================================================== */
+
+        function createApplicationCard(application) {
+
+            const card =
+                document.createElement("article");
+
+            card.className =
+                "application-card";
+
+
+            const status =
+                application.status ||
+                "Applied";
+
+
+            const jobTitle =
+                application.jobTitle ||
+                "Job Application";
+
+
+            const company =
+                application.company ||
+                "Company";
+
+
+            const applicantName =
+                application.name ||
+                "Not available";
+
+
+            const email =
+                application.email ||
+                "Not available";
+
+
+            const resumeName =
+                application.resumeName ||
+                "No resume uploaded";
+
+
+            const submittedAt =
+                formatApplicationDate(
+                    application.submittedAt
+                );
+
+
+            card.innerHTML = `
+
+                <div class="application-top">
+
+                    <div class="job-info">
+
+                        <div class="company-logo">
+                            ${escapeHTML(
+                                getCompanyLetter(company)
+                            )}
+                        </div>
+
+                        <div>
+
+                            <h2>
+                                ${escapeHTML(jobTitle)}
+                            </h2>
+
+                            <p class="company-name">
+                                ${escapeHTML(company)}
+                            </p>
+
+                            <span class="application-date">
+                                Applied on ${escapeHTML(submittedAt)}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="application-status">
+                        ${escapeHTML(status)}
+                    </div>
+
+                </div>
+
+
+                <div class="application-details">
+
+                    <div class="detail-item">
+
+                        <span>
+                            Applicant
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(applicantName)}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Email
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(email)}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="detail-item">
+
+                        <span>
+                            Resume
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(resumeName)}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="application-actions">
+
+                    <a
+                        href="job-details.html?job=${encodeURIComponent(
+                            application.jobId || ""
+                        )}"
+                        class="view-job-btn"
+                    >
+                        View Job →
+                    </a>
+
+
+                    <button
+                        type="button"
+                        class="withdraw-btn"
+                        data-id="${escapeHTML(
+                            String(application.id)
+                        )}"
+                    >
+                        Withdraw
+                    </button>
+
+                </div>
+
+            `;
+
+
+            const withdrawButton =
+                card.querySelector(
+                    ".withdraw-btn"
+                );
+
+
+            withdrawButton.addEventListener(
+                "click",
+                function () {
+
+                    withdrawApplication(
+                        application.id
+                    );
+
+                }
+            );
+
+
+            return card;
+
+        }
+
+
+        /* =====================================================
+           RENDER APPLICATIONS
+        ===================================================== */
+
+        function renderApplications() {
+
+            const applications =
+                getApplications();
+
+
+            updateStats(applications);
+
+
+            const list =
+                document.getElementById(
+                    "applicationsList"
+                );
+
+
+            const noResults =
+                document.getElementById(
+                    "noResults"
+                );
+
+
+            const searchInput =
+                document.getElementById(
+                    "applicationSearch"
+                );
+
+
+            const statusFilter =
+                document.getElementById(
+                    "statusFilter"
+                );
+
+
+            const searchTerm =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+
+            const selectedStatus =
+                statusFilter.value;
+
+
+            const filteredApplications =
+                applications.filter(
+                    application => {
+
+                        const status =
+                            application.status ||
+                            "Applied";
+
+
+                        const searchableText = [
+
+                            application.jobTitle,
+                            application.company,
+                            application.name,
+                            application.email,
+                            application.resumeName
+
+                        ]
+                            .filter(Boolean)
+                            .join(" ")
+                            .toLowerCase();
+
+
+                        const matchesSearch =
+                            searchableText.includes(
+                                searchTerm
+                            );
+
+
+                        const matchesStatus =
+                            selectedStatus === "all" ||
+                            status === selectedStatus;
+
+
+                        return (
+                            matchesSearch &&
+                            matchesStatus
+                        );
+
+                    }
+                );
+
+
+            list.innerHTML = "";
+
+
+            if (
+                applications.length === 0
+            ) {
+
+                list.innerHTML = `
+
+                    <div class="empty-state">
+
+                        <div class="empty-icon">
+                            📄
+                        </div>
+
+                        <h2>
+                            No Applications Yet
+                        </h2>
+
+                        <p>
+                            You haven't applied for any jobs yet.
+                            Explore available jobs and submit your
+                            first application.
+                        </p>
+
+                        <a
+                            href="jobs.html"
+                            class="browse-jobs-btn"
+                        >
+                            Find Jobs →
+                        </a>
+
+                    </div>
+
+                `;
+
+                noResults.style.display =
+                    "none";
+
+                return;
+
+            }
+
+
+            if (
+                filteredApplications.length === 0
+            ) {
+
+                noResults.style.display =
+                    "block";
+
+                return;
+
+            }
+
+
+            noResults.style.display =
+                "none";
+
+
+            filteredApplications
+                .sort(
+                    (a, b) => {
+
+                        const dateA =
+                            new Date(
+                                a.submittedAt || 0
+                            );
+
+                        const dateB =
+                            new Date(
+                                b.submittedAt || 0
+                            );
+
+                        return dateB - dateA;
+
+                    }
+                )
+                .forEach(
+                    application => {
+
+                        list.appendChild(
+                            createApplicationCard(
+                                application
+                            )
+                        );
+
+                    }
+                );
+
+        }
+
+
+        /* =====================================================
+           WITHDRAW APPLICATION
+        ===================================================== */
+
+        function withdrawApplication(applicationId) {
+
+            const confirmed =
+                confirm(
+                    "Are you sure you want to withdraw this application?"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            const applications =
+                getApplications();
+
+
+            const updatedApplications =
+                applications.filter(
+                    application =>
+                        String(application.id) !==
+                        String(applicationId)
+                );
+
+
+            saveApplications(
+                updatedApplications
+            );
+
+
+            renderApplications();
+
+
+            alert(
+                "Application withdrawn successfully."
+            );
+
+        }
+
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        document
+            .getElementById("applicationSearch")
+            .addEventListener(
+                "input",
+                renderApplications
+            );
+
+
+        /* =====================================================
+           STATUS FILTER
+        ===================================================== */
+
+        document
+            .getElementById("statusFilter")
+            .addEventListener(
+                "change",
+                renderApplications
+            );
+
+
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
+
+        const mobileMenuBtn =
+            document.getElementById(
+                "mobileMenuBtn"
+            );
+
+
+        const navMenu =
+            document.querySelector(
+                ".nav-menu"
+            );
+
+
+        if (
+            mobileMenuBtn &&
+            navMenu
+        ) {
+
+            mobileMenuBtn.addEventListener(
+                "click",
+                function () {
+
+                    navMenu.classList.toggle(
+                        "active"
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           INITIAL LOAD
+        ===================================================== */
+
+        renderApplications();
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,3182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Job Details | Workora</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =====================================================
+           JOB DETAILS PAGE
+        ===================================================== */
+
+        .job-details-page {
+            padding: 110px 0 70px;
+            min-height: 100vh;
+        }
+
+        .job-details-container {
+            width: min(1100px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        .back-to-jobs {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 28px;
+            color: #2563eb;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.25s ease;
+        }
+
+        .back-to-jobs:hover {
+            transform: translateX(-4px);
+        }
+
+        /* =====================================================
+           MAIN CARD
+        ===================================================== */
+
+        .job-details-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 10px 35px rgba(15, 23, 42, 0.07);
+        }
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .job-header {
+            padding: 32px 36px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .job-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .job-title-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            min-width: 0;
+        }
+
+        .company-logo {
+            width: 72px;
+            height: 72px;
+            min-width: 72px;
+            border-radius: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: linear-gradient(
+                135deg,
+                #7c3aed,
+                #4f46e5
+            );
+
+            color: #ffffff;
+            font-size: 28px;
+            font-weight: 800;
+
+            box-shadow:
+                0 8px 20px rgba(124, 58, 237, 0.22);
+        }
+
+        .job-title-area h1 {
+            margin: 0 0 7px;
+            color: #172033;
+            font-size: 32px;
+            line-height: 1.2;
+            font-weight: 750;
+        }
+
+        .company-name {
+            margin-bottom: 12px;
+            color: #7c3aed;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .job-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: #64748b;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* =====================================================
+           ACTION BUTTONS
+        ===================================================== */
+
+        .job-actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .apply-btn,
+        .save-btn {
+            height: 46px;
+            padding: 0 20px;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .apply-btn {
+            border: none;
+            color: #ffffff;
+
+            background: linear-gradient(
+                135deg,
+                #7c3aed,
+                #4f46e5
+            );
+
+            box-shadow:
+                0 7px 18px rgba(99, 102, 241, 0.22);
+        }
+
+        .apply-btn:hover {
+            transform: translateY(-2px);
+            box-shadow:
+                0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        .save-btn {
+            min-width: 125px;
+            border: 1px solid #d8dee9;
+            background: #ffffff;
+            color: #475569;
+        }
+
+        .save-btn:hover {
+            border-color: #a78bfa;
+            color: #7c3aed;
+            background: #faf8ff;
+        }
+
+        .save-btn.saved {
+            border-color: #7c3aed;
+            color: #7c3aed;
+            background: #faf8ff;
+        }
+
+        /* =====================================================
+           CONTENT
+        ===================================================== */
+
+        .job-content {
+            display: grid;
+            grid-template-columns:
+                minmax(0, 1fr)
+                310px;
+            gap: 45px;
+            padding: 38px 36px;
+        }
+
+        .job-main {
+            min-width: 0;
+        }
+
+        .job-section {
+            margin-bottom: 34px;
+        }
+
+        .job-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .job-section h2 {
+            margin: 0 0 15px;
+            color: #172033;
+            font-size: 23px;
+            line-height: 1.3;
+        }
+
+        .job-section p {
+            margin: 0 0 13px;
+            color: #64748b;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .job-section ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .job-section li {
+            margin-bottom: 11px;
+            color: #64748b;
+            font-size: 15px;
+            line-height: 1.65;
+        }
+
+        /* =====================================================
+           SKILLS
+        ===================================================== */
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+        }
+
+        .skill-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 13px;
+            border-radius: 8px;
+            background: #f5f3ff;
+            border: 1px solid #ddd6fe;
+            color: #6d28d9;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        .job-sidebar {
+            min-width: 0;
+        }
+
+        .job-sidebar-card {
+            padding: 23px;
+            margin-bottom: 18px;
+            border-radius: 16px;
+            background: #fafafa;
+            border: 1px solid #e5e7eb;
+        }
+
+        .job-sidebar-card h3 {
+            margin: 0 0 17px;
+            color: #172033;
+            font-size: 19px;
+        }
+
+        .detail-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 13px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .detail-value {
+            color: #172033;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: right;
+        }
+
+        #sidebarCompany {
+            margin: 0;
+            color: #64748b !important;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* =====================================================
+           NOT FOUND
+        ===================================================== */
+
+        .not-found {
+            text-align: center;
+            padding: 80px 25px;
+        }
+
+        .not-found h2 {
+            margin: 0 0 10px;
+            color: #172033;
+        }
+
+        .not-found p {
+            margin: 0 0 25px;
+            color: #64748b;
+        }
+
+        /* =====================================================
+           APPLICATION MODAL
+        ===================================================== */
+
+        .application-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(15, 23, 42, 0.55);
+            backdrop-filter: blur(7px);
+        }
+
+        .application-modal.show {
+            display: flex;
+        }
+
+        .application-box {
+            width: min(600px, 100%);
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 30px;
+            border-radius: 20px;
+            background: #ffffff;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+        }
+
+        .application-box h2 {
+            margin: 0 0 7px;
+            color: #172033;
+            font-size: 25px;
+        }
+
+        .application-subtitle {
+            margin: 0 0 25px;
+            color: #7c3aed;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .close-application {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            background: #f1f5f9;
+            color: #475569;
+            font-size: 23px;
+            cursor: pointer;
+        }
+
+        .close-application:hover {
+            background: #e2e8f0;
+        }
+
+        .application-form-group {
+            margin-bottom: 18px;
+        }
+
+        .application-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #334155;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .application-form-group input,
+        .application-form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px 14px;
+            border: 1px solid #dbe1ea;
+            border-radius: 9px;
+            outline: none;
+            background: #ffffff;
+            color: #172033;
+            font-family: inherit;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .application-form-group input:focus,
+        .application-form-group textarea:focus {
+            border-color: #8b5cf6;
+            box-shadow:
+                0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .application-form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-application {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+
+            background: linear-gradient(
+                135deg,
+                #7c3aed,
+                #4f46e5
+            );
+
+            color: #ffffff;
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .application-success {
+            display: none;
+            text-align: center;
+            padding: 35px 15px;
+        }
+
+        .application-success.show {
+            display: block;
+        }
+
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #ecfdf5;
+            color: #16a34a;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .application-success h2 {
+            margin-bottom: 10px;
+        }
+
+        .application-success p {
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        .close-success {
+            margin-top: 18px;
+            padding: 12px 23px;
+            border: none;
+            border-radius: 9px;
+            background: #7c3aed;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 900px) {
+
+            .job-header-top {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .job-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .job-content {
+                grid-template-columns: 1fr;
+            }
+
+            .job-sidebar {
+                width: 100%;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .job-details-page {
+                padding: 95px 0 45px;
+            }
+
+            .job-details-container {
+                width: min(100% - 24px, 1100px);
+            }
+
+            .job-header {
+                padding: 24px 20px;
+            }
+
+            .job-content {
+                padding: 25px 20px;
+            }
+
+            .job-title-area {
+                align-items: flex-start;
+            }
+
+            .company-logo {
+                width: 58px;
+                height: 58px;
+                min-width: 58px;
+                font-size: 23px;
+            }
+
+            .job-title-area h1 {
+                font-size: 25px;
+            }
+
+            .job-actions {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                width: 100%;
+            }
+
+            .apply-btn,
+            .save-btn {
+                width: 100%;
+                min-width: 0;
+                padding: 0 12px;
+            }
+
+            .job-section h2 {
+                font-size: 21px;
+            }
+
+            .application-box {
+                padding: 24px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <header class="navbar">
+
+        <div class="nav-container">
+
+            <a href="index.html" class="logo">
+                Workora
+            </a>
+
+            <nav class="nav-links" id="navLinks">
+
+                <a href="index.html">
+                    Home
+                </a>
+
+                <a href="jobs.html">
+                    Jobs
+                </a>
+
+                <a href="companies.html">
+                    Companies
+                </a>
+
+                <a href="index.html#about">
+                    About
+                </a>
+
+                <a href="saved-jobs.html">
+                    Saved Jobs
+                </a>
+
+                <span id="guestNav">
+
+                    <a href="login.html">
+                        Login
+                    </a>
+
+                    <a href="register.html">
+                        Register
+                    </a>
+
+                </span>
+
+                <span
+                    id="userNav"
+                    style="display:none;"
+                >
+
+                    <a href="dashboard.html">
+                        Dashboard
+                    </a>
+
+                    <a href="profile.html">
+                        Profile
+                    </a>
+
+                    <a
+                        href="#"
+                        id="logoutBtn"
+                    >
+                        Logout
+                    </a>
+
+                </span>
+
+            </nav>
+
+            <button
+                class="mobile-menu-btn"
+                id="mobileMenuBtn"
+            >
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         JOB DETAILS
+    ====================================================== -->
+
+    <main class="job-details-page">
+
+        <div class="job-details-container">
+
+            <a
+                href="jobs.html"
+                class="back-to-jobs"
+            >
+                ← Back to Jobs
+            </a>
+
+            <div id="jobDetailsWrapper">
+
+                <div class="job-details-card">
+
+                    <div class="job-header">
+
+                        <div class="job-header-top">
+
+                            <div class="job-title-area">
+
+                                <div
+                                    class="company-logo"
+                                    id="companyLogo"
+                                >
+                                    W
+                                </div>
+
+                                <div>
+
+                                    <h1 id="jobTitle">
+                                        Frontend Developer
+                                    </h1>
+
+                                    <div
+                                        class="company-name"
+                                        id="companyName"
+                                    >
+                                        Google Technologies
+                                    </div>
+
+                                    <div class="job-meta">
+
+                                        <span id="jobLocation">
+                                            📍 Delhi
+                                        </span>
+
+                                        <span id="jobType">
+                                            💼 Full Time
+                                        </span>
+
+                                        <span id="jobWorkMode">
+                                            🏠 Remote
+                                        </span>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="job-actions">
+
+                                <button
+                                    class="save-btn"
+                                    id="saveJobBtn"
+                                    type="button"
+                                >
+                                    ♡ Save Job
+                                </button>
+
+                                <button
+                                    class="apply-btn"
+                                    id="applyBtn"
+                                    type="button"
+                                >
+                                    Apply Now
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="job-content">
+
+                        <div class="job-main">
+
+                            <section class="job-section">
+
+                                <h2>
+                                    About the Job
+                                </h2>
+
+                                <div id="jobDescription"></div>
+
+                            </section>
+
+
+                            <section class="job-section">
+
+                                <h2>
+                                    Responsibilities
+                                </h2>
+
+                                <ul id="jobResponsibilities"></ul>
+
+                            </section>
+
+
+                            <section class="job-section">
+
+                                <h2>
+                                    Requirements
+                                </h2>
+
+                                <ul id="jobRequirements"></ul>
+
+                            </section>
+
+
+                            <section class="job-section">
+
+                                <h2>
+                                    Required Skills
+                                </h2>
+
+                                <div
+                                    class="skills-list"
+                                    id="jobSkills"
+                                ></div>
+
+                            </section>
+
+                        </div>
+
+
+                        <aside class="job-sidebar">
+
+                            <div class="job-sidebar-card">
+
+                                <h3>
+                                    Job Overview
+                                </h3>
+
+                                <div class="detail-row">
+
+                                    <span class="detail-label">
+                                        Salary
+                                    </span>
+
+                                    <span
+                                        class="detail-value"
+                                        id="jobSalary"
+                                    ></span>
+
+                                </div>
+
+                                <div class="detail-row">
+
+                                    <span class="detail-label">
+                                        Experience
+                                    </span>
+
+                                    <span
+                                        class="detail-value"
+                                        id="jobExperience"
+                                    ></span>
+
+                                </div>
+
+                                <div class="detail-row">
+
+                                    <span class="detail-label">
+                                        Job Type
+                                    </span>
+
+                                    <span
+                                        class="detail-value"
+                                        id="sidebarJobType"
+                                    ></span>
+
+                                </div>
+
+                                <div class="detail-row">
+
+                                    <span class="detail-label">
+                                        Location
+                                    </span>
+
+                                    <span
+                                        class="detail-value"
+                                        id="sidebarLocation"
+                                    ></span>
+
+                                </div>
+
+                                <div class="detail-row">
+
+                                    <span class="detail-label">
+                                        Work Mode
+                                    </span>
+
+                                    <span
+                                        class="detail-value"
+                                        id="sidebarWorkMode"
+                                    ></span>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="job-sidebar-card">
+
+                                <h3>
+                                    Company
+                                </h3>
+
+                                <p id="sidebarCompany"></p>
+
+                                <a
+                                    href="companies.html"
+                                    style="
+                                    display:inline-block;
+                                    margin-top:12px;
+                                    color:#7c3aed;
+                                    text-decoration:none;
+                                    font-size:14px;
+                                    font-weight:700;
+                                    "
+                                >
+                                    View Companies →
+                                </a>
+
+                            </div>
+
+                        </aside>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div
+                class="job-details-card not-found"
+                id="jobNotFound"
+                style="display:none;"
+            >
+
+                <h2>
+                    Job Not Found
+                </h2>
+
+                <p>
+                    Sorry, the job you are looking for
+                    does not exist or may have been removed.
+                </p>
+
+                <a
+                    href="jobs.html"
+                    class="apply-btn"
+                    style="
+                    display:inline-flex;
+                    align-items:center;
+                    justify-content:center;
+                    text-decoration:none;
+                    "
+                >
+                    Browse Jobs
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- =====================================================
+         APPLICATION MODAL
+    ====================================================== -->
+
+    <div
+        class="application-modal"
+        id="applicationModal"
+    >
+
+        <div class="application-box">
+
+            <button
+                class="close-application"
+                id="closeApplicationBtn"
+                type="button"
+            >
+                ×
+            </button>
+
+            <div id="applicationFormArea">
+
+                <h2>
+                    Apply for this Job
+                </h2>
+
+                <p
+                    class="application-subtitle"
+                    id="applicationJobTitle"
+                >
+                    Frontend Developer
+                </p>
+
+                <form id="applicationForm">
+
+                    <div class="application-form-group">
+
+                        <label for="applicantName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="applicantName"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="application-form-group">
+
+                        <label for="applicantEmail">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="applicantEmail"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="application-form-group">
+
+                        <label for="applicantPhone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="applicantPhone"
+                            placeholder="Enter your phone number"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="application-form-group">
+
+                        <label for="resumeFile">
+                            Resume
+                        </label>
+
+                        <input
+                            type="file"
+                            id="resumeFile"
+                            accept=".pdf,.doc,.docx"
+                            required
+                        >
+
+                    </div>
+
+                    <div class="application-form-group">
+
+                        <label for="coverLetter">
+                            Cover Letter
+                        </label>
+
+                        <textarea
+                            id="coverLetter"
+                            placeholder="Write a short cover letter..."
+                        ></textarea>
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="submit-application"
+                    >
+                        Submit Application
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <div
+                class="application-success"
+                id="applicationSuccess"
+            >
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+                <h2>
+                    Application Submitted!
+                </h2>
+
+                <p id="successMessage">
+                    Your application has been
+                    submitted successfully.
+                </p>
+
+                <button
+                    class="close-success"
+                    id="closeSuccessBtn"
+                    type="button"
+                >
+                    Done
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script>
+
+        /* =====================================================
+           WORKORA JOB DATABASE - 15 JOBS
+        ===================================================== */
+
+        const staticJobs = {
+
+            frontend: {
+
+                id: "frontend",
+                title: "Frontend Developer",
+                company: "Google Technologies",
+                location: "Delhi",
+                type: "Full Time",
+                workMode: "Remote",
+                salary: "₹6 - 10 LPA",
+                experience: "0 - 2 Years",
+
+                description: [
+                    "We are looking for a talented Frontend Developer to create modern, responsive and user-friendly web experiences.",
+                    "You will work with designers and developers to build high-quality interfaces using modern web technologies."
+                ],
+
+                responsibilities: [
+                    "Build responsive and interactive web interfaces.",
+                    "Convert designs into clean HTML, CSS and JavaScript.",
+                    "Improve website performance and user experience.",
+                    "Work closely with designers and backend developers.",
+                    "Write clean and maintainable code."
+                ],
+
+                requirements: [
+                    "Good knowledge of HTML, CSS and JavaScript.",
+                    "Understanding of responsive web design.",
+                    "Basic knowledge of Git and version control.",
+                    "Good problem-solving skills.",
+                    "Ability to work in a team."
+                ],
+
+                skills: [
+                    "HTML",
+                    "CSS",
+                    "JavaScript",
+                    "Responsive Design",
+                    "Git"
+                ]
+            },
+
+
+            java: {
+
+                id: "java",
+                title: "Java Developer",
+                company: "Microsoft",
+                location: "Bangalore",
+                type: "Full Time",
+                workMode: "Hybrid",
+                salary: "₹8 - 14 LPA",
+                experience: "1 - 3 Years",
+
+                description: [
+                    "Microsoft is looking for a Java Developer to build scalable and reliable software solutions.",
+                    "The role involves backend development, API integration and working with modern development tools."
+                ],
+
+                responsibilities: [
+                    "Develop and maintain Java applications.",
+                    "Build and integrate REST APIs.",
+                    "Work with databases and backend systems.",
+                    "Debug and improve application performance.",
+                    "Collaborate with other developers."
+                ],
+
+                requirements: [
+                    "Good knowledge of Java.",
+                    "Understanding of Object Oriented Programming.",
+                    "Knowledge of SQL databases.",
+                    "Basic understanding of Spring Boot.",
+                    "Knowledge of Git."
+                ],
+
+                skills: [
+                    "Java",
+                    "OOP",
+                    "SQL",
+                    "Spring Boot",
+                    "Git"
+                ]
+            },
+
+
+            designer: {
+
+                id: "designer",
+                title: "UI/UX Designer",
+                company: "Adobe",
+                location: "Mumbai",
+                type: "Full Time",
+                workMode: "Remote",
+                salary: "₹5 - 9 LPA",
+                experience: "0 - 2 Years",
+
+                description: [
+                    "Adobe is looking for a creative UI/UX Designer to design beautiful and user-friendly digital experiences.",
+                    "You will work with product teams to improve user experience and visual design."
+                ],
+
+                responsibilities: [
+                    "Create wireframes and prototypes.",
+                    "Design modern user interfaces.",
+                    "Understand user requirements.",
+                    "Collaborate with developers.",
+                    "Improve existing product experiences."
+                ],
+
+                requirements: [
+                    "Good understanding of UI/UX principles.",
+                    "Experience with Figma or similar tools.",
+                    "Understanding of wireframing.",
+                    "Good visual design sense.",
+                    "Strong communication skills."
+                ],
+
+                skills: [
+                    "Figma",
+                    "UI Design",
+                    "UX Design",
+                    "Wireframing",
+                    "Prototyping"
+                ]
+            },
+
+
+            backend: {
+
+                id: "backend",
+                title: "Backend Developer",
+                company: "Amazon",
+                location: "Bangalore",
+                type: "Full Time",
+                workMode: "Hybrid",
+                salary: "₹7 - 13 LPA",
+                experience: "1 - 3 Years",
+
+                description: [
+                    "Amazon is looking for a Backend Developer to develop scalable server-side applications and reliable backend services.",
+                    "You will work with APIs, databases and backend systems to deliver efficient digital products."
+                ],
+
+                responsibilities: [
+                    "Develop scalable backend applications.",
+                    "Create and maintain REST APIs.",
+                    "Work with databases and server-side technologies.",
+                    "Improve application performance and reliability.",
+                    "Collaborate with frontend developers."
+                ],
+
+                requirements: [
+                    "Knowledge of Node.js and Express.js.",
+                    "Understanding of REST APIs.",
+                    "Basic knowledge of MongoDB.",
+                    "Understanding of backend development.",
+                    "Knowledge of Git."
+                ],
+
+                skills: [
+                    "Node.js",
+                    "Express.js",
+                    "MongoDB",
+                    "REST API",
+                    "Git"
+                ]
+            },
+
+
+            react: {
+
+                id: "react",
+                title: "React Developer",
+                company: "Flipkart",
+                location: "Bangalore",
+                type: "Full Time",
+                workMode: "Remote",
+                salary: "₹6 - 12 LPA",
+                experience: "1 - 2 Years",
+
+                description: [
+                    "Flipkart is looking for a React Developer to build modern and interactive web applications.",
+                    "You will work on reusable components and responsive interfaces using React and JavaScript."
+                ],
+
+                responsibilities: [
+                    "Build reusable React components.",
+                    "Develop responsive web applications.",
+                    "Integrate APIs with frontend applications.",
+                    "Improve application performance.",
+                    "Work with designers and backend developers."
+                ],
+
+                requirements: [
+                    "Good knowledge of React.",
+                    "Strong understanding of JavaScript.",
+                    "Knowledge of HTML and CSS.",
+                    "Understanding of component-based development.",
+                    "Knowledge of Git."
+                ],
+
+                skills: [
+                    "React",
+                    "JavaScript",
+                    "HTML",
+                    "CSS",
+                    "Git"
+                ]
+            },
+
+
+            python: {
+
+                id: "python",
+                title: "Python Developer",
+                company: "Infosys",
+                location: "Pune",
+                type: "Full Time",
+                workMode: "Hybrid",
+                salary: "₹5 - 10 LPA",
+                experience: "0 - 2 Years",
+
+                description: [
+                    "Infosys is looking for a Python Developer to develop reliable software applications and backend services.",
+                    "The role involves Python development, API integration and database management."
+                ],
+
+                responsibilities: [
+                    "Develop applications using Python.",
+                    "Build REST APIs and backend services.",
+                    "Work with databases.",
+                    "Debug and maintain applications.",
+                    "Write clean and reusable code."
+                ],
+
+                requirements: [
+                    "Good knowledge of Python.",
+                    "Understanding of Django.",
+                    "Basic knowledge of SQL.",
+                    "Understanding of REST APIs.",
+                    "Knowledge of Git."
+                ],
+
+                skills: [
+                    "Python",
+                    "Django",
+                    "SQL",
+                    "REST API",
+                    "Git"
+                ]
+            },
+
+
+            fullstack: {
+
+                id: "fullstack",
+                title: "Full Stack Developer",
+                company: "TCS",
+                location: "Mumbai",
+                type: "Full Time",
+                workMode: "Hybrid",
+                salary: "₹7 - 14 LPA",
+                experience: "1 - 4 Years",
+
+                description: [
+                    "TCS is looking for a Full Stack Developer who can work across frontend and backend technologies.",
+                    "You will help build complete web applications and collaborate with cross-functional teams."
+                ],
+
+                responsibilities: [
+                    "Develop frontend and backend applications.",
+                    "Build responsive web interfaces.",
+                    "Create and integrate APIs.",
+                    "Work with databases and server-side systems.",
+                    "Maintain application quality and performance."
+                ],
+
+                requirements: [
+                    "Good knowledge of HTML and CSS.",
+                    "Strong JavaScript knowledge.",
+                    "Understanding of React.",
+                    "Basic knowledge of Node.js.",
+                    "Knowledge of Git."
+                ],
+
+                skills: [
+                    "HTML",
+                    "CSS",
+                    "JavaScript",
+                    "React",
+                    "Node.js"
+                ]
+            },
+
+
+            mobile: {
+
+                id: "mobile",
+                title: "Android Developer",
+                company: "PhonePe",
+                location: "Bangalore",
+                type: "Full Time",
+                workMode: "On-site",
+                salary: "₹6 - 11 LPA",
+                experience: "1 - 3 Years",
+
+                description: [
+                    "PhonePe is looking for an Android Developer to build reliable and user-friendly mobile applications.",
+                    "You will work with Android technologies and collaborate with product and engineering teams."
+                ],
+
+                responsibilities: [
+                    "Develop Android applications.",
+                    "Build reusable mobile components.",
+                    "Integrate APIs and Firebase services.",
+                    "Fix bugs and improve application performance.",
+                    "Collaborate with product and design teams."
+                ],
+
+                requirements: [
+                    "Knowledge of Kotlin.",
+                    "Understanding of Android development.",
+                    "Basic knowledge of Java.",
+                    "Experience with Firebase is useful.",
+                    "Knowledge of Git."
+                ],
+
+                skills: [
+                    "Kotlin",
+                    "Android",
+                    "Java",
+                    "Firebase",
+                    "Git"
+                ]
+            },
+
+
+            data: {
+
+                id: "data",
+                title: "Data Analyst",
+                company: "Deloitte",
+                location: "Gurgaon",
+                type: "Full Time",
+                workMode: "Hybrid",
+                salary: "₹5 - 9 LPA",
+                experience: "0 - 2 Years",
+
+                description: [
+                    "Deloitte is looking for a Data Analyst to transform business data into useful insights.",
+                    "The role involves data analysis, reporting and visualization to support business decisions."
+                ],
+
+                responsibilities: [
+                    "Analyze business datasets.",
+                    "Create reports and dashboards.",
+                    "Work with SQL databases.",
+                    "Identify trends and patterns in data.",
+                    "Present analytical findings."
+                ],
+
+                requirements: [
+                    "Good knowledge of Excel.",
+                    "Understanding of SQL.",
+                    "Basic Python knowledge.",
+                    "Knowledge of Power BI.",
+                    "Good analytical skills."
+                ],
+
+                skills: [
+                    "Excel",
+                    "SQL",
+                    "Python",
+                    "Power BI",
+                    "Data Analysis"
+                ]
+            },
+
+
+            devops: {
+
+                id: "devops",
+                title: "DevOps Engineer",
+                company: "Wipro",
+                location: "Hyderabad",
+                type: "Full Time",
+                workMode: "Hybrid",
+                salary: "₹7 - 13 LPA",
+                experience: "1 - 4 Years",
+
+                description: [
+                    "Wipro is looking for a DevOps Engineer to support deployment, automation and cloud infrastructure.",
+                    "You will work with development teams to improve software delivery and infrastructure reliability."
+                ],
+
+                responsibilities: [
+                    "Manage application deployment processes.",
+                    "Work with cloud infrastructure.",
+                    "Create and maintain CI/CD pipelines.",
+                    "Monitor applications and infrastructure.",
+                    "Automate development workflows."
+                ],
+
+                requirements: [
+                    "Knowledge of Docker.",
+                    "Understanding of AWS.",
+                    "Good Linux knowledge.",
+                    "Basic Jenkins knowledge.",
+                    "Understanding of CI/CD."
+                ],
+
+                skills: [
+                    "Docker",
+                    "AWS",
+                    "Linux",
+                    "Jenkins",
+                    "CI/CD"
+                ]
+            },
+
+
+            cybersecurity: {
+
+                id: "cybersecurity",
+                title: "Cybersecurity Analyst",
+                company: "IBM",
+                location: "Pune",
+                type: "Full Time",
+                workMode: "On-site",
+                salary: "₹6 - 12 LPA",
+                experience: "1 - 3 Years",
+
+                description: [
+                    "IBM is looking for a Cybersecurity Analyst to help protect applications, systems and networks.",
+                    "You will monitor security events and support security operations."
+                ],
+
+                responsibilities: [
+                    "Monitor security events.",
+                    "Analyze potential security threats.",
+                    "Support network security operations.",
+                    "Maintain security documentation.",
+                    "Assist with incident response."
+                ],
+
+                requirements: [
+                    "Basic cybersecurity knowledge.",
+                    "Understanding of network security.",
+                    "Knowledge of Linux.",
+                    "Understanding of SIEM tools.",
+                    "Strong analytical skills."
+                ],
+
+                skills: [
+                    "Cybersecurity",
+                    "Network Security",
+                    "Linux",
+                    "SIEM",
+                    "Security"
+                ]
+            },
+
+
+            digitalmarketing: {
+
+                id: "digitalmarketing",
+                title: "Digital Marketing Executive",
+                company: "HCL Technologies",
+                location: "Noida",
+                type: "Full Time",
+                workMode: "Remote",
+                salary: "₹4 - 8 LPA",
+                experience: "0 - 2 Years",
+
+                description: [
+                    "HCL Technologies is looking for a Digital Marketing Executive to support online marketing campaigns.",
+                    "You will work on SEO, social media, advertising and analytics."
+                ],
+
+                responsibilities: [
+                    "Plan and execute digital marketing campaigns.",
+                    "Manage social media activities.",
+                    "Work on SEO and SEM strategies.",
+                    "Monitor campaign performance.",
+                    "Prepare marketing reports."
+                ],
+
+                requirements: [
+                    "Understanding of SEO.",
+                    "Basic knowledge of SEM.",
+                    "Knowledge of social media platforms.",
+                    "Understanding of Google Ads.",
+                    "Basic analytics knowledge."
+                ],
+
+                skills: [
+                    "SEO",
+                    "SEM",
+                    "Social Media",
+                    "Google Ads",
+                    "Analytics"
+                ]
+            },
+
+
+            productdesigner: {
+
+                id: "productdesigner",
+                title: "Product Designer",
+                company: "Myntra",
+                location: "Bangalore",
+                type: "Full Time",
+                workMode: "Hybrid",
+                salary: "₹7 - 13 LPA",
+                experience: "1 - 3 Years",
+
+                description: [
+                    "Myntra is looking for a Product Designer to create intuitive and engaging digital product experiences.",
+                    "You will collaborate with product managers, researchers and developers throughout the design process."
+                ],
+
+                responsibilities: [
+                    "Create product design concepts.",
+                    "Develop wireframes and prototypes.",
+                    "Conduct user research activities.",
+                    "Collaborate with product and engineering teams.",
+                    "Maintain design systems."
+                ],
+
+                requirements: [
+                    "Strong knowledge of Figma.",
+                    "Understanding of UI design.",
+                    "Knowledge of UX research.",
+                    "Experience with prototyping.",
+                    "Understanding of design systems."
+                ],
+
+                skills: [
+                    "Figma",
+                    "UI Design",
+                    "UX Research",
+                    "Prototyping",
+                    "Design Systems"
+                ]
+            },
+
+
+            software: {
+
+                id: "software",
+                title: "Software Engineer",
+                company: "Accenture",
+                location: "Hyderabad",
+                type: "Full Time",
+                workMode: "Hybrid",
+                salary: "₹6 - 11 LPA",
+                experience: "0 - 3 Years",
+
+                description: [
+                    "Accenture is looking for a Software Engineer to develop reliable software solutions for modern business applications.",
+                    "The role involves programming, problem solving, testing and collaboration with development teams."
+                ],
+
+                responsibilities: [
+                    "Develop software applications.",
+                    "Write clean and maintainable code.",
+                    "Debug and test applications.",
+                    "Work with databases and APIs.",
+                    "Collaborate with development teams."
+                ],
+
+                requirements: [
+                    "Knowledge of Java or Python.",
+                    "Understanding of SQL.",
+                    "Basic knowledge of DSA.",
+                    "Good programming skills.",
+                    "Knowledge of Git."
+                ],
+
+                skills: [
+                    "Java",
+                    "Python",
+                    "SQL",
+                    "DSA",
+                    "Git"
+                ]
+            },
+
+
+            business: {
+
+                id: "business",
+                title: "Business Analyst",
+                company: "EY",
+                location: "Gurgaon",
+                type: "Full Time",
+                workMode: "Hybrid",
+                salary: "₹6 - 10 LPA",
+                experience: "1 - 3 Years",
+
+                description: [
+                    "EY is looking for a Business Analyst to understand business requirements and help teams make data-driven decisions.",
+                    "You will work with stakeholders to analyze processes, requirements and business data."
+                ],
+
+                responsibilities: [
+                    "Gather and analyze business requirements.",
+                    "Prepare reports and documentation.",
+                    "Work with business stakeholders.",
+                    "Analyze data using business tools.",
+                    "Support process improvement initiatives."
+                ],
+
+                requirements: [
+                    "Good business analysis skills.",
+                    "Knowledge of Excel.",
+                    "Basic SQL knowledge.",
+                    "Knowledge of Power BI.",
+                    "Strong communication skills."
+                ],
+
+                skills: [
+                    "Business Analysis",
+                    "Excel",
+                    "SQL",
+                    "Power BI",
+                    "Communication"
+                ]
+            }
+
+        };
+
+
+        /* =====================================================
+           EMPLOYER JOBS
+        ===================================================== */
+
+        function getEmployerJobs() {
+
+            try {
+
+                const jobs =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "workoraEmployerJobs"
+                        )
+                    ) || [];
+
+                return jobs.map(
+                    job => {
+
+                        return {
+
+                            id:
+                                String(job.id),
+
+                            title:
+                                job.title ||
+                                "Untitled Job",
+
+                            company:
+                                job.company ||
+                                "Company",
+
+                            location:
+                                job.location ||
+                                "Not specified",
+
+                            type:
+                                job.type ||
+                                "Full Time",
+
+                            workMode:
+                                job.workMode ||
+                                "On-site",
+
+                            salary:
+                                job.salary ||
+                                "Not specified",
+
+                            experience:
+                                job.experience ||
+                                "Not specified",
+
+                            description:
+                                job.description
+                                    ? [job.description]
+                                    : [
+                                        "This job was posted by an employer on Workora."
+                                    ],
+
+                            responsibilities:
+                                Array.isArray(
+                                    job.responsibilities
+                                )
+                                    ? job.responsibilities
+                                    : job.responsibilities
+                                        ? job.responsibilities
+                                            .split(/\n+/)
+                                            .map(
+                                                item =>
+                                                    item.trim()
+                                            )
+                                            .filter(
+                                                item =>
+                                                    item
+                                            )
+                                        : [],
+
+                            requirements:
+                                Array.isArray(
+                                    job.requirements
+                                )
+                                    ? job.requirements
+                                    : job.requirements
+                                        ? job.requirements
+                                            .split(/\n+/)
+                                            .map(
+                                                item =>
+                                                    item.trim()
+                                            )
+                                            .filter(
+                                                item =>
+                                                    item
+                                            )
+                                        : [],
+
+                            skills:
+                                Array.isArray(
+                                    job.skills
+                                )
+                                    ? job.skills
+                                    : [],
+
+                            employerJob:
+                                true
+
+                        };
+
+                    }
+                );
+
+            } catch (error) {
+
+                console.error(
+                    "Error loading employer jobs:",
+                    error
+                );
+
+                return [];
+
+            }
+
+        }
+
+
+        /* =====================================================
+           ALL JOBS
+        ===================================================== */
+
+        function getAllJobs() {
+
+            return [
+                ...Object.values(staticJobs),
+                ...getEmployerJobs()
+            ];
+
+        }
+
+
+        /* =====================================================
+           GET CURRENT JOB
+        ===================================================== */
+
+        const urlParams =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        const jobId =
+            urlParams.get("job");
+
+
+        const currentJob =
+            getAllJobs().find(
+                job =>
+                    String(job.id) ===
+                    String(jobId)
+            )
+            ||
+            (
+                !jobId
+                    ? staticJobs.frontend
+                    : null
+            );
+
+
+        /* =====================================================
+           ELEMENTS
+        ===================================================== */
+
+        const jobDetailsWrapper =
+            document.getElementById(
+                "jobDetailsWrapper"
+            );
+
+        const jobNotFound =
+            document.getElementById(
+                "jobNotFound"
+            );
+
+        const saveJobBtn =
+            document.getElementById(
+                "saveJobBtn"
+            );
+
+        const applicationModal =
+            document.getElementById(
+                "applicationModal"
+            );
+
+        const applicationFormArea =
+            document.getElementById(
+                "applicationFormArea"
+            );
+
+        const applicationSuccess =
+            document.getElementById(
+                "applicationSuccess"
+            );
+
+        const applicationForm =
+            document.getElementById(
+                "applicationForm"
+            );
+
+
+        /* =====================================================
+           LOGIN SYSTEM
+        ===================================================== */
+
+        function getLoggedInUser() {
+
+            const loginKeys = [
+
+                "workoraLoggedIn",
+                "workoraLoggedInUser",
+                "workoraUser",
+                "loggedInUser"
+
+            ];
+
+            for (
+                const key of loginKeys
+            ) {
+
+                try {
+
+                    const value =
+                        localStorage.getItem(
+                            key
+                        );
+
+                    if (!value) {
+                        continue;
+                    }
+
+                    const parsed =
+                        JSON.parse(
+                            value
+                        );
+
+                    if (
+                        parsed &&
+                        typeof parsed ===
+                        "object"
+                    ) {
+
+                        return parsed;
+
+                    }
+
+                } catch {
+
+                    if (
+                        value ===
+                        "true"
+                    ) {
+
+                        return {
+
+                            name:
+                                "Workora User",
+
+                            email:
+                                ""
+
+                        };
+
+                    }
+
+                }
+
+            }
+
+            return null;
+
+        }
+
+
+        function isLoggedIn() {
+
+            return (
+                getLoggedInUser()
+                !==
+                null
+            );
+
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        const guestNav =
+            document.getElementById(
+                "guestNav"
+            );
+
+        const userNav =
+            document.getElementById(
+                "userNav"
+            );
+
+
+        function updateNavbar() {
+
+            const loggedIn =
+                isLoggedIn();
+
+            if (
+                guestNav &&
+                userNav
+            ) {
+
+                if (loggedIn) {
+
+                    guestNav.style.display =
+                        "none";
+
+                    userNav.style.display =
+                        "inline-flex";
+
+                } else {
+
+                    guestNav.style.display =
+                        "inline-flex";
+
+                    userNav.style.display =
+                        "none";
+
+                }
+
+            }
+
+        }
+
+
+        updateNavbar();
+
+
+        /* =====================================================
+           LOGOUT
+        ===================================================== */
+
+        const logoutBtn =
+            document.getElementById(
+                "logoutBtn"
+            );
+
+
+        if (logoutBtn) {
+
+            logoutBtn.addEventListener(
+                "click",
+                function(event) {
+
+                    event.preventDefault();
+
+                    localStorage.removeItem(
+                        "workoraLoggedIn"
+                    );
+
+                    localStorage.removeItem(
+                        "workoraLoggedInUser"
+                    );
+
+                    localStorage.removeItem(
+                        "workoraUser"
+                    );
+
+                    localStorage.removeItem(
+                        "loggedInUser"
+                    );
+
+                    localStorage.removeItem(
+                        "loggedIn"
+                    );
+
+                    window.location.href =
+                        "index.html";
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           RENDER JOB
+        ===================================================== */
+
+        function renderJob(job) {
+
+            if (!job) {
+
+                jobDetailsWrapper.style.display =
+                    "none";
+
+                jobNotFound.style.display =
+                    "block";
+
+                document.title =
+                    "Job Not Found | Workora";
+
+                return;
+
+            }
+
+
+            document.title =
+                `${job.title} | Workora`;
+
+
+            document.getElementById(
+                "jobTitle"
+            ).textContent =
+                job.title;
+
+
+            document.getElementById(
+                "companyName"
+            ).textContent =
+                job.company;
+
+
+            document.getElementById(
+                "companyLogo"
+            ).textContent =
+                job.company
+                    ? job.company
+                        .charAt(0)
+                        .toUpperCase()
+                    : "W";
+
+
+            document.getElementById(
+                "jobLocation"
+            ).textContent =
+                `📍 ${job.location}`;
+
+
+            document.getElementById(
+                "jobType"
+            ).textContent =
+                `💼 ${job.type}`;
+
+
+            document.getElementById(
+                "jobWorkMode"
+            ).textContent =
+                `🏠 ${job.workMode}`;
+
+
+            document.getElementById(
+                "jobSalary"
+            ).textContent =
+                job.salary;
+
+
+            document.getElementById(
+                "jobExperience"
+            ).textContent =
+                job.experience;
+
+
+            document.getElementById(
+                "sidebarJobType"
+            ).textContent =
+                job.type;
+
+
+            document.getElementById(
+                "sidebarLocation"
+            ).textContent =
+                job.location;
+
+
+            document.getElementById(
+                "sidebarWorkMode"
+            ).textContent =
+                job.workMode;
+
+
+            document.getElementById(
+                "sidebarCompany"
+            ).textContent =
+                job.company;
+
+
+            /* =================================================
+               DESCRIPTION
+            ================================================= */
+
+            const description =
+                document.getElementById(
+                    "jobDescription"
+                );
+
+            description.innerHTML = "";
+
+
+            (
+                Array.isArray(job.description)
+                    ? job.description
+                    : [job.description]
+            ).forEach(
+                text => {
+
+                    if (!text) {
+                        return;
+                    }
+
+                    const p =
+                        document.createElement(
+                            "p"
+                        );
+
+                    p.textContent =
+                        text;
+
+                    description.appendChild(
+                        p
+                    );
+
+                }
+            );
+
+
+            /* =================================================
+               RESPONSIBILITIES
+            ================================================= */
+
+            const responsibilities =
+                document.getElementById(
+                    "jobResponsibilities"
+                );
+
+            responsibilities.innerHTML = "";
+
+
+            (
+                job.responsibilities ||
+                []
+            ).forEach(
+                item => {
+
+                    if (!item) {
+                        return;
+                    }
+
+                    const li =
+                        document.createElement(
+                            "li"
+                        );
+
+                    li.textContent =
+                        item;
+
+                    responsibilities.appendChild(
+                        li
+                    );
+
+                }
+            );
+
+
+            /* =================================================
+               REQUIREMENTS
+            ================================================= */
+
+            const requirements =
+                document.getElementById(
+                    "jobRequirements"
+                );
+
+            requirements.innerHTML = "";
+
+
+            (
+                job.requirements ||
+                []
+            ).forEach(
+                item => {
+
+                    if (!item) {
+                        return;
+                    }
+
+                    const li =
+                        document.createElement(
+                            "li"
+                        );
+
+                    li.textContent =
+                        item;
+
+                    requirements.appendChild(
+                        li
+                    );
+
+                }
+            );
+
+
+            /* =================================================
+               SKILLS
+            ================================================= */
+
+            const skills =
+                document.getElementById(
+                    "jobSkills"
+                );
+
+            skills.innerHTML = "";
+
+
+            (
+                job.skills ||
+                []
+            ).forEach(
+                skill => {
+
+                    if (!skill) {
+                        return;
+                    }
+
+                    const span =
+                        document.createElement(
+                            "span"
+                        );
+
+                    span.className =
+                        "skill-tag";
+
+                    span.textContent =
+                        skill;
+
+                    skills.appendChild(
+                        span
+                    );
+
+                }
+            );
+
+
+            checkSavedState();
+
+        }
+
+
+        /* =====================================================
+           SAVED JOBS
+        ===================================================== */
+
+        const SAVED_JOBS_KEY =
+            "workoraSavedJobs";
+
+
+        function getSavedJobs() {
+
+            try {
+
+                const saved =
+                    JSON.parse(
+                        localStorage.getItem(
+                            SAVED_JOBS_KEY
+                        )
+                    );
+
+
+                if (
+                    !Array.isArray(
+                        saved
+                    )
+                ) {
+
+                    return [];
+
+                }
+
+
+                return saved
+                    .map(
+                        item => {
+
+                            if (
+                                typeof item ===
+                                "object" &&
+                                item !== null
+                            ) {
+
+                                return item.id;
+
+                            }
+
+                            return item;
+
+                        }
+                    )
+                    .filter(
+                        id =>
+                            id !== undefined &&
+                            id !== null &&
+                            id !== ""
+                    )
+                    .map(
+                        id =>
+                            String(id)
+                    );
+
+            } catch (error) {
+
+                console.error(
+                    "Saved jobs error:",
+                    error
+                );
+
+                return [];
+
+            }
+
+        }
+
+
+        function saveJobs(jobs) {
+
+            const cleanJobs =
+                jobs
+                    .map(
+                        id =>
+                            String(id)
+                    )
+                    .filter(
+                        id =>
+                            id !== ""
+                    );
+
+
+            const uniqueJobs =
+                [
+                    ...new Set(
+                        cleanJobs
+                    )
+                ];
+
+
+            localStorage.setItem(
+                SAVED_JOBS_KEY,
+                JSON.stringify(
+                    uniqueJobs
+                )
+            );
+
+        }
+
+
+        /* =====================================================
+           CHECK SAVED STATE
+        ===================================================== */
+
+        function checkSavedState() {
+
+            if (
+                !currentJob ||
+                !saveJobBtn
+            ) {
+
+                return;
+
+            }
+
+
+            const savedJobs =
+                getSavedJobs();
+
+
+            const currentId =
+                String(
+                    currentJob.id
+                );
+
+
+            const isSaved =
+                savedJobs.includes(
+                    currentId
+                );
+
+
+            if (isSaved) {
+
+                saveJobBtn.classList.add(
+                    "saved"
+                );
+
+                saveJobBtn.textContent =
+                    "♥ Saved";
+
+            } else {
+
+                saveJobBtn.classList.remove(
+                    "saved"
+                );
+
+                saveJobBtn.textContent =
+                    "♡ Save Job";
+
+            }
+
+        }
+
+
+        /* =====================================================
+           SAVE / UNSAVE
+        ===================================================== */
+
+        if (saveJobBtn) {
+
+            saveJobBtn.addEventListener(
+                "click",
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    if (!currentJob) {
+                        return;
+                    }
+
+
+                    const currentId =
+                        String(
+                            currentJob.id
+                        );
+
+
+                    let savedJobs =
+                        getSavedJobs();
+
+
+                    const existingIndex =
+                        savedJobs.findIndex(
+                            id =>
+                                String(id) ===
+                                currentId
+                        );
+
+
+                    if (
+                        existingIndex !==
+                        -1
+                    ) {
+
+                        savedJobs.splice(
+                            existingIndex,
+                            1
+                        );
+
+                    } else {
+
+                        savedJobs.push(
+                            currentId
+                        );
+
+                    }
+
+
+                    saveJobs(
+                        savedJobs
+                    );
+
+
+                    checkSavedState();
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           APPLY NOW
+        ===================================================== */
+
+        const applyBtn =
+            document.getElementById(
+                "applyBtn"
+            );
+
+
+        if (applyBtn) {
+
+            applyBtn.addEventListener(
+                "click",
+                function() {
+
+                    if (!currentJob) {
+
+                        alert(
+                            "This job is not available."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const user =
+                        getLoggedInUser();
+
+
+                    if (!user) {
+
+                        alert(
+                            "Please login first to apply for this job."
+                        );
+
+                        window.location.href =
+                            "login.html";
+
+                        return;
+
+                    }
+
+
+                    document.getElementById(
+                        "applicationJobTitle"
+                    ).textContent =
+                        `${currentJob.title} at ${currentJob.company}`;
+
+
+                    const nameInput =
+                        document.getElementById(
+                            "applicantName"
+                        );
+
+
+                    const emailInput =
+                        document.getElementById(
+                            "applicantEmail"
+                        );
+
+
+                    if (user.name) {
+
+                        nameInput.value =
+                            user.name;
+
+                    } else if (
+                        user.fullName
+                    ) {
+
+                        nameInput.value =
+                            user.fullName;
+
+                    }
+
+
+                    if (user.email) {
+
+                        emailInput.value =
+                            user.email;
+
+                    }
+
+
+                    applicationFormArea.style.display =
+                        "block";
+
+
+                    applicationSuccess.classList.remove(
+                        "show"
+                    );
+
+
+                    applicationModal.classList.add(
+                        "show"
+                    );
+
+
+                    document.body.style.overflow =
+                        "hidden";
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           CLOSE APPLICATION MODAL
+        ===================================================== */
+
+        function closeApplicationModal() {
+
+            applicationModal.classList.remove(
+                "show"
+            );
+
+            document.body.style.overflow =
+                "";
+
+        }
+
+
+        const closeApplicationBtn =
+            document.getElementById(
+                "closeApplicationBtn"
+            );
+
+
+        if (closeApplicationBtn) {
+
+            closeApplicationBtn.addEventListener(
+                "click",
+                closeApplicationModal
+            );
+
+        }
+
+
+        const closeSuccessBtn =
+            document.getElementById(
+                "closeSuccessBtn"
+            );
+
+
+        if (closeSuccessBtn) {
+
+            closeSuccessBtn.addEventListener(
+                "click",
+                closeApplicationModal
+            );
+
+        }
+
+
+        if (applicationModal) {
+
+            applicationModal.addEventListener(
+                "click",
+                function(event) {
+
+                    if (
+                        event.target ===
+                        applicationModal
+                    ) {
+
+                        closeApplicationModal();
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           SUBMIT APPLICATION
+        ===================================================== */
+
+        if (applicationForm) {
+
+            applicationForm.addEventListener(
+                "submit",
+                function(event) {
+
+                    event.preventDefault();
+
+
+                    if (!currentJob) {
+
+                        alert(
+                            "Job information is missing."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const name =
+                        document.getElementById(
+                            "applicantName"
+                        )
+                            .value
+                            .trim();
+
+
+                    const email =
+                        document.getElementById(
+                            "applicantEmail"
+                        )
+                            .value
+                            .trim();
+
+
+                    const phone =
+                        document.getElementById(
+                            "applicantPhone"
+                        )
+                            .value
+                            .trim();
+
+
+                    const resume =
+                        document.getElementById(
+                            "resumeFile"
+                        )
+                            .files[0];
+
+
+                    const coverLetter =
+                        document.getElementById(
+                            "coverLetter"
+                        )
+                            .value
+                            .trim();
+
+
+                    if (
+                        !name ||
+                        !email ||
+                        !phone ||
+                        !resume
+                    ) {
+
+                        alert(
+                            "Please fill all required fields."
+                        );
+
+                        return;
+
+                    }
+
+
+                    let applications = [];
+
+
+                    try {
+
+                        applications =
+                            JSON.parse(
+                                localStorage.getItem(
+                                    "workoraApplications"
+                                )
+                            ) || [];
+
+                    } catch {
+
+                        applications = [];
+
+                    }
+
+
+                    const alreadyApplied =
+                        applications.some(
+                            application =>
+
+                                String(
+                                    application.jobId
+                                ) ===
+                                String(
+                                    currentJob.id
+                                )
+
+                                &&
+
+                                String(
+                                    application.email
+                                )
+                                    .toLowerCase()
+                                ===
+                                email.toLowerCase()
+                        );
+
+
+                    if (alreadyApplied) {
+
+                        alert(
+                            "You have already applied for this job using this email."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const now =
+                        new Date().toISOString();
+
+
+                    const newApplication = {
+
+                        id:
+                            "application_" +
+                            Date.now(),
+
+                        jobId:
+                            currentJob.id,
+
+                        title:
+                            currentJob.title,
+
+                        jobTitle:
+                            currentJob.title,
+
+                        company:
+                            currentJob.company,
+
+                        name:
+                            name,
+
+                        email:
+                            email,
+
+                        phone:
+                            phone,
+
+                        resumeName:
+                            resume.name,
+
+                        coverLetter:
+                            coverLetter,
+
+                        status:
+                            "Applied",
+
+                        appliedAt:
+                            now,
+
+                        submittedAt:
+                            now
+
+                    };
+
+
+                    applications.push(
+                        newApplication
+                    );
+
+
+                    localStorage.setItem(
+                        "workoraApplications",
+                        JSON.stringify(
+                            applications
+                        )
+                    );
+
+
+                    /* =========================================
+                       EMPLOYER APPLICANT COUNT
+                    ========================================= */
+
+                    if (
+                        currentJob.employerJob
+                    ) {
+
+                        try {
+
+                            const employerJobs =
+                                JSON.parse(
+                                    localStorage.getItem(
+                                        "workoraEmployerJobs"
+                                    )
+                                ) || [];
+
+
+                            const jobIndex =
+                                employerJobs.findIndex(
+                                    job =>
+                                        String(
+                                            job.id
+                                        ) ===
+                                        String(
+                                            currentJob.id
+                                        )
+                                );
+
+
+                            if (
+                                jobIndex !==
+                                -1
+                            ) {
+
+                                employerJobs[
+                                    jobIndex
+                                ].applicants =
+                                    Number(
+                                        employerJobs[
+                                            jobIndex
+                                        ].applicants ||
+                                        0
+                                    ) + 1;
+
+
+                                localStorage.setItem(
+                                    "workoraEmployerJobs",
+                                    JSON.stringify(
+                                        employerJobs
+                                    )
+                                );
+
+                            }
+
+                        } catch (error) {
+
+                            console.log(
+                                "Applicant count error:",
+                                error
+                            );
+
+                        }
+
+                    }
+
+
+                    applicationForm.reset();
+
+
+                    applicationFormArea.style.display =
+                        "none";
+
+
+                    document.getElementById(
+                        "successMessage"
+                    ).textContent =
+                        `Your application for ${currentJob.title} at ${currentJob.company} has been submitted successfully.`;
+
+
+                    applicationSuccess.classList.add(
+                        "show"
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           MOBILE MENU
+        ===================================================== */
+
+        const mobileMenuBtn =
+            document.getElementById(
+                "mobileMenuBtn"
+            );
+
+
+        const navLinks =
+            document.getElementById(
+                "navLinks"
+            );
+
+
+        if (
+            mobileMenuBtn &&
+            navLinks
+        ) {
+
+            mobileMenuBtn.addEventListener(
+                "click",
+                function() {
+
+                    navLinks.classList.toggle(
+                        "active"
+                    );
+
+                }
+            );
+
+        }
+
+
+        /* =====================================================
+           ESC KEY
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key ===
+                    "Escape" &&
+                    applicationModal &&
+                    applicationModal.classList.contains(
+                        "show"
+                    )
+                ) {
+
+                    closeApplicationModal();
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           INITIAL LOAD
+        ===================================================== */
+
+        renderJob(
+            currentJob
+        );
+
+    </script>
+
+</body>
+
+</html>

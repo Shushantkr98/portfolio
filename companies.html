@@ -1,0 +1,1538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Companies | Workora</title>
+
+
+    <!-- Google Font -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- Main CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+
+    <style>
+
+        /* =====================================================
+           COMPANIES PAGE
+        ===================================================== */
+
+        .companies-page {
+
+            padding:
+                120px 0
+                80px;
+
+        }
+
+
+        .companies-heading {
+
+            text-align: center;
+
+            max-width: 750px;
+
+            margin:
+                0 auto 50px;
+
+        }
+
+
+        .companies-heading .section-label {
+
+            display: inline-block;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .companies-heading h1 {
+
+            margin-bottom: 15px;
+
+            font-size:
+                clamp(
+                    36px,
+                    5vw,
+                    52px
+                );
+
+        }
+
+
+        .companies-heading p {
+
+            color:
+                var(--muted);
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        .company-search-box {
+
+            max-width: 650px;
+
+            margin:
+                0 auto 45px;
+
+            position: relative;
+
+        }
+
+
+        .company-search-box input {
+
+            width: 100%;
+
+            padding:
+                17px
+                20px
+                17px
+                50px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 14px;
+
+            background:
+                #ffffff;
+
+            color:
+                var(--text);
+
+            font-size: 15px;
+
+            outline: none;
+
+            box-shadow:
+                0 10px 30px
+                rgba(
+                    37,
+                    99,
+                    235,
+                    0.06
+                );
+
+        }
+
+
+        .company-search-box input:focus {
+
+            border-color:
+                var(--primary);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(
+                    37,
+                    99,
+                    235,
+                    0.08
+                );
+
+        }
+
+
+        .company-search-icon {
+
+            position: absolute;
+
+            left: 18px;
+
+            top: 50%;
+
+            transform:
+                translateY(-50%);
+
+            font-size: 19px;
+
+        }
+
+
+        /* =====================================================
+           COMPANY GRID
+        ===================================================== */
+
+        .companies-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    minmax(
+                        0,
+                        1fr
+                    )
+                );
+
+            gap: 25px;
+
+        }
+
+
+        .company-card {
+
+            padding: 28px;
+
+            background:
+                #ffffff;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 10px 30px
+                rgba(
+                    37,
+                    99,
+                    235,
+                    0.05
+                );
+
+            transition:
+                0.3s ease;
+
+        }
+
+
+        .company-card:hover {
+
+            transform:
+                translateY(-6px);
+
+            box-shadow:
+                0 18px 40px
+                rgba(
+                    37,
+                    99,
+                    235,
+                    0.12
+                );
+
+            border-color:
+                var(--border-blue);
+
+        }
+
+
+        .company-card-top {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .company-logo-large {
+
+            width: 62px;
+
+            height: 62px;
+
+            flex-shrink: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 16px;
+
+            background:
+                var(--primary-soft);
+
+            color:
+                var(--primary);
+
+            font-size: 25px;
+
+            font-weight: 800;
+
+        }
+
+
+        .company-card h3 {
+
+            margin-bottom: 4px;
+
+            font-size: 19px;
+
+        }
+
+
+        .company-card .company-location {
+
+            color:
+                var(--muted);
+
+            font-size: 13px;
+
+        }
+
+
+        .company-card p {
+
+            color:
+                var(--muted);
+
+            line-height: 1.7;
+
+            font-size: 14px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .company-card-bottom {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+        }
+
+
+        .company-jobs {
+
+            color:
+                var(--primary);
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+        }
+
+
+        .company-view-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                9px 15px;
+
+            border-radius:
+                9px;
+
+            background:
+                var(--primary-soft);
+
+            color:
+                var(--primary);
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .company-view-btn:hover {
+
+            background:
+                var(--primary);
+
+            color:
+                #ffffff;
+
+        }
+
+
+        /* =====================================================
+           NO RESULT
+        ===================================================== */
+
+        .no-company-result {
+
+            display: none;
+
+            text-align: center;
+
+            padding: 50px 20px;
+
+            color:
+                var(--muted);
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (
+            max-width: 900px
+        ) {
+
+            .companies-grid {
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        minmax(
+                            0,
+                            1fr
+                        )
+                    );
+
+            }
+
+        }
+
+
+        @media (
+            max-width: 600px
+        ) {
+
+            .companies-page {
+
+                padding-top:
+                    100px;
+
+            }
+
+
+            .companies-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .company-card {
+
+                padding:
+                    22px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+    <div class="container nav-container">
+
+
+        <!-- LOGO -->
+
+        <a
+            href="index.html"
+            class="logo"
+        >
+
+            <span class="logo-icon">
+                W
+            </span>
+
+            <span>
+                Workora
+                <span class="logo-dot">
+                    .AI
+                </span>
+            </span>
+
+        </a>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="nav-links">
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="jobs.html">
+                Jobs
+            </a>
+
+            <a
+                href="companies.html"
+                class="active"
+            >
+                Companies
+            </a>
+
+            <a href="index.html#about">
+                About
+            </a>
+
+            <a href="saved-jobs.html">
+                ♡ Saved Jobs
+            </a>
+
+        </nav>
+
+
+        <!-- =================================================
+             AUTH
+        ================================================= -->
+
+        <div class="nav-actions">
+
+
+            <!-- BEFORE LOGIN -->
+
+            <div id="guestNav">
+
+                <a
+                    href="login.html"
+                    class="login-btn"
+                >
+                    Login
+                </a>
+
+                <a
+                    href="register.html"
+                    class="register-btn"
+                >
+                    Register
+                </a>
+
+            </div>
+
+
+            <!-- AFTER LOGIN -->
+
+            <div
+                id="userNav"
+                style="
+                    display:none;
+                    align-items:center;
+                    gap:10px;
+                "
+            >
+
+                <a
+                    href="dashboard.html"
+                    class="dashboard-nav-btn"
+                >
+                    📊 Dashboard
+                </a>
+
+
+                <a
+                    href="profile.html"
+                    class="profile-nav-btn"
+                >
+
+                    <span class="profile-icon">
+                        👤
+                    </span>
+
+                    <span id="profileNavName">
+                        Profile
+                    </span>
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="logout-btn"
+                    id="logoutBtn"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- MOBILE BUTTON -->
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            type="button"
+        >
+            ☰
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================================
+     COMPANIES
+===================================================== -->
+
+<main>
+
+    <section class="companies-page">
+
+        <div class="container">
+
+
+            <!-- HEADING -->
+
+            <div class="companies-heading">
+
+                <span class="section-label">
+                    TOP EMPLOYERS
+                </span>
+
+                <h1>
+                    Explore Companies
+                </h1>
+
+                <p>
+                    Discover companies hiring talented
+                    professionals and explore their
+                    available opportunities.
+                </p>
+
+            </div>
+
+
+            <!-- SEARCH -->
+
+            <div class="company-search-box">
+
+                <span
+                    class="company-search-icon"
+                >
+                    🔍
+                </span>
+
+                <input
+                    type="text"
+                    id="companySearch"
+                    placeholder="Search companies..."
+                >
+
+            </div>
+
+
+
+            <!-- COMPANY GRID -->
+
+            <div
+                class="companies-grid"
+                id="companiesGrid"
+            >
+
+
+                <!-- GOOGLE -->
+
+                <article
+                    class="company-card"
+                    data-company="google technologies"
+                >
+
+                    <div class="company-card-top">
+
+                        <div
+                            class="company-logo-large"
+                        >
+                            G
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Google Technologies
+                            </h3>
+
+                            <span
+                                class="company-location"
+                            >
+                                📍 Delhi
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+                        Technology company offering
+                        opportunities in web development,
+                        software engineering and modern
+                        digital products.
+                    </p>
+
+
+                    <div
+                        class="company-card-bottom"
+                    >
+
+                        <span
+                            class="company-jobs"
+                        >
+                            120+ Jobs
+                        </span>
+
+
+                        <a
+                            href="jobs.html"
+                            class="company-view-btn"
+                        >
+                            View Jobs →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- MICROSOFT -->
+
+                <article
+                    class="company-card"
+                    data-company="microsoft"
+                >
+
+                    <div class="company-card-top">
+
+                        <div
+                            class="company-logo-large"
+                        >
+                            M
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Microsoft
+                            </h3>
+
+                            <span
+                                class="company-location"
+                            >
+                                📍 Bangalore
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+                        Global technology company with
+                        opportunities across software,
+                        cloud computing and engineering.
+                    </p>
+
+
+                    <div
+                        class="company-card-bottom"
+                    >
+
+                        <span
+                            class="company-jobs"
+                        >
+                            150+ Jobs
+                        </span>
+
+
+                        <a
+                            href="jobs.html"
+                            class="company-view-btn"
+                        >
+                            View Jobs →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- ADOBE -->
+
+                <article
+                    class="company-card"
+                    data-company="adobe"
+                >
+
+                    <div class="company-card-top">
+
+                        <div
+                            class="company-logo-large"
+                        >
+                            A
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Adobe
+                            </h3>
+
+                            <span
+                                class="company-location"
+                            >
+                                📍 Mumbai
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+                        Creative technology company with
+                        opportunities in design, UI/UX,
+                        software and digital experiences.
+                    </p>
+
+
+                    <div
+                        class="company-card-bottom"
+                    >
+
+                        <span
+                            class="company-jobs"
+                        >
+                            90+ Jobs
+                        </span>
+
+
+                        <a
+                            href="jobs.html"
+                            class="company-view-btn"
+                        >
+                            View Jobs →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- AMAZON -->
+
+                <article
+                    class="company-card"
+                    data-company="amazon"
+                >
+
+                    <div class="company-card-top">
+
+                        <div
+                            class="company-logo-large"
+                        >
+                            A
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Amazon
+                            </h3>
+
+                            <span
+                                class="company-location"
+                            >
+                                📍 Bangalore
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+                        E-commerce and technology company
+                        with opportunities across software,
+                        cloud and business operations.
+                    </p>
+
+
+                    <div
+                        class="company-card-bottom"
+                    >
+
+                        <span
+                            class="company-jobs"
+                        >
+                            180+ Jobs
+                        </span>
+
+
+                        <a
+                            href="jobs.html"
+                            class="company-view-btn"
+                        >
+                            View Jobs →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- TCS -->
+
+                <article
+                    class="company-card"
+                    data-company="tcs tata consultancy services"
+                >
+
+                    <div class="company-card-top">
+
+                        <div
+                            class="company-logo-large"
+                        >
+                            T
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                TCS
+                            </h3>
+
+                            <span
+                                class="company-location"
+                            >
+                                📍 Pune
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+                        IT services and consulting company
+                        with opportunities in software,
+                        development and technology services.
+                    </p>
+
+
+                    <div
+                        class="company-card-bottom"
+                    >
+
+                        <span
+                            class="company-jobs"
+                        >
+                            200+ Jobs
+                        </span>
+
+
+                        <a
+                            href="jobs.html"
+                            class="company-view-btn"
+                        >
+                            View Jobs →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- INFOSYS -->
+
+                <article
+                    class="company-card"
+                    data-company="infosys"
+                >
+
+                    <div class="company-card-top">
+
+                        <div
+                            class="company-logo-large"
+                        >
+                            I
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Infosys
+                            </h3>
+
+                            <span
+                                class="company-location"
+                            >
+                                📍 Hyderabad
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+                        Technology services company with
+                        opportunities across software,
+                        consulting and digital solutions.
+                    </p>
+
+
+                    <div
+                        class="company-card-bottom"
+                    >
+
+                        <span
+                            class="company-jobs"
+                        >
+                            130+ Jobs
+                        </span>
+
+
+                        <a
+                            href="jobs.html"
+                            class="company-view-btn"
+                        >
+                            View Jobs →
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+
+            <!-- NO RESULT -->
+
+            <div
+                class="no-company-result"
+                id="noCompanyResult"
+            >
+
+                <h3>
+                    No companies found
+                </h3>
+
+                <p>
+                    Try searching with a different
+                    company name.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="container footer-container">
+
+
+        <div class="footer-brand">
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+
+                <span class="logo-icon">
+                    W
+                </span>
+
+                <span>
+                    Workora
+                    <span class="logo-dot">
+                        .AI
+                    </span>
+                </span>
+
+            </a>
+
+
+            <p>
+                Connecting talent with opportunities
+                and helping businesses find the right people.
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+
+            <div>
+
+                <h4>
+                    Platform
+                </h4>
+
+                <a href="index.html#jobs">
+                    Find Jobs
+                </a>
+
+                <a href="companies.html">
+                    Companies
+                </a>
+
+                <a href="index.html#about">
+                    About Workora
+                </a>
+
+                <a href="saved-jobs.html">
+                    ♡ Saved Jobs
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    For Employers
+                </h4>
+
+                <a href="post-job.html">
+                    Post a Job
+                </a>
+
+                <a href="employer-applicants.html">
+                    Find Candidates
+                </a>
+
+                <a href="employer-dashboard.html">
+                    Employer Dashboard
+                </a>
+
+                <a href="profile.html">
+                    Company Profile
+                </a>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Support
+                </h4>
+
+                <a href="#">
+                    Help Center
+                </a>
+
+                <a href="#">
+                    Contact Us
+                </a>
+
+                <a href="#">
+                    Privacy Policy
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <div class="container">
+
+            <p>
+                © 2026 Workora.AI. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        /* =================================================
+           AUTHENTICATION
+        ================================================= */
+
+        const LOGIN_KEY =
+            "workoraLoggedIn";
+
+
+        const guestNav =
+            document.getElementById(
+                "guestNav"
+            );
+
+
+        const userNav =
+            document.getElementById(
+                "userNav"
+            );
+
+
+        const profileNavName =
+            document.getElementById(
+                "profileNavName"
+            );
+
+
+        const logoutBtn =
+            document.getElementById(
+                "logoutBtn"
+            );
+
+
+        let loggedInUser = null;
+
+
+        try {
+
+            loggedInUser =
+                JSON.parse(
+                    localStorage.getItem(
+                        LOGIN_KEY
+                    )
+                );
+
+        } catch (error) {
+
+            loggedInUser = null;
+
+        }
+
+
+        /* =================================================
+           LOGGED IN
+        ================================================= */
+
+        if (loggedInUser) {
+
+
+            if (guestNav) {
+
+                guestNav.style.display =
+                    "none";
+
+            }
+
+
+            if (userNav) {
+
+                userNav.style.display =
+                    "flex";
+
+            }
+
+
+            if (profileNavName) {
+
+                profileNavName.textContent =
+                    loggedInUser.name ||
+                    "Profile";
+
+            }
+
+        }
+
+
+        /* =================================================
+           NOT LOGGED IN
+        ================================================= */
+
+        else {
+
+
+            if (guestNav) {
+
+                guestNav.style.display =
+                    "flex";
+
+            }
+
+
+            if (userNav) {
+
+                userNav.style.display =
+                    "none";
+
+            }
+
+        }
+
+
+
+        /* =================================================
+           LOGOUT
+        ================================================= */
+
+        if (logoutBtn) {
+
+            logoutBtn.addEventListener(
+                "click",
+                function () {
+
+
+                    localStorage.removeItem(
+                        LOGIN_KEY
+                    );
+
+
+                    localStorage.removeItem(
+                        "workoraRememberMe"
+                    );
+
+
+                    window.location.href =
+                        "index.html";
+
+                }
+            );
+
+        }
+
+
+
+        /* =================================================
+           COMPANY SEARCH
+        ================================================= */
+
+        const searchInput =
+            document.getElementById(
+                "companySearch"
+            );
+
+
+        const companyCards =
+            document.querySelectorAll(
+                ".company-card"
+            );
+
+
+        const noResult =
+            document.getElementById(
+                "noCompanyResult"
+            );
+
+
+        if (searchInput) {
+
+            searchInput.addEventListener(
+                "input",
+                function () {
+
+
+                    const searchValue =
+                        searchInput.value
+                            .toLowerCase()
+                            .trim();
+
+
+                    let visibleCount = 0;
+
+
+                    companyCards.forEach(
+                        function (card) {
+
+
+                            const companyName =
+                                (
+                                    card.dataset.company ||
+                                    ""
+                                ).toLowerCase();
+
+
+                            if (
+                                companyName.includes(
+                                    searchValue
+                                )
+                            ) {
+
+                                card.style.display =
+                                    "block";
+
+                                visibleCount++;
+
+                            }
+
+                            else {
+
+                                card.style.display =
+                                    "none";
+
+                            }
+
+                        }
+                    );
+
+
+                    if (noResult) {
+
+                        noResult.style.display =
+                            visibleCount === 0
+                                ? "block"
+                                : "none";
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        /* =================================================
+           MOBILE MENU
+        ================================================= */
+
+        const menuBtn =
+            document.getElementById(
+                "menuBtn"
+            );
+
+
+        const navLinks =
+            document.querySelector(
+                ".nav-links"
+            );
+
+
+        if (
+            menuBtn &&
+            navLinks
+        ) {
+
+
+            menuBtn.addEventListener(
+                "click",
+                function () {
+
+                    navLinks.classList.toggle(
+                        "active"
+                    );
+
+                }
+            );
+
+
+            navLinks
+                .querySelectorAll("a")
+                .forEach(
+                    function (link) {
+
+                        link.addEventListener(
+                            "click",
+                            function () {
+
+                                navLinks.classList.remove(
+                                    "active"
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+        }
+
+    }
+
+);
+
+</script>
+
+
+</body>
+
+</html>
