@@ -177,7 +177,7 @@ function logoutWorkoraUser() {
 
 
     window.location.href =
-        "index.html";
+        "portal.html";
 
 }
 
